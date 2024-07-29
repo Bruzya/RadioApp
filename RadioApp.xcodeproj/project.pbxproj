@@ -19,6 +19,13 @@
 		522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */; };
 		522899932C57DD260013FF87 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */; };
 		522899952C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */; };
+		522899982C57E6E00013FF87 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899972C57E6E00013FF87 /* AuthVC.swift */; };
+		5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999A2C57E6F10013FF87 /* PopularsVC.swift */; };
+		5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */; };
+		522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A02C57E70D0013FF87 /* AllStationsVC.swift */; };
+		522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A32C57E72B0013FF87 /* SearchVC.swift */; };
+		522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A62C57E7450013FF87 /* StationDetailsVC.swift */; };
+		522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A92C57E7530013FF87 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +40,13 @@
 		522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		522899972C57E6E00013FF87 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		5228999A2C57E6F10013FF87 /* PopularsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularsVC.swift; sourceTree = "<group>"; };
+		5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		522899A02C57E70D0013FF87 /* AllStationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationsVC.swift; sourceTree = "<group>"; };
+		522899A32C57E72B0013FF87 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		522899A62C57E7450013FF87 /* StationDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsVC.swift; sourceTree = "<group>"; };
+		522899A92C57E7530013FF87 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				5228997B2C57C8D30013FF87 /* Onboarding */,
+				522899962C57E6D40013FF87 /* Auth */,
+				522899992C57E6E80013FF87 /* Populars */,
+				5228999C2C57E6F30013FF87 /* Favorites */,
+				5228999F2C57E6FF0013FF87 /* AllStations */,
+				522899A82C57E74C0013FF87 /* Profile */,
+				522899A52C57E7360013FF87 /* StationDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -128,6 +148,63 @@
 				522899862C57DC230013FF87 /* Font */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		522899962C57E6D40013FF87 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				522899972C57E6E00013FF87 /* AuthVC.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		522899992C57E6E80013FF87 /* Populars */ = {
+			isa = PBXGroup;
+			children = (
+				5228999A2C57E6F10013FF87 /* PopularsVC.swift */,
+			);
+			path = Populars;
+			sourceTree = "<group>";
+		};
+		5228999C2C57E6F30013FF87 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		5228999F2C57E6FF0013FF87 /* AllStations */ = {
+			isa = PBXGroup;
+			children = (
+				522899A02C57E70D0013FF87 /* AllStationsVC.swift */,
+				522899A22C57E7220013FF87 /* Search */,
+			);
+			path = AllStations;
+			sourceTree = "<group>";
+		};
+		522899A22C57E7220013FF87 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				522899A32C57E72B0013FF87 /* SearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		522899A52C57E7360013FF87 /* StationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				522899A62C57E7450013FF87 /* StationDetailsVC.swift */,
+			);
+			path = StationDetails;
+			sourceTree = "<group>";
+		};
+		522899A82C57E74C0013FF87 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				522899A92C57E7530013FF87 /* ProfileVC.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +291,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */,
+				522899982C57E6E00013FF87 /* AuthVC.swift in Sources */,
+				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
+				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
+				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
+				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
+				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
