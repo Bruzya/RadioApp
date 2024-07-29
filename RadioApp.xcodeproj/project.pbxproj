@@ -15,6 +15,10 @@
 		5228997E2C57D3450013FF87 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997D2C57D3450013FF87 /* SnapKit */; };
 		522899802C57D3450013FF87 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997F2C57D3450013FF87 /* SnapKit-Dynamic */; };
 		522899832C57D4290013FF87 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 522899822C57D4290013FF87 /* Kingfisher */; };
+		522899882C57DC290013FF87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899872C57DC290013FF87 /* Font.swift */; };
+		522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */; };
+		522899932C57DD260013FF87 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */; };
+		522899952C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		5228996D2C57C87D0013FF87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522899702C57C87D0013FF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522899722C57C87D0013FF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		522899872C57DC290013FF87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			children = (
 				522899782C57C8B10013FF87 /* App */,
 				5228997A2C57C8D00013FF87 /* Modules */,
+				522899892C57DC510013FF87 /* Helpers */,
 				522899792C57C8BE0013FF87 /* Support */,
 			);
 			path = RadioApp;
@@ -100,6 +109,25 @@
 				522899682C57C87B0013FF87 /* OnboardingVC.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		522899862C57DC230013FF87 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				522899872C57DC290013FF87 /* Font.swift */,
+				522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */,
+				522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */,
+				522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		522899892C57DC510013FF87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				522899862C57DC230013FF87 /* Font */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +199,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522899932C57DD260013FF87 /* SF-Pro-Display-Medium.otf in Resources */,
+				522899952C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf in Resources */,
 				5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */,
+				522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */,
 				522899712C57C87D0013FF87 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
