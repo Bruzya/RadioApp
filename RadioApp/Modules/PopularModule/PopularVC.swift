@@ -22,4 +22,9 @@ final class PopularVC: UIViewController {
         view.backgroundColor = .white
         title = "Popular"
     }
+    
+    deinit {
+        print("Deinit \(type(of: self))")
+    }
+    
 }

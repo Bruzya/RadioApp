@@ -15,4 +15,8 @@ final class AllStationsVC: UIViewController {
         title = "AllStationsVC"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
+    
+    deinit {
+        print("Deinit \(type(of: self))")
+    }
 }

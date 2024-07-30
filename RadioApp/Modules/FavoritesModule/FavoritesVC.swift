@@ -22,4 +22,8 @@ final class FavoritesVC: UIViewController {
         view.backgroundColor = .white
         title = "FavoritesVC"
     }
+    
+    deinit {
+        print("Deinit \(type(of: self))")
+    }
 }

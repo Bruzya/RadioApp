@@ -21,10 +21,10 @@ final class ContainerVC: UIViewController {
     
     var navigationVC: UINavigationController?
     
-    let menuVC = SideBarVC()
-    let allStationsVC = AllStationsVC()
-    let favoritesVC = FavoritesVC()
-    let popularVC = PopularVC()
+    private let menuVC = SideBarVC()
+    private let allStationsVC = AllStationsVC()
+    private let favoritesVC = FavoritesVC()
+    private let popularVC = PopularVC()
     
     private let button: UIButton = {
         let btn = UIButton()
@@ -33,7 +33,7 @@ final class ContainerVC: UIViewController {
     }()
     
     private let disposeBag = DisposeBag()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
@@ -43,18 +43,16 @@ final class ContainerVC: UIViewController {
     }
     
     private func addChildVCs() {
-        // menu
         addChild(menuVC)
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
         
-        // allStations
-        let navigationVC = UINavigationController(rootViewController: allStationsVC)
+        navigationVC = UINavigationController(rootViewController: allStationsVC)
+        guard let navigationVC = navigationVC else { return }
         addChild(navigationVC)
         view.addSubview(navigationVC.view)
         navigationVC.didMove(toParent: self)
-        self.navigationVC = navigationVC
-        
+
         view.addSubview(button)
     }
     
@@ -91,18 +89,42 @@ final class ContainerVC: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        menuVC.onCellTap = { [unowned self] option in
+            let currentVC = self.navigationVC?.viewControllers.last
+            switch option {
+            case .allStation:
+                if currentVC != allStationsVC {
+                    self.navigationVC?.setViewControllers([allStationsVC], animated: false)
+                }
+            case .favorite:
+                if currentVC != favoritesVC {
+                    self.navigationVC?.setViewControllers([favoritesVC], animated: false)
+                }
+            case .popular:
+                if currentVC != popularVC {
+                    self.navigationVC?.setViewControllers([popularVC], animated: false)
+                }
+            }
+
+
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0,
+                usingSpringWithDamping: 0.8,
+                initialSpringVelocity: 0,
+                options: .curveEaseInOut) {
+                    self.navigationVC?.view.frame.origin.x = 0
+                } completion: { done in
+                    if done {
+                        self.menuState = .closed
+                    }
+                }
+        }
     }
 }
 
 private extension ContainerVC {
-    func setupUI() {
-        
-    }
-    
-    func addSubviews() {
-        
-    }
-    
     func setupConstraints() {
         button.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)

@@ -8,6 +8,10 @@
 import Foundation
 
 final class FirebaseService {
+    
+    var isSessionActive: Bool {
+        true
+    }
             
     func signIn() {}
     
