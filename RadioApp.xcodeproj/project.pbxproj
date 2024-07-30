@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1115577E2C58081E00E5947C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1115577D2C58081E00E5947C /* Model.swift */; };
+		111557822C58B9DD00E5947C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111557812C58B9DD00E5947C /* Constants.swift */; };
+		111557872C58F8AE00E5947C /* RadioStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111557862C58F8AE00E5947C /* RadioStationCell.swift */; };
+		111557892C58F8FD00E5947C /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111557882C58F8FD00E5947C /* RadioStationViewModel.swift */; };
 		522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899642C57C87B0013FF87 /* AppDelegate.swift */; };
 		522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899662C57C87B0013FF87 /* SceneDelegate.swift */; };
 		522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingVC.swift */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1115577D2C58081E00E5947C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		111557812C58B9DD00E5947C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		111557862C58F8AE00E5947C /* RadioStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationCell.swift; sourceTree = "<group>"; };
+		111557882C58F8FD00E5947C /* RadioStationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationViewModel.swift; sourceTree = "<group>"; };
 		522899612C57C87B0013FF87 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522899642C57C87B0013FF87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522899662C57C87B0013FF87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +71,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1115577F2C58A85100E5947C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1115577D2C58081E00E5947C /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		111557802C58A8A900E5947C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				522899A02C57E70D0013FF87 /* AllStationsVC.swift */,
+				111557862C58F8AE00E5947C /* RadioStationCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		111557832C58C2B900E5947C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				111557812C58B9DD00E5947C /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		522899582C57C87B0013FF87 = {
 			isa = PBXGroup;
 			children = (
@@ -177,8 +210,11 @@
 		5228999F2C57E6FF0013FF87 /* AllStations */ = {
 			isa = PBXGroup;
 			children = (
-				522899A02C57E70D0013FF87 /* AllStationsVC.swift */,
+				111557882C58F8FD00E5947C /* RadioStationViewModel.swift */,
+				111557802C58A8A900E5947C /* Views */,
+				1115577F2C58A85100E5947C /* Models */,
 				522899A22C57E7220013FF87 /* Search */,
+				111557832C58C2B900E5947C /* Helpers */,
 			);
 			path = AllStations;
 			sourceTree = "<group>";
@@ -294,13 +330,17 @@
 				5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */,
 				522899982C57E6E00013FF87 /* AuthVC.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
+				1115577E2C58081E00E5947C /* Model.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
+				111557822C58B9DD00E5947C /* Constants.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
+				111557892C58F8FD00E5947C /* RadioStationViewModel.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				111557872C58F8AE00E5947C /* RadioStationCell.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
