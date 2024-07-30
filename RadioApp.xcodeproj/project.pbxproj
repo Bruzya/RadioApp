@@ -13,7 +13,6 @@
 		5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5228996D2C57C87D0013FF87 /* Assets.xcassets */; };
 		522899712C57C87D0013FF87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 522899702C57C87D0013FF87 /* Base */; };
 		5228997E2C57D3450013FF87 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997D2C57D3450013FF87 /* SnapKit */; };
-		522899802C57D3450013FF87 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997F2C57D3450013FF87 /* SnapKit-Dynamic */; };
 		522899832C57D4290013FF87 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 522899822C57D4290013FF87 /* Kingfisher */; };
 		522899882C57DC290013FF87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899872C57DC290013FF87 /* Font.swift */; };
 		522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */; };
@@ -56,7 +55,6 @@
 			files = (
 				522899832C57D4290013FF87 /* Kingfisher in Frameworks */,
 				5228997E2C57D3450013FF87 /* SnapKit in Frameworks */,
-				522899802C57D3450013FF87 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +223,6 @@
 			name = RadioApp;
 			packageProductDependencies = (
 				5228997D2C57D3450013FF87 /* SnapKit */,
-				5228997F2C57D3450013FF87 /* SnapKit-Dynamic */,
 				522899822C57D4290013FF87 /* Kingfisher */,
 			);
 			productName = RadioApp;
@@ -565,11 +562,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5228997C2C57D3450013FF87 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		5228997F2C57D3450013FF87 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5228997C2C57D3450013FF87 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		522899822C57D4290013FF87 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
