@@ -25,6 +25,8 @@
 		522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A32C57E72B0013FF87 /* SearchVC.swift */; };
 		522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A62C57E7450013FF87 /* StationDetailsVC.swift */; };
 		522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A92C57E7530013FF87 /* ProfileVC.swift */; };
+		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
+		FA9688CB2C59290100DE491C /* UIKit + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UIKit + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		522899A32C57E72B0013FF87 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		522899A62C57E7450013FF87 /* StationDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsVC.swift; sourceTree = "<group>"; };
 		522899A92C57E7530013FF87 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		FA9688CA2C59290100DE491C /* UIKit + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +155,11 @@
 		522899962C57E6D40013FF87 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688BE2C5927C900DE491C /* SignIn */,
+				FA9688BF2C5927D300DE491C /* SignUp */,
+				FA9688C02C5927EA00DE491C /* ForgotPass */,
 				522899972C57E6E00013FF87 /* AuthVC.swift */,
+				FA9688C52C59287900DE491C /* Extensions */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -203,6 +211,36 @@
 				522899A92C57E7530013FF87 /* ProfileVC.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		FA9688BE2C5927C900DE491C /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688C12C59280800DE491C /* SignInView.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		FA9688BF2C5927D300DE491C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		FA9688C02C5927EA00DE491C /* ForgotPass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForgotPass;
+			sourceTree = "<group>";
+		};
+		FA9688C52C59287900DE491C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688CA2C59290100DE491C /* UIKit + Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,10 +328,12 @@
 			files = (
 				5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */,
 				522899982C57E6E00013FF87 /* AuthVC.swift in Sources */,
+				FA9688CB2C59290100DE491C /* UIKit + Extensions.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
+				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
