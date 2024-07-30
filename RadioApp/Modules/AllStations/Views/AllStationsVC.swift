@@ -103,6 +103,11 @@ class AllStationsVC: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Properties
+    
+    var viewModel: RadioStationListVM!
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -110,6 +115,9 @@ class AllStationsVC: UIViewController {
         
         setView()
         setConstraints()
+        setDelegate()
+        
+        radioCollectionView.reloadData()
     }
     
     // MARK: - Set Views
@@ -131,6 +139,11 @@ class AllStationsVC: UIViewController {
         midleStackView.addArrangedSubview(radioCollectionView)
         
         mainStackView.addArrangedSubview(emptiView)
+    }
+    
+    private func setDelegate() {
+        radioCollectionView.delegate = self
+        radioCollectionView.dataSource = self
     }
 
 }
@@ -185,4 +198,23 @@ extension AllStationsVC {
             make.height.equalTo(300)
         }
     }
+}
+
+// MARK: - Extensions Collection View
+
+extension AllStationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else { return UICollectionViewCell() }
+        let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
+        cell.configure(with: stationViewModel)
+        return cell
+    }
+    
+    
+    
 }

@@ -12,13 +12,8 @@ struct RadioStation {
     let name: String
     let url: String
     let bitrate: Int
+    let tag: String?
+    let votes: Int?
 }
 
-extension RadioStation {
-    static var allStation = [
-    RadioStation(stationuuid: "123", name: "first", url: "www", bitrate: 16),
-    RadioStation(stationuuid: "234", name: "second", url: "www", bitrate: 28),
-    RadioStation(stationuuid: "345", name: "third", url: "www", bitrate: 16),
-    RadioStation(stationuuid: "565", name: "four", url: "www", bitrate: 24)
-    ]
-}
+//"tags":"jazz,pop,rock,indie"
