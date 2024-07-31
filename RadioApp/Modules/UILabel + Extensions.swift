@@ -9,26 +9,60 @@ import UIKit
 
 extension UILabel {
     enum TypeLabel {
-        case title
-        case subtitle
+        case titleSign
+        case titleForgotPass
         case nameField
         case connectWith
     }
     
-    convenience init(text: String, type: TypeLabel) {
-        self.init()    
-        self.text = text
+    convenience init(type: TypeLabel, textFirstLine: String? = nil) {
+        self.init()
+        self.textColor = .white
+        self.numberOfLines = 0
         switch type {
-        case .title:
-            self.textColor = .white
-            self.font = Font.getFont(.displayBold, size: 50)
-        case .subtitle:
-            self.textColor = .white
-            self.font = Font.getFont(.displayRegular, size: 25)
+        case .titleSign:
+            let attributedText = NSMutableAttributedString()
+            let firstWord = NSAttributedString(
+                string: "Sign In",
+                attributes: [
+                    .font: Font.getFont(.displayBold, size: 50)
+                ]
+            )
+            attributedText.append(firstWord)
+            let tab = NSAttributedString(string: "\n")
+            attributedText.append(tab)
+            let secondWord = NSAttributedString(
+                string: "to start play",
+                attributes: [
+                    .font: Font.getFont(.displayRegular, size: 25)
+                ]
+            )
+            attributedText.append(secondWord)
+            self.attributedText = attributedText
+        case .titleForgotPass:
+            let attributedText = NSMutableAttributedString()
+            let firstWord = NSAttributedString(
+                string: "Forgot",
+                attributes: [
+                    .font: Font.getFont(.displayBold, size: 50)
+                ]
+            )
+            attributedText.append(firstWord)
+            let tab = NSAttributedString(string: "\n")
+            attributedText.append(tab)
+            let secondWord = NSAttributedString(
+                string: "Password",
+                attributes: [
+                    .font: Font.getFont(.displayBold, size: 50)
+                ]
+            )
+            attributedText.append(secondWord)
+            self.attributedText = attributedText
         case .nameField:
-            self.textColor = .white
+            self.text = textFirstLine
             self.font = Font.getFont(.displayMedium, size: 16)
         case .connectWith:
+            self.text = "Or connect with"
             self.textColor = UIColor(
                 red: 141/255,
                 green: 146/255,

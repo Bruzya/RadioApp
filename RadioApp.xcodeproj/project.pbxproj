@@ -28,6 +28,11 @@
 		FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */; };
 		FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CC2C59303E00DE491C /* SignInViewController.swift */; };
 		FA9688CF2C598C4D00DE491C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CE2C598C4D00DE491C /* CustomTextField.swift */; };
+		FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */; };
+		FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D42C5A497500DE491C /* SignButtonsView.swift */; };
+		FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */; };
+		FA9688D92C5A604800DE491C /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */; };
+		FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DA2C5A634900DE491C /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,11 @@
 		FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		FA9688CC2C59303E00DE491C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FA9688CE2C598C4D00DE491C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithTitleView.swift; sourceTree = "<group>"; };
+		FA9688D42C5A497500DE491C /* SignButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignButtonsView.swift; sourceTree = "<group>"; };
+		FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWithGoogleView.swift; sourceTree = "<group>"; };
+		FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
+		FA9688DA2C5A634900DE491C /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +129,12 @@
 				5228997B2C57C8D30013FF87 /* Onboarding */,
 				522899962C57E6D40013FF87 /* Auth */,
 				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
+				FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */,
+				FA9688DA2C5A634900DE491C /* TitleView.swift */,
 				FA9688CE2C598C4D00DE491C /* CustomTextField.swift */,
+				FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */,
+				FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */,
+				FA9688D42C5A497500DE491C /* SignButtonsView.swift */,
 				522899992C57E6E80013FF87 /* Populars */,
 				5228999C2C57E6F30013FF87 /* Favorites */,
 				5228999F2C57E6FF0013FF87 /* AllStations */,
@@ -324,6 +339,7 @@
 				FA9688CF2C598C4D00DE491C /* CustomTextField.swift in Sources */,
 				5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */,
 				FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */,
+				FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
@@ -332,7 +348,11 @@
 				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
+				FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */,
+				FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */,
+				FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
+				FA9688D92C5A604800DE491C /* CustomBackgroundView.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);
