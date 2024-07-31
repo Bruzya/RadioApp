@@ -10,15 +10,23 @@ import SnapKit
 
 final class TitleView: UIView {
     
+    enum TypeTitle {
+        case signIn
+        case signUp
+        case forgotPass
+    }
+    
     // MARK: - Private properties
-    private let isSignTitle: Bool
+    private let typeTitle: TypeTitle
     
     // MARK: - UI
-    private lazy var titleLabel = UILabel(type: isSignTitle ? .titleSign : .titleForgotPass)
+    private lazy var titleLabel = UILabel(
+        type: typeTitle == .signIn ? .titleSign("Sign In") : typeTitle == .signUp ? .titleSign("Sign Up") : .titleForgotPass
+    )
     
     // MARK: - Init
-    init(frame: CGRect, isSignTitle: Bool) {
-        self.isSignTitle = isSignTitle
+    init(frame: CGRect = .zero, typeTytle: TypeTitle) {
+        self.typeTitle = typeTytle
         
         super.init(frame: frame)
         setupViews()

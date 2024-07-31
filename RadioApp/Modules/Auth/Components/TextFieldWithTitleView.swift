@@ -13,10 +13,11 @@ final class TextFieldWithTitleView: UIView {
     // MARK: - Private properties
     private let titleLabel: String
     private let isPassword: Bool
+    private var placeholder: String?
     
     // MARK: - UI
     private lazy var label = UILabel(type: .nameField, textFirstLine: titleLabel)
-    lazy var textField = CustomTextField(isPassword: isPassword)
+    lazy var textField = CustomTextField(isPassword: isPassword, placeholder: placeholder)
     private lazy var eyeButton: UIButton = {
         let element = UIButton(type: .system)
         element.setImage(.eye.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -28,10 +29,12 @@ final class TextFieldWithTitleView: UIView {
     init(
         frame: CGRect = .zero,
         titleLabel: String,
-        isPassword: Bool
+        isPassword: Bool,
+        placeholder: String? = nil
     ) {
         self.titleLabel = titleLabel
         self.isPassword = isPassword
+        self.placeholder = placeholder
         
         super.init(frame: frame)
         setupViews()

@@ -1,14 +1,14 @@
 //
-//  SignInView.swift
+//  SignUpView.swift
 //  RadioApp
 //
-//  Created by Алексей on 30.07.2024.
+//  Created by Алексей on 31.07.2024.
 //
 
 import UIKit
 import SnapKit
 
-final class SignInView: UIView {
+final class SignUpView: UIView {
     
     // MARK: - UI
     private lazy var playImageView: UIImageView = {
@@ -17,8 +17,16 @@ final class SignInView: UIView {
         element.image = .playNavigation
         return element
     }()
+    
     private let customBackgroundView = CustomBackgroundView()
-    private let titleView = TitleView(typeTytle: .signIn)
+    
+    private let titleView = TitleView(typeTytle: .signUp)
+    
+    let nameView = TextFieldWithTitleView(
+        titleLabel: "Name",
+        isPassword: false,
+        placeholder: "Your name"
+    )
     let emailView = TextFieldWithTitleView(
         titleLabel: "Email",
         isPassword: false
@@ -27,15 +35,7 @@ final class SignInView: UIView {
         titleLabel: "Password",
         isPassword: true
     )
-    private lazy var forgotPasswordButton: UIButton = {
-        let element = UIButton(type: .system)
-        element.setTitle("Forgot Password ?", for: .normal)
-        element.titleLabel?.font = Font.getFont(.displayRegular, size: 14)
-        element.tintColor = .white
-        return element
-    }()
-    private let connectWithGoogleView = ConnectWithGoogleView()
-    private let signButtonsView = SignButtonsView(title: .signUp)
+    private let signButtonsView = SignButtonsView(title: .signIn)
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -45,35 +45,25 @@ final class SignInView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("SignInView is failed init")
+        fatalError()
     }
     
     // MARK: - Public methods
-    func setDelegates(controller: SignInViewController) {
-        [emailView, passwordView].forEach {
+    func setDelegates(controller: SignUpViewController) {
+        [nameView, emailView, passwordView].forEach {
             $0.textField.delegate = controller
         }
     }
     
-    func setTargetForButton(controller: SignInViewController) {
-        forgotPasswordButton.addTarget(
-            controller,
-            action: #selector(controller.didTapForgotPassButton),
-            for: .touchUpInside
-        )
-        connectWithGoogleView.googleAuthButton.addTarget(
-            controller,
-            action: #selector(controller.didTapGoogleAuthButton),
-            for: .touchUpInside
-        )
+    func setTargetForButton(controller: SignUpViewController) {
         signButtonsView.nextButton.addTarget(
             controller,
-            action: #selector(controller.didTapSignInButton),
+            action: #selector(controller.didTapSignUpButton),
             for: .touchUpInside
         )
         signButtonsView.signButton.addTarget(
             controller,
-            action: #selector(controller.didTapSignUpButton),
+            action: #selector(controller.didTapSignInButton),
             for: .touchUpInside
         )
     }
@@ -84,10 +74,9 @@ final class SignInView: UIView {
             customBackgroundView,
             playImageView,
             titleView,
+            nameView,
             emailView,
             passwordView,
-            forgotPasswordButton,
-            connectWithGoogleView,
             signButtonsView
         ].forEach {
             addSubview($0)
@@ -96,7 +85,7 @@ final class SignInView: UIView {
 }
 
 // MARK: - Setup Constraints
-private extension SignInView {
+private extension SignUpView {
     func setupConstraints() {
         customBackgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -112,33 +101,26 @@ private extension SignInView {
             make.top.equalTo(playImageView.snp.bottom).offset(35.43)
             make.leading.equalTo(playImageView)
         }
-        
-        emailView.snp.makeConstraints { make in
+
+        nameView.snp.makeConstraints { make in
             make.top.equalTo(titleView.snp.bottom).offset(21.51)
             make.leading.equalToSuperview().offset(38)
             make.trailing.equalToSuperview().offset(-38)
         }
         
+        emailView.snp.makeConstraints { make in
+            make.top.equalTo(nameView.snp.bottom).offset(21.51)
+            make.leading.trailing.equalTo(nameView)
+        }
+        
         passwordView.snp.makeConstraints { make in
             make.top.equalTo(emailView.snp.bottom).offset(21.51)
-            make.leading.trailing.equalTo(emailView)
-        }
-        
-        forgotPasswordButton.snp.makeConstraints { make in
-            make.trailing.equalTo(passwordView.snp.trailing)
-            make.top.equalTo(passwordView.snp.bottom).offset(17.64)
-        }
-        
-        connectWithGoogleView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(59.2)
-            make.trailing.equalToSuperview().offset(-59.2)
-            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(21.51)
+            make.leading.trailing.equalTo(nameView)
         }
         
         signButtonsView.snp.makeConstraints { make in
-            make.top.equalTo(connectWithGoogleView.snp.bottom).offset(42.11)
+            make.top.equalTo(passwordView.snp.bottom).offset(45.18)
             make.leading.equalTo(passwordView.snp.leading)
         }
     }
 }
-

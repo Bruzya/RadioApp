@@ -9,7 +9,7 @@ import UIKit
 
 extension UILabel {
     enum TypeLabel {
-        case titleSign
+        case titleSign(String)
         case titleForgotPass
         case nameField
         case connectWith
@@ -20,10 +20,10 @@ extension UILabel {
         self.textColor = .white
         self.numberOfLines = 0
         switch type {
-        case .titleSign:
+        case .titleSign(let text):
             let attributedText = NSMutableAttributedString()
             let firstWord = NSAttributedString(
-                string: "Sign In",
+                string: text,
                 attributes: [
                     .font: Font.getFont(.displayBold, size: 50)
                 ]

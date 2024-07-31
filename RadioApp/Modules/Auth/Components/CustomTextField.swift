@@ -16,11 +16,15 @@ final class CustomTextField: UITextField {
         super.init(frame: frame)
     }
     
-    convenience init(isPassword: Bool){
+    convenience init(isPassword: Bool, placeholder: String? = nil){
         self.init()
         setLeftPadding()
         self.rightViewMode = isPassword ? .always : .never
-        self.placeholder = isPassword ? "Your password" : "Your email"
+        if let text = placeholder {
+            self.placeholder = text
+        } else {
+            self.placeholder = isPassword ? "Your password" : "Your email"
+        }
         self.isSecureTextEntry = isPassword ? true : false
         self.textColor = .white
 
@@ -34,7 +38,7 @@ final class CustomTextField: UITextField {
         ]
         
         let attributedPlaceholder = NSAttributedString(
-            string: isPassword ? "Your password" : "Your email",
+            string: isPassword ? "Your password" : placeholder != nil ? placeholder! : "Your email",
             attributes: attributes
         )
         

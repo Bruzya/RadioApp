@@ -34,6 +34,8 @@
 		FA9688D92C5A604800DE491C /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */; };
 		FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DA2C5A634900DE491C /* TitleView.swift */; };
 		FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */; };
+		FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E02C5A7F6100DE491C /* SignUpView.swift */; };
+		FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		FA9688DA2C5A634900DE491C /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControlle + Extension.swift"; sourceTree = "<group>"; };
+		FA9688E02C5A7F6100DE491C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,8 @@
 		FA9688BF2C5927D300DE491C /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688E02C5A7F6100DE491C /* SignUpView.swift */,
+				FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -361,10 +367,12 @@
 				FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
+				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
+				FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */,
 				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
