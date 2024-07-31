@@ -11,15 +11,32 @@ import SnapKit
 final class SignUpView: UIView {
     
     // MARK: - UI
+    let scrollView = UIScrollView()
+    private let scrollViewContent = UIView()
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFill
+        element.image = .background
+        element.backgroundColor = .black
+        element.isUserInteractionEnabled = true
+        return element
+    }()
+    
+    private lazy var polygonImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFit
+        element.image = .authPolygon
+        return element
+    }()
+    
     private lazy var playImageView: UIImageView = {
         let element = UIImageView()
         element.contentMode = .scaleAspectFit
         element.image = .playNavigation
         return element
     }()
-    
-    private let customBackgroundView = CustomBackgroundView()
-    
+        
     private let titleView = TitleView(typeTytle: .signUp)
     
     let nameView = TextFieldWithTitleView(
@@ -70,16 +87,19 @@ final class SignUpView: UIView {
     
     // MARK: - Private methods
     private func setupView() {
+        addSubview(backgroundImageView)
+        backgroundImageView.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContent)
         [
-            customBackgroundView,
             playImageView,
+            polygonImageView,
             titleView,
             nameView,
             emailView,
             passwordView,
             signButtonsView
         ].forEach {
-            addSubview($0)
+            scrollViewContent.addSubview($0)
         }
     }
 }
@@ -87,14 +107,27 @@ final class SignUpView: UIView {
 // MARK: - Setup Constraints
 private extension SignUpView {
     func setupConstraints() {
-        customBackgroundView.snp.makeConstraints { make in
+        backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         playImageView.snp.makeConstraints { make in
             make.width.height.equalTo(58)
             make.leading.equalToSuperview().offset(43)
-            make.top.equalToSuperview().offset(112)
+            make.top.equalToSuperview().offset(80)
+        }
+        
+        polygonImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(49)
         }
         
         titleView.snp.makeConstraints { make in
@@ -121,6 +154,11 @@ private extension SignUpView {
         signButtonsView.snp.makeConstraints { make in
             make.top.equalTo(passwordView.snp.bottom).offset(45.18)
             make.leading.equalTo(passwordView.snp.leading)
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.trailing.equalTo(backgroundImageView.snp.trailing)
+            $0.bottom.equalTo(signButtonsView.snp.bottom).offset(40)
         }
     }
 }

@@ -22,6 +22,8 @@ final class SignInViewController: UIViewController {
         signInView.setDelegates(controller: self)
         signInView.setTargetForButton(controller: self)
         addTapGestureToHideKeyboard()
+        addNotifications()
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - Actions
@@ -45,11 +47,44 @@ final class SignInViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+        let keyboardHeight = keyboardFrame.height
+        var contentInset = signInView.scrollView.contentInset
+        contentInset.bottom = keyboardHeight + 50
+        signInView.scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        signInView.scrollView.contentInset = .zero
+    }
 }
 
 // MARK: - UITextFieldDelegate
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+}
+
+// MARK: - Notifications
+extension SignInViewController {
+    func addNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
 }

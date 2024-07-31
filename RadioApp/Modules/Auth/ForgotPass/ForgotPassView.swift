@@ -11,7 +11,24 @@ import SnapKit
 final class ForgotPassView: UIView {
     
     // MARK: - UI
-    private let customBackgroundView = CustomBackgroundView()
+    let scrollView = UIScrollView()
+    private let scrollViewContent = UIView()
+        
+    private lazy var backgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFill
+        element.image = .background
+        element.backgroundColor = .black
+        element.isUserInteractionEnabled = true
+        return element
+    }()
+    
+    private lazy var polygonImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFit
+        element.image = .authPolygon
+        return element
+    }()
     
     private lazy var backButton: UIButton = {
         let element = UIButton(type: .system)
@@ -106,8 +123,11 @@ final class ForgotPassView: UIView {
     
     // MARK: - Private methods
     private func setViews() {
+        addSubview(backgroundImageView)
+        backgroundImageView.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContent)
         [
-            customBackgroundView,
+            polygonImageView,
             backButton,
             titleView,
             emailView,
@@ -115,7 +135,7 @@ final class ForgotPassView: UIView {
             confirmPasswordView,
             sentButton,
         ].forEach {
-            addSubview($0)
+            scrollViewContent.addSubview($0)
         }
     }
     
@@ -123,17 +143,29 @@ final class ForgotPassView: UIView {
 
 private extension ForgotPassView {
     func setupConstraints() {
-        customBackgroundView.snp.makeConstraints { make in
+        backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         backButton.snp.makeConstraints { make in
             make.width.equalTo(36)
             make.height.equalTo(27)
-            make.top.equalToSuperview().offset(112)
             make.leading.equalToSuperview().offset(43)
+            make.top.equalToSuperview().offset(80)
         }
         
+        polygonImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
+        }
         
         titleView.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(35.43)
@@ -162,6 +194,11 @@ private extension ForgotPassView {
             make.width.equalTo(emailView.snp.width)
             make.height.equalTo(73)
             make.centerX.equalToSuperview()
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.trailing.equalTo(backgroundImageView.snp.trailing)
+            $0.bottom.equalTo(sentButton.snp.bottom).offset(40)
         }
     }
 }

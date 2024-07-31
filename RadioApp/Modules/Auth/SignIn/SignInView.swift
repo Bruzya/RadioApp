@@ -11,13 +11,32 @@ import SnapKit
 final class SignInView: UIView {
     
     // MARK: - UI
+    let scrollView = UIScrollView()
+    private let scrollViewContent = UIView()
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFill
+        element.image = .background
+        element.backgroundColor = .black
+        element.isUserInteractionEnabled = true
+        return element
+    }()
+    
+    private lazy var polygonImageView: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFit
+        element.image = .authPolygon
+        return element
+    }()
+    
     private lazy var playImageView: UIImageView = {
         let element = UIImageView()
         element.contentMode = .scaleAspectFit
         element.image = .playNavigation
         return element
     }()
-    private let customBackgroundView = CustomBackgroundView()
+
     private let titleView = TitleView(typeTytle: .signIn)
     let emailView = TextFieldWithTitleView(
         titleLabel: "Email",
@@ -80,9 +99,12 @@ final class SignInView: UIView {
     
     // MARK: - Private methods
     private func setupView() {
+        addSubview(backgroundImageView)
+        backgroundImageView.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContent)
         [
-            customBackgroundView,
             playImageView,
+            polygonImageView,
             titleView,
             emailView,
             passwordView,
@@ -90,7 +112,7 @@ final class SignInView: UIView {
             connectWithGoogleView,
             signButtonsView
         ].forEach {
-            addSubview($0)
+            scrollViewContent.addSubview($0)
         }
     }
 }
@@ -98,14 +120,27 @@ final class SignInView: UIView {
 // MARK: - Setup Constraints
 private extension SignInView {
     func setupConstraints() {
-        customBackgroundView.snp.makeConstraints { make in
+        backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         playImageView.snp.makeConstraints { make in
             make.width.height.equalTo(58)
             make.leading.equalToSuperview().offset(43)
-            make.top.equalToSuperview().offset(112)
+            make.top.equalToSuperview().offset(80)
+        }
+        
+        polygonImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
         }
         
         titleView.snp.makeConstraints { make in
@@ -138,6 +173,11 @@ private extension SignInView {
         signButtonsView.snp.makeConstraints { make in
             make.top.equalTo(connectWithGoogleView.snp.bottom).offset(42.11)
             make.leading.equalTo(passwordView.snp.leading)
+        }
+        
+        scrollViewContent.snp.makeConstraints {
+            $0.trailing.equalTo(backgroundImageView.snp.trailing)
+            $0.bottom.equalTo(signButtonsView.snp.bottom).offset(40)
         }
     }
 }
