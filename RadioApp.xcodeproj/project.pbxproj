@@ -21,9 +21,6 @@
 		522899802C57D3450013FF87 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997F2C57D3450013FF87 /* SnapKit-Dynamic */; };
 		522899832C57D4290013FF87 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 522899822C57D4290013FF87 /* Kingfisher */; };
 		522899882C57DC290013FF87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899872C57DC290013FF87 /* Font.swift */; };
-		522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */; };
-		522899932C57DD260013FF87 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */; };
-		522899952C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */; };
 		522899982C57E6E00013FF87 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899972C57E6E00013FF87 /* AuthVC.swift */; };
 		5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999A2C57E6F10013FF87 /* PopularsVC.swift */; };
 		5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */; };
@@ -31,6 +28,9 @@
 		522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A32C57E72B0013FF87 /* SearchVC.swift */; };
 		522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A62C57E7450013FF87 /* StationDetailsVC.swift */; };
 		522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A92C57E7530013FF87 /* ProfileVC.swift */; };
+		522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */; };
+		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
+		522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,9 +47,6 @@
 		522899702C57C87D0013FF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522899722C57C87D0013FF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522899872C57DC290013FF87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
-		522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		522899972C57E6E00013FF87 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		5228999A2C57E6F10013FF87 /* PopularsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularsVC.swift; sourceTree = "<group>"; };
 		5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
@@ -57,6 +54,9 @@
 		522899A32C57E72B0013FF87 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		522899A62C57E7450013FF87 /* StationDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsVC.swift; sourceTree = "<group>"; };
 		522899A92C57E7530013FF87 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
+		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
+		522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +178,10 @@
 		522899862C57DC230013FF87 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */,
+				522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */,
+				522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */,
 				522899872C57DC290013FF87 /* Font.swift */,
-				522899902C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf */,
-				522899922C57DD260013FF87 /* SF-Pro-Display-Medium.otf */,
-				522899942C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -323,11 +323,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				522899932C57DD260013FF87 /* SF-Pro-Display-Medium.otf in Resources */,
-				522899952C57DD2F0013FF87 /* SF-Pro-Display-Bold.otf in Resources */,
 				5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */,
-				522899912C57DD1D0013FF87 /* SF-Pro-Display-Regular.otf in Resources */,
+				522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */,
 				522899712C57C87D0013FF87 /* Base in Resources */,
+				522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */,
+				522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
