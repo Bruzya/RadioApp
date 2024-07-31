@@ -27,6 +27,8 @@ final class SignInViewController: UIViewController {
     // MARK: - Actions
     @objc func didTapForgotPassButton() {
         print("forgot password")
+        let vc = ForgotPassViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func didTapGoogleAuthButton() {
@@ -39,6 +41,9 @@ final class SignInViewController: UIViewController {
     
     @objc func didTapSignUpButton() {
         print("sign up")
+        let vc = SignUpViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 

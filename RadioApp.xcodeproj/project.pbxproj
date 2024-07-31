@@ -36,6 +36,8 @@
 		FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */; };
 		FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E02C5A7F6100DE491C /* SignUpView.swift */; };
 		FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */; };
+		FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */; };
+		FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControlle + Extension.swift"; sourceTree = "<group>"; };
 		FA9688E02C5A7F6100DE491C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView.swift; sourceTree = "<group>"; };
+		FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +256,8 @@
 		FA9688C02C5927EA00DE491C /* ForgotPass */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */,
+				FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */,
 			);
 			path = ForgotPass;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
 				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
+				FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
@@ -382,6 +389,7 @@
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				FA9688D92C5A604800DE491C /* CustomBackgroundView.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,6 +32,7 @@ final class SignUpViewController: UIViewController {
     
     @objc func didTapSignInButton() {
         print("sign in")
+        dismiss(animated: true)
     }
 }
 

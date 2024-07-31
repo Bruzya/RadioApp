@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
 //        let vc = OnboardingVC()
-        let vc = SignUpViewController()
+        let vc = UINavigationController(rootViewController: SignInViewController())
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = vc

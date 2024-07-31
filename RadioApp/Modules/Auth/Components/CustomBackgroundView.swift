@@ -15,6 +15,7 @@ final class CustomBackgroundView: UIView {
         let element = UIImageView()
         element.contentMode = .scaleAspectFill
         element.image = .background
+        element.backgroundColor = .black
         return element
     }()
     
