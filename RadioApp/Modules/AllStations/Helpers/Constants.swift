@@ -22,6 +22,9 @@ struct Colors {
     static let white = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
     static let grey = UIColor(red: 0.32, green: 0.32, blue: 0.44, alpha: 1.00)
 }
+
+
+
 /*
 
 struct K {

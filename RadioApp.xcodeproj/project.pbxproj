@@ -12,6 +12,7 @@
 		111557872C58F8AE00E5947C /* RadioStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111557862C58F8AE00E5947C /* RadioStationCell.swift */; };
 		111557892C58F8FD00E5947C /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111557882C58F8FD00E5947C /* RadioStationViewModel.swift */; };
 		1115578C2C5907E500E5947C /* RadioStationListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1115578B2C5907E500E5947C /* RadioStationListVM.swift */; };
+		111E7F8A2C5A5D5C001D1CC4 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E7F892C5A5D5C001D1CC4 /* LabelFactory.swift */; };
 		522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899642C57C87B0013FF87 /* AppDelegate.swift */; };
 		522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899662C57C87B0013FF87 /* SceneDelegate.swift */; };
 		522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingVC.swift */; };
@@ -39,6 +40,7 @@
 		111557862C58F8AE00E5947C /* RadioStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationCell.swift; sourceTree = "<group>"; };
 		111557882C58F8FD00E5947C /* RadioStationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationViewModel.swift; sourceTree = "<group>"; };
 		1115578B2C5907E500E5947C /* RadioStationListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStationListVM.swift; sourceTree = "<group>"; };
+		111E7F892C5A5D5C001D1CC4 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		522899612C57C87B0013FF87 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522899642C57C87B0013FF87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522899662C57C87B0013FF87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				111557812C58B9DD00E5947C /* Constants.swift */,
+				111E7F892C5A5D5C001D1CC4 /* LabelFactory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5228999B2C57E6F10013FF87 /* PopularsVC.swift in Sources */,
+				111E7F8A2C5A5D5C001D1CC4 /* LabelFactory.swift in Sources */,
 				522899982C57E6E00013FF87 /* AuthVC.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				1115578C2C5907E500E5947C /* RadioStationListVM.swift in Sources */,

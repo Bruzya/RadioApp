@@ -28,20 +28,29 @@ class AllStationsVC: UIViewController {
         return stack
     }()
     
+    private lazy var titleImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "playNavigation")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = Colors.white
         label.font = Font.getFont(Font.displayBold, size: 24)
-        label.text = K.appName
+//        label.text = K.appName
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var profileButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "profileAvatar"), for: .normal)
+        let button = UIButton()
         button.sizeToFit()
+        button.setImage(UIImage(named: "profileButton"), for: .normal)
+        button.addTarget(self, action: #selector(profileDetailTaped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -72,7 +81,6 @@ class AllStationsVC: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 10
-        
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -84,21 +92,31 @@ class AllStationsVC: UIViewController {
         slider.minimumTrackTintColor = Colors.teal
         slider.maximumTrackTintColor = Colors.grey
         slider.tintColor = Colors.grey
-//        ОРИЕНТАЦИЯ !!!!!!
-        slider.minimumValueImage = UIImage(systemName: "speaker.wave.2")
+        //        ОРИЕНТАЦИЯ !!!!!!
+        slider.minimumValueImage = UIImage(named: "sound")
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
     
     private lazy var radioCollectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collection.backgroundColor = .yellow
+        collection.backgroundColor = .clear
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
     
+    
+    private lazy var bottomStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 10
+        stack.distribution = .fillProportionally
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     private lazy var emptiView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -112,8 +130,10 @@ class AllStationsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        инициализируем до вызова делегата
+        //        инициализируем до вызова делегата
         viewModel = RadioStationListVM()
+        
+                titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
         
         setView()
         setDelegate()
@@ -131,6 +151,7 @@ class AllStationsVC: UIViewController {
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(topStackView)
         
+        topStackView.addArrangedSubview(titleImage)
         topStackView.addArrangedSubview(titleLabel)
         topStackView.addArrangedSubview(profileButton)
         
@@ -148,7 +169,12 @@ class AllStationsVC: UIViewController {
         radioCollectionView.delegate = self
         radioCollectionView.dataSource = self
     }
+    
+    // MARK: - Actions
 
+    @objc private func profileDetailTaped() {
+        print("Show detail profile info")
+    }
 }
 
 // MARK: - Extensions Set Constraints
@@ -162,17 +188,18 @@ extension AllStationsVC {
         
         topStackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
+            make.height.equalTo(68)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(topStackView)
-            make.leading.equalTo(topStackView).offset(22)
+        titleImage.snp.makeConstraints { make in
+            make.size.equalTo(33)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalTo(titleLabel.snp.leading).offset(-5)
         }
         
         profileButton.snp.makeConstraints { make in
-            make.top.equalTo(topStackView)
-            make.trailing.equalTo(topStackView.snp.trailing).offset(-17)
-            make.width.equalTo(51)
+            make.width.equalTo(58)
+            make.trailing.equalTo(mainStackView).offset(-16)
         }
         
         subtitleLabel.snp.makeConstraints { make in
@@ -181,7 +208,7 @@ extension AllStationsVC {
         }
         
         searchTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(17)
+            make.leading.trailing.equalTo(mainStackView).inset(16)
             make.height.equalTo(56)
         }
         
@@ -190,7 +217,7 @@ extension AllStationsVC {
         }
         
         volumeSlider.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(29)
+            make.leading.equalToSuperview().offset(-70)
             make.width.equalTo(200)
         }
         
@@ -208,7 +235,6 @@ extension AllStationsVC {
 extension AllStationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel)
         return viewModel.numberOfStations
     }
     
