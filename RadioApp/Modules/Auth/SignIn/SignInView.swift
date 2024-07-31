@@ -38,7 +38,53 @@ final class SignInView: UIView {
     
     private let emailLabel = UILabel(text: "Email", type: .nameField)
     
-    private let emailTextField = UITextField(isPassword: false)
+    private let connectWithLabel = UILabel(text: "Or connect with", type: .connectWith)
+    
+    private let passwordLabel = UILabel(text: "Password", type: .nameField)
+    
+    private let emailTextField = CustomTextField(isPassword: false)
+    
+    private let passwordTextField = CustomTextField(isPassword: true)
+    
+    private lazy var forgotPasswordButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.setTitle("Forgot Password ?", for: .normal)
+        element.titleLabel?.font = Font.getFont(.displayRegular, size: 14)
+        element.tintColor = .white
+        return element
+    }()
+    
+    private lazy var googleAuthButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.setBackgroundImage(.google, for: .normal)
+        return element
+    }()
+    
+    private lazy var signInButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.backgroundColor = .blueLight
+        element.tintColor = .white
+        element.setImage(.back, for: .normal)
+        element.transform = CGAffineTransform(scaleX: -1, y: 1)
+        return element
+    }()
+    
+    private lazy var signUpButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.setTitle("Or Sign Up", for: .normal)
+        element.titleLabel?.font = Font.getFont(.displayRegular, size: 20)
+        element.tintColor = .white
+        return element
+    }()
+    
+    private lazy var eyeButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.setImage(.eye.withRenderingMode(.alwaysOriginal), for: .normal)
+        return element
+    }()
+    
+    private lazy var firstLine = makeLineView()
+    private lazy var secondLine = makeLineView()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -53,6 +99,9 @@ final class SignInView: UIView {
     
     // MARK: - Private methods
     private func setupView() {
+        passwordTextField.rightView = eyeButton
+        passwordTextField.rightViewPadding = 21.5
+        
         [
             backgroundImageView,
             playImageView,
@@ -60,10 +109,31 @@ final class SignInView: UIView {
             titleLabel,
             subtitleLabel,
             emailLabel,
-            emailTextField
+            emailTextField,
+            passwordLabel,
+            passwordTextField,
+            forgotPasswordButton,
+            connectWithLabel,
+            firstLine,
+            secondLine,
+            googleAuthButton,
+            signInButton,
+            signUpButton,
         ].forEach {
             addSubview($0)
         }
+    }
+    
+    // MARK: - Private methods
+    private func makeLineView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(
+            red: 141/255,
+            green: 146/255,
+            blue: 163/255,
+            alpha: 1
+        )
+        return view
     }
 }
 
@@ -81,7 +151,7 @@ private extension SignInView {
         }
         
         polygonImageView.snp.makeConstraints { make in
-            make.top.equalTo(playImageView)
+            make.top.equalTo(playImageView.snp.top).offset(-30)
             make.trailing.equalToSuperview()
         }
         
@@ -105,6 +175,60 @@ private extension SignInView {
             make.leading.equalToSuperview().offset(38)
             make.trailing.equalToSuperview().offset(-38)
             make.top.equalTo(emailLabel.snp.bottom).offset(14.83)
+        }
+        
+        passwordLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(21.51)
+            make.leading.equalTo(emailLabel.snp.leading)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.leading.equalTo(emailTextField.snp.leading)
+            make.trailing.equalTo(emailTextField.snp.trailing)
+            make.height.equalTo(53)
+            make.top.equalTo(passwordLabel.snp.bottom).offset(14.83)
+        }
+        
+        forgotPasswordButton.snp.makeConstraints { make in
+            make.trailing.equalTo(passwordTextField.snp.trailing)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(17.64)
+        }
+        
+        firstLine.snp.makeConstraints { make in
+            make.leading.equalTo(passwordTextField.snp.leading).offset(21.51)
+            make.trailing.equalTo(connectWithLabel.snp.leading).offset(-17)
+            make.height.equalTo(1)
+            make.centerY.equalTo(connectWithLabel)
+        }
+        
+        connectWithLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(21.51)
+        }
+        
+        secondLine.snp.makeConstraints { make in
+            make.leading.equalTo(connectWithLabel.snp.trailing).offset(17)
+            make.trailing.equalTo(passwordTextField.snp.trailing).offset(-21.51)
+            make.height.equalTo(1)
+            make.centerY.equalTo(connectWithLabel)
+        }
+        
+        googleAuthButton.snp.makeConstraints { make in
+            make.width.height.equalTo(39.89)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(connectWithLabel.snp.bottom).offset(20)
+        }
+        
+        signInButton.snp.makeConstraints { make in
+            make.leading.equalTo(passwordTextField.snp.leading)
+            make.height.equalTo(62)
+            make.width.equalTo(153)
+            make.top.equalTo(googleAuthButton.snp.bottom).offset(42.11)
+        }
+        
+        signUpButton.snp.makeConstraints { make in
+            make.leading.equalTo(signInButton.snp.leading).offset(8)
+            make.top.equalTo(signInButton.snp.bottom).offset(21.51)
         }
     }
 }

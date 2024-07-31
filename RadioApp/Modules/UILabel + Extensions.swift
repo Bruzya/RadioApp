@@ -40,20 +40,3 @@ extension UILabel {
         }
     }
 }
-
-extension UITextField {
-    convenience init(isPassword: Bool = false) {
-        self.init()
-        self.placeholder = isPassword ? "Your password" : "Your email"
-        self.isSecureTextEntry = isPassword ? true : false
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.pinkBase.cgColor
-        self.layer.cornerRadius = 5
-        self.indent()
-    }
-    
-    func indent(size: CGFloat = 17.5) {
-        self.leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
-        self.leftViewMode = .always
-    }
-}
