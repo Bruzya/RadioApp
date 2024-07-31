@@ -17,7 +17,7 @@ final class ConnectWithGoogleView: UIView {
     
     private let connectWithLabel = UILabel(type: .connectWith)
     
-    private lazy var googleAuthButton: UIButton = {
+    lazy var googleAuthButton: UIButton = {
         let element = UIButton(type: .system)
         element.setBackgroundImage(.google, for: .normal)
         return element

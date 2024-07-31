@@ -19,7 +19,7 @@ final class SignButtonsView: UIView {
     private let titleButton: String
     
     // MARK: - UI
-    private lazy var nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let element = UIButton(type: .system)
         element.backgroundColor = .blueLight
         element.tintColor = .white
@@ -28,7 +28,7 @@ final class SignButtonsView: UIView {
         return element
     }()
     
-    private lazy var signButton: UIButton = {
+    lazy var signButton: UIButton = {
         let element = UIButton(type: .system)
         element.setTitle(titleButton, for: .normal)
         element.titleLabel?.font = Font.getFont(.displayRegular, size: 20)

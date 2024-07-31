@@ -9,22 +9,27 @@ import UIKit
 import SnapKit
 
 final class TextFieldWithTitleView: UIView {
-    
+
     // MARK: - Private properties
     private let titleLabel: String
     private let isPassword: Bool
     
     // MARK: - UI
     private lazy var label = UILabel(type: .nameField, textFirstLine: titleLabel)
-    private lazy var textField = CustomTextField(isPassword: isPassword)
+    lazy var textField = CustomTextField(isPassword: isPassword)
     private lazy var eyeButton: UIButton = {
         let element = UIButton(type: .system)
         element.setImage(.eye.withRenderingMode(.alwaysOriginal), for: .normal)
+        element.addTarget(self, action: #selector(toggleShowPassword), for: .touchUpInside)
         return element
     }()
     
     // MARK: - Init
-    init(frame: CGRect = .zero, titleLabel: String, isPassword: Bool) {
+    init(
+        frame: CGRect = .zero,
+        titleLabel: String,
+        isPassword: Bool
+    ) {
         self.titleLabel = titleLabel
         self.isPassword = isPassword
         
@@ -47,6 +52,11 @@ final class TextFieldWithTitleView: UIView {
         if self.isPassword {
             textField.rightView = eyeButton
         }
+    }
+    
+    // MARK: - Actions
+    @objc private func toggleShowPassword() {
+        textField.isSecureTextEntry.toggle()
     }
 }
 

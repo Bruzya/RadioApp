@@ -16,4 +16,35 @@ final class SignInViewController: UIViewController {
     override func loadView() {
         view = signInView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        signInView.setDelegates(controller: self)
+        signInView.setTargetForButton(controller: self)
+        addTapGestureToHideKeyboard()
+    }
+    
+    // MARK: - Actions
+    @objc func didTapForgotPassButton() {
+        print("forgot password")
+    }
+    
+    @objc func didTapGoogleAuthButton() {
+        print("connect with google")
+    }
+    
+    @objc func didTapSignInButton() {
+        print("sign in")
+    }
+    
+    @objc func didTapSignUpButton() {
+        print("sign up")
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
 }

@@ -33,6 +33,7 @@
 		FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */; };
 		FA9688D92C5A604800DE491C /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */; };
 		FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DA2C5A634900DE491C /* TitleView.swift */; };
+		FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWithGoogleView.swift; sourceTree = "<group>"; };
 		FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		FA9688DA2C5A634900DE491C /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControlle + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,13 +130,6 @@
 			children = (
 				5228997B2C57C8D30013FF87 /* Onboarding */,
 				522899962C57E6D40013FF87 /* Auth */,
-				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
-				FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */,
-				FA9688DA2C5A634900DE491C /* TitleView.swift */,
-				FA9688CE2C598C4D00DE491C /* CustomTextField.swift */,
-				FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */,
-				FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */,
-				FA9688D42C5A497500DE491C /* SignButtonsView.swift */,
 				522899992C57E6E80013FF87 /* Populars */,
 				5228999C2C57E6F30013FF87 /* Favorites */,
 				5228999F2C57E6FF0013FF87 /* AllStations */,
@@ -166,6 +161,7 @@
 		522899892C57DC510013FF87 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688DC2C5A72C200DE491C /* Extensions */,
 				522899862C57DC230013FF87 /* Font */,
 			);
 			path = Helpers;
@@ -174,6 +170,7 @@
 		522899962C57E6D40013FF87 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688DD2C5A72CD00DE491C /* Components */,
 				FA9688BE2C5927C900DE491C /* SignIn */,
 				FA9688BF2C5927D300DE491C /* SignUp */,
 				FA9688C02C5927EA00DE491C /* ForgotPass */,
@@ -251,6 +248,28 @@
 			children = (
 			);
 			path = ForgotPass;
+			sourceTree = "<group>";
+		};
+		FA9688DC2C5A72C200DE491C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
+				FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA9688DD2C5A72CD00DE491C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688D82C5A604800DE491C /* CustomBackgroundView.swift */,
+				FA9688DA2C5A634900DE491C /* TitleView.swift */,
+				FA9688CE2C598C4D00DE491C /* CustomTextField.swift */,
+				FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */,
+				FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */,
+				FA9688D42C5A497500DE491C /* SignButtonsView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +360,7 @@
 				FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */,
 				FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
+				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,

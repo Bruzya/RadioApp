@@ -19,11 +19,11 @@ final class SignInView: UIView {
     }()
     private let customBackgroundView = CustomBackgroundView(frame: .zero)
     private let titleView = TitleView(frame: .zero, isSignTitle: true)
-    private let emailView = TextFieldWithTitleView(
+    let emailView = TextFieldWithTitleView(
         titleLabel: "Email",
         isPassword: false
     )
-    private let passwordView = TextFieldWithTitleView(
+    let passwordView = TextFieldWithTitleView(
         titleLabel: "Password",
         isPassword: true
     )
@@ -46,6 +46,36 @@ final class SignInView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("SignInView is failed init")
+    }
+    
+    // MARK: - Public methods
+    func setDelegates(controller: SignInViewController) {
+        [emailView, passwordView].forEach {
+            $0.textField.delegate = controller
+        }
+    }
+    
+    func setTargetForButton(controller: SignInViewController) {
+        forgotPasswordButton.addTarget(
+            controller,
+            action: #selector(controller.didTapForgotPassButton),
+            for: .touchUpInside
+        )
+        connectWithGoogleView.googleAuthButton.addTarget(
+            controller,
+            action: #selector(controller.didTapGoogleAuthButton),
+            for: .touchUpInside
+        )
+        signButtonsView.nextButton.addTarget(
+            controller,
+            action: #selector(controller.didTapSignInButton),
+            for: .touchUpInside
+        )
+        signButtonsView.signButton.addTarget(
+            controller,
+            action: #selector(controller.didTapSignUpButton),
+            for: .touchUpInside
+        )
     }
     
     // MARK: - Private methods
