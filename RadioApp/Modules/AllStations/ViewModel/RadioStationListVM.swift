@@ -8,7 +8,7 @@
 import UIKit
 
 class RadioStationListVM {
-    private var radioStation: [RadioStation] = [
+      var radioStation: [RadioStation] = [
         RadioStation(stationuuid: "123", name: "first", url: "www", bitrate: 16, tag: "16", votes: 2),
         RadioStation(stationuuid: "234", name: "second", url: "www", bitrate: 28, tag: "Rock", votes: 10),
         RadioStation(stationuuid: "345", name: "third", url: "www", bitrate: 16, tag: "Pop", votes: 5),

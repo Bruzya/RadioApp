@@ -91,7 +91,7 @@ class AllStationsVC: UIViewController {
     }()
     
     private lazy var radioCollectionView: UICollectionView = {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.backgroundColor = .yellow
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
@@ -112,11 +112,14 @@ class AllStationsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        инициализируем до вызова делегата
+        viewModel = RadioStationListVM()
         
         setView()
-        setConstraints()
         setDelegate()
+        setConstraints()
         
+        radioCollectionView.register(RadioStationCell.self, forCellWithReuseIdentifier: "RadioStationCell")
         radioCollectionView.reloadData()
     }
     
@@ -205,7 +208,8 @@ extension AllStationsVC {
 extension AllStationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        print(viewModel)
+        return viewModel.numberOfStations
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
