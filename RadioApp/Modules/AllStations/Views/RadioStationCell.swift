@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RadioStationCell: UICollectionViewCell {
+class RadioStationCell: UITableViewCell {
     private lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -26,26 +26,13 @@ class RadioStationCell: UICollectionViewCell {
         return label
     }()
     
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super .init(frame: frame)
-        setView()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super .init(style: style, reuseIdentifier: reuseIdentifier)
         
-        NSLayoutConstraint.activate([
-                    tagLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-                    tagLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-                    tagLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-                    
-                    nameLabel.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 8),
-                    nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-                    nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-                    nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
-                ])
+        setView()
     }
     
     required init?(coder: NSCoder) {
-        super .init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
     

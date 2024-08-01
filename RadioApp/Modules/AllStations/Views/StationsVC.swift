@@ -41,7 +41,7 @@ class StationsVC: UIViewController {
         label.textAlignment = .left
         label.textColor = Colors.white
         label.font = Font.getFont(Font.displayBold, size: 24)
-//        label.text = K.appName
+        //        label.text = K.appName
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -98,11 +98,15 @@ class StationsVC: UIViewController {
         return slider
     }()
     
-    private lazy var radioCollectionView: UICollectionView = {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collection.backgroundColor = .clear
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        return collection
+    private lazy var radioTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.isScrollEnabled = true
+//        tableView.backgroundColor = .clear
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     
@@ -116,7 +120,7 @@ class StationsVC: UIViewController {
     }()
     
     private lazy var backwardsButton: UIButton = {
-      let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "previous"), for: .normal)
         button.sizeToFit()
         button.addTarget(self, action: #selector(backwardsButtonTaped), for: .touchUpInside)
@@ -159,14 +163,14 @@ class StationsVC: UIViewController {
         //        инициализируем до вызова делегата
         viewModel = RadioStationListVM()
         
-                titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
+        titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
         
         setView()
         setDelegate()
         setConstraints()
         
-        radioCollectionView.register(RadioStationCell.self, forCellWithReuseIdentifier: "RadioStationCell")
-        radioCollectionView.reloadData()
+        radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
+        radioTableView.reloadData()
     }
     
     // MARK: - Set Views
@@ -186,7 +190,7 @@ class StationsVC: UIViewController {
         mainStackView.addArrangedSubview(midleStackView)
         
         midleStackView.addArrangedSubview(volumeSlider)
-        midleStackView.addArrangedSubview(radioCollectionView)
+        midleStackView.addArrangedSubview(radioTableView)
         
         mainStackView.addArrangedSubview(bottomStack)
         
@@ -198,12 +202,12 @@ class StationsVC: UIViewController {
     }
     
     private func setDelegate() {
-        radioCollectionView.delegate = self
-        radioCollectionView.dataSource = self
+        radioTableView.delegate = self
+        radioTableView.dataSource = self
     }
     
     // MARK: - Actions
-
+    
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
     }
@@ -265,10 +269,9 @@ extension StationsVC {
             make.width.equalTo(200)
         }
         
-        radioCollectionView.snp.makeConstraints { make in
+        radioTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.width.equalTo(300)
-            
             make.height.equalTo(300)
         }
         
@@ -280,16 +283,22 @@ extension StationsVC {
 
 // MARK: - Extensions Collection View
 
-extension StationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension StationsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfStations
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else { return UITableViewCell() }
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
         cell.configure(with: stationViewModel)
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
 }
