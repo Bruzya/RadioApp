@@ -110,14 +110,40 @@ class StationsVC: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 10
-        stack.distribution = .fillProportionally
+        stack.distribution = .equalCentering
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
+    private lazy var backwardsButton: UIButton = {
+      let button = UIButton()
+        button.setImage(UIImage(named: "previous"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(backwardsButtonTaped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "player"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var forwardButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "next"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(forwardButtonTaped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var emptiView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -162,6 +188,12 @@ class StationsVC: UIViewController {
         midleStackView.addArrangedSubview(volumeSlider)
         midleStackView.addArrangedSubview(radioCollectionView)
         
+        mainStackView.addArrangedSubview(bottomStack)
+        
+        bottomStack.addArrangedSubview(backwardsButton)
+        bottomStack.addArrangedSubview(playButton)
+        bottomStack.addArrangedSubview(forwardButton)
+        
         mainStackView.addArrangedSubview(emptiView)
     }
     
@@ -174,6 +206,18 @@ class StationsVC: UIViewController {
 
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
+    }
+    
+    @objc private func backwardsButtonTaped() {
+        print("Play backwards")
+    }
+    
+    @objc private func playButtonTaped() {
+        print("Play sound")
+    }
+    
+    @objc private func forwardButtonTaped() {
+        print("Play forward")
     }
 }
 
@@ -227,6 +271,10 @@ extension StationsVC {
             
             make.height.equalTo(300)
         }
+        
+        bottomStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(75)
+        }
     }
 }
 
@@ -244,7 +292,4 @@ extension StationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.configure(with: stationViewModel)
         return cell
     }
-    
-    
-    
 }
