@@ -99,12 +99,12 @@ class StationsVC: UIViewController {
     }()
     
     private lazy var radioTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         tableView.isScrollEnabled = true
-//        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -270,9 +270,8 @@ extension StationsVC {
         }
         
         radioTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.width.equalTo(300)
-            make.height.equalTo(300)
+            make.leading.equalTo(volumeSlider.snp.trailing).offset(-60)
+            make.height.equalTo(400)
         }
         
         bottomStack.snp.makeConstraints { make in
@@ -287,12 +286,15 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfStations
     }
-    
+      
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else { return UITableViewCell() }
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
         cell.configure(with: stationViewModel)
         cell.selectionStyle = .none
+        cell.layer.borderColor = Colors.grey.cgColor
+        cell.layer.borderWidth = 2.0
+        cell.layer.cornerRadius = 10
         cell.backgroundColor = .clear
         return cell
     }
@@ -301,4 +303,12 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        if selectedCell?.backgroundColor != Colors.pink {
+            selectedCell?.backgroundColor = Colors.pink
+        } else {
+            selectedCell?.backgroundColor = .clear
+        }
+    }
 }

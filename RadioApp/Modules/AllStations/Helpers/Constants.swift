@@ -11,6 +11,7 @@ struct K {
     static let appName = "Hello Mark"
     static let screenName = "All stations"
     static let placeholder = "Search radio station"
+    static let votes = "votes"
 }
 
 struct Colors {
