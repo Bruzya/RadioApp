@@ -59,6 +59,7 @@ final class SignUpView: UIView {
         super.init(frame: frame)
         setupView()
         setupConstraints()
+        scrollView.delaysContentTouches = false
     }
     
     required init?(coder: NSCoder) {

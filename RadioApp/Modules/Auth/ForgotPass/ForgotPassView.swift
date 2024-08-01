@@ -70,6 +70,8 @@ final class ForgotPassView: UIView {
         
         passwordView.alpha = 0
         confirmPasswordView.alpha = 0
+        
+        scrollView.delaysContentTouches = false
     }
     
     required init?(coder: NSCoder) {
