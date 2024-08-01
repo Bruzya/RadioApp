@@ -1,5 +1,5 @@
 //
-//  AllStationsVC.swift
+//  StationsVC.swift
 //  RadioApp
 //
 //  Created by Evgenii Mazrukho on 29.07.2024.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AllStationsVC: UIViewController {
+class StationsVC: UIViewController {
     
     // MARK: - UI properties
     
@@ -179,7 +179,7 @@ class AllStationsVC: UIViewController {
 
 // MARK: - Extensions Set Constraints
 
-extension AllStationsVC {
+extension StationsVC {
     private func setConstraints() {
         
         mainStackView.snp.makeConstraints { make in
@@ -232,7 +232,7 @@ extension AllStationsVC {
 
 // MARK: - Extensions Collection View
 
-extension AllStationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension StationsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfStations

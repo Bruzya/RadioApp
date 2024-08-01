@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027A2C5B935500D64D01 /* RadioStationListVM.swift */; };
 		113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */; };
-		11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0C2C5B949500249DA7 /* AllStationsVC.swift */; };
+		11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0C2C5B949500249DA7 /* StationsVC.swift */; };
 		11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0D2C5B949500249DA7 /* RadioStationCell.swift */; };
 		11AFEF142C5B956D00249DA7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF132C5B956D00249DA7 /* Model.swift */; };
 		11AFEF182C5B960500249DA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF162C5B960500249DA7 /* Constants.swift */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		113E027A2C5B935500D64D01 /* RadioStationListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationListVM.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationListVM.swift; sourceTree = SOURCE_ROOT; };
 		113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationViewModel.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationViewModel.swift; sourceTree = SOURCE_ROOT; };
-		11AFEF0C2C5B949500249DA7 /* AllStationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllStationsVC.swift; path = RadioApp/Modules/AllStations/Views/AllStationsVC.swift; sourceTree = SOURCE_ROOT; };
+		11AFEF0C2C5B949500249DA7 /* StationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationsVC.swift; path = RadioApp/Modules/AllStations/Views/StationsVC.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF0D2C5B949500249DA7 /* RadioStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationCell.swift; path = RadioApp/Modules/AllStations/Views/RadioStationCell.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF132C5B956D00249DA7 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = RadioApp/Modules/AllStations/Model/Model.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF162C5B960500249DA7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = RadioApp/Modules/AllStations/Helpers/Constants.swift; sourceTree = SOURCE_ROOT; };
@@ -130,7 +130,7 @@
 		11AFEF0B2C5B945D00249DA7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11AFEF0C2C5B949500249DA7 /* AllStationsVC.swift */,
+				11AFEF0C2C5B949500249DA7 /* StationsVC.swift */,
 				11AFEF0D2C5B949500249DA7 /* RadioStationCell.swift */,
 			);
 			path = Views;
@@ -309,10 +309,10 @@
 		5228999F2C57E6FF0013FF87 /* AllStationsModule */ = {
 			isa = PBXGroup;
 			children = (
+				522899A02C57E70D0013FF87 /* AllStationsVC.swift */,
 				11AFEF122C5B953700249DA7 /* Model */,
 				11AFEF0B2C5B945D00249DA7 /* Views */,
 				113E02792C5B932500D64D01 /* ViewModel */,
-				522899A02C57E70D0013FF87 /* AllStationsVC.swift */,
 				522899A22C57E7220013FF87 /* Search */,
 			);
 			path = AllStationsModule;
@@ -439,7 +439,7 @@
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
-				11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */,
+				11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
