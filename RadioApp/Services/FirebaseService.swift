@@ -86,7 +86,7 @@ final class FirebaseService {
                 return
             }
             
-            if let _ = result?.user.isEmailVerified {
+            if let verify = result?.user.isEmailVerified, verify {
                 completion(.success(.verified))
             } else {
                 completion(.success(.noVerified))

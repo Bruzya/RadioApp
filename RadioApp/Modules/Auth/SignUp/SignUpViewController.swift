@@ -28,6 +28,7 @@ final class SignUpViewController: UIViewController {
     }
     
     // MARK: - Actions
+    /// Регистрация пользователя
     @objc func didTapSignUpButton() {
         let name = signUpView.nameView.textField.text
         
@@ -41,22 +42,27 @@ final class SignUpViewController: UIViewController {
             return
         }
         
+        AlertLoading.shared.isPresented(true, from: self)
+        
         auth.signUp(
             userData: UserRegData(
                 name: name,
                 email: email,
                 password: password
             )) { [weak self] result in
+                guard let self else { return }
+                
+                AlertLoading.shared.isPresented(false, from: self)
+                
                 switch result {
                 case .success:
-                    print("получилось! 😋")
-                    self?.dismiss(animated: true)
+                    showAlert()
                 case .failure(let failure):
                     switch failure {
                     case .incorrectEmail:
-                        self?.showErrorView(.incorrectEmail)
+                        showErrorView(.incorrectEmail)
                     case .incorrectPassword:
-                        self?.showErrorView(.incorrectPassword)
+                        showErrorView(.incorrectPassword)
                     default:
                         break
                     }
@@ -64,10 +70,12 @@ final class SignUpViewController: UIViewController {
             }
     }
     
+    /// Возврат на экран Sign In
     @objc func didTapSignInButton() {
         dismiss(animated: true)
     }
     
+    /// Поднимаем активный textfield над клавиатурой
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
@@ -93,6 +101,7 @@ extension SignUpViewController: UITextFieldDelegate {
 
 // MARK: - Notifications
 extension SignUpViewController {
+    /// Добавляем нотификации показа/скрытия клавиатуры
     func addNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -106,5 +115,26 @@ extension SignUpViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+}
+
+// MARK: - Alert
+private extension SignUpViewController {
+    /// Alert с просьбой подтвердить свою почту по ссылке
+    func showAlert() {
+        let alert = UIAlertController(
+            title: "Fine 😊",
+            message: "Follow the link we sent to your email to complete your registration",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: "Ok",
+            style: .default) { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

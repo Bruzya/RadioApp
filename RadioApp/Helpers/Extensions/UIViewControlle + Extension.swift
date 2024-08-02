@@ -53,7 +53,7 @@ extension UIViewController {
             UIView.animate(withDuration: 0.25) {
                 colouredTopBlack.frame = colouredTopBlack.frame.offsetBy(dx: 0, dy: 93)
             } completion: { _ in
-                UIView.animate(withDuration: 0.25, delay: 1.5) {
+                UIView.animate(withDuration: 0.25, delay: 2) {
                     colouredTopBlack.frame = colouredTopBlack.frame.offsetBy(dx: 0, dy: -93)
                 } completion: { _ in
                     colouredTopBlack.removeFromSuperview()

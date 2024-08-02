@@ -40,6 +40,7 @@ final class ForgotPassViewController: UIViewController {
         forgotPassView.updateView()
     }
     
+    /// Поднимаем активный textfield над клавиатурой
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
@@ -65,6 +66,7 @@ extension ForgotPassViewController: UITextFieldDelegate {
 
 // MARK: - Notifications
 extension ForgotPassViewController {
+    /// Добавляем нотификации показа/скрытия клавиатуры
     func addNotifications() {
         NotificationCenter.default.addObserver(
             self,

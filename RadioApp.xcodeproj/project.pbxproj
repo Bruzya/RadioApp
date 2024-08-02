@@ -56,6 +56,7 @@
 		FA9688EB2C5CF92A00DE491C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EA2C5CF92A00DE491C /* FirebaseAuth */; };
 		FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */; };
 		FA9688EF2C5CF92A00DE491C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EE2C5CF92A00DE491C /* FirebaseStorage */; };
+		FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688F22C5D73BF00DE491C /* AlertLoading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +113,7 @@
 		FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView.swift; sourceTree = "<group>"; };
 		FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		FA9688E82C5CF87100DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA9688F22C5D73BF00DE491C /* AlertLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLoading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +380,7 @@
 				FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */,
 				FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */,
 				FA9688D42C5A497500DE491C /* SignButtonsView.swift */,
+				FA9688F22C5D73BF00DE491C /* AlertLoading.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */,
 				FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);

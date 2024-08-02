@@ -28,14 +28,17 @@ final class SignInViewController: UIViewController {
     }
     
     // MARK: - Actions
+    /// Переход на экран Forgot Password
     @objc func didTapForgotPassButton() {
         let vc = ForgotPassViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    /// Авторизация через Google
     @objc func didTapGoogleAuthButton() {
     }
     
+    /// Авторизация через email + password
     @objc func didTapSignInButton() {
         guard let email = signInView.emailView.textField.text, !email.isEmpty else {
             showErrorView(.enterEmail)
@@ -47,28 +50,36 @@ final class SignInViewController: UIViewController {
             return
         }
         
+        AlertLoading.shared.isPresented(true, from: self)
+        
         auth.signIn(
             userData: AuthUserData(email: email, password: password)) { [weak self] result in
+                guard let self else { return }
+                
+                AlertLoading.shared.isPresented(false, from: self)
+                
                 switch result {
                 case .success(let success):
                     switch success {
                     case .verified:
-                        print("получилось! 😋") // Авторизация пройдена, переходим на главный экран
+                        print("SIGN IN") // Авторизация пройдена, переходим на главный экран
                     case .noVerified:
-                        print("подтвердите email по ссылке в почте 😋")
+                        showAlert()
                     }
                 case .failure:
-                    self?.showErrorView(.incorrectEmailOrLogin)
+                    showErrorView(.incorrectEmailOrLogin)
                 }
             }
     }
     
+    /// Переход на экран Sign Up
     @objc func didTapSignUpButton() {
         let vc = SignUpViewController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     
+    /// Поднимаем активный textfield над клавиатурой
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
@@ -94,6 +105,7 @@ extension SignInViewController: UITextFieldDelegate {
 
 // MARK: - Notifications
 extension SignInViewController {
+    /// Добавляем нотификации показа/скрытия клавиатуры
     func addNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -109,3 +121,24 @@ extension SignInViewController {
         )
     }
 }
+
+// MARK: - Alert
+private extension SignInViewController {
+    /// Alert предупреждает что почта не подтверждена
+    func showAlert() {
+        let alert = UIAlertController(
+            title: "Your email not verified ☹️",
+            message: "To confirm, follow the link we sent to your email",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: "Ok",
+            style: .default
+        )
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
+
