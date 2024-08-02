@@ -25,43 +25,19 @@ struct Colors {
 }
 
 
-
-/*
-
-struct K {
-    static let appName = "⚡️FlashChat"
-    static let logInName = "Log In"
-    static let registerName = "Register"
-    static let emailName = "Email"
-    static let passwordName = "Password"
+struct Search {
+    static let icon: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.tintColor = .white
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
-    static let enterButtonImageName = "paperplane.fill"
-    static let enterMessagePlaceholder = "Write a message..."
-    
-    static let meAvatar = "MeAvatar"
-    static let youAvatar = "YouAvatar"
-    
-    static let cellIdentifier = "MessageCell"
-    
-    static let textfieldImageName = "textfield"
-    
-    struct BrandColors {
-        static let purple = "BrandPurple"
-        static let lightPurple = "BrandLightPurple"
-        static let blue = "BrandBlue"
-        static let lighBlue = "BrandLightBlue"
-    }
-    
-    struct Size {
-        static let buttonSize: CGFloat = 48
-        static let buttonOffset: CGFloat = 8
-    }
-    
-    struct FStore {
-        static let collectionName = "messages"
-        static let senderField = "sender"
-        static let bodyField = "body"
-        static let dateField = "date"
-    }
+    static let iconPadding: UIView = {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+        icon.frame = CGRect(x: 10, y: 0, width: 20, height: 20)
+        paddingView.addSubview(icon)
+        return paddingView
+    }()
 }
-*/

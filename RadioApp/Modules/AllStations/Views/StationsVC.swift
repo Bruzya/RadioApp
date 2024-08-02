@@ -67,12 +67,17 @@ class StationsVC: UIViewController {
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = Colors.grey
+        textField.leftView = Search.icon
+        textField.leftViewMode = .always
+        textField.leftView = Search.iconPadding
         textField.textColor = Colors.white
         textField.attributedPlaceholder = NSAttributedString(
             string: K.placeholder,
             attributes: [NSAttributedString.Key.foregroundColor: Colors.white]
         )
+        textField.returnKeyType = .search
         textField.layer.cornerRadius = 20
+        textField.layer.masksToBounds = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -85,10 +90,21 @@ class StationsVC: UIViewController {
         return stack
     }()
     
+    private lazy var volumeLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.getFont(Font.displayRegular, size: 10)
+        label.textColor = Colors.white
+        label.text = String(format: "%f.1", volumeSlider.value)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var volumeSlider: UISlider = {
         let slider = UISlider()
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
         slider.thumbTintColor = Colors.teal
+        slider.minimumValue = 0.0
+        slider.maximumValue = 100.0
         slider.minimumTrackTintColor = Colors.teal
         slider.maximumTrackTintColor = Colors.grey
         slider.tintColor = Colors.grey
@@ -188,7 +204,6 @@ class StationsVC: UIViewController {
         mainStackView.addArrangedSubview(subtitleLabel)
         mainStackView.addArrangedSubview(searchTextField)
         mainStackView.addArrangedSubview(midleStackView)
-        
         midleStackView.addArrangedSubview(volumeSlider)
         midleStackView.addArrangedSubview(radioTableView)
         
@@ -206,7 +221,7 @@ class StationsVC: UIViewController {
         radioTableView.dataSource = self
     }
     
-    // MARK: - Actions
+    // MARK: - Selectors
     
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
@@ -280,7 +295,7 @@ extension StationsVC {
     }
 }
 
-// MARK: - Extensions Collection View
+// MARK: - TableView DataSource, Delegate
 
 extension StationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
