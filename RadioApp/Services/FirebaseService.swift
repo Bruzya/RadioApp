@@ -23,9 +23,14 @@ enum UserVerification {
     case verified, noVerified
 }
 
-enum AuthError: Error {
-    case incorrectEmail
-    case incorrectPassword
+enum AuthError: String, Error {
+    case enterEmail = "Enter your email"
+    case enterPassword = "Enter your password"
+    case incorrectEmail = "Check your email is spelled correctly"
+    case incorrectPassword = "Password must be 6 characters or more"
+    case incorrectEmailOrLogin = "Incorrect email and/or password"
+    
+    static var isPresentedError = false
 }
 
 final class FirebaseService {
@@ -74,9 +79,10 @@ final class FirebaseService {
             .setData(["name": name ?? ""])
     }
             
-    func signIn(userData: AuthUserData, completion: @escaping (Result<UserVerification, Error>) -> ()) {
+    func signIn(userData: AuthUserData, completion: @escaping (Result<UserVerification, AuthError>) -> ()) {
         Auth.auth().signIn(withEmail: userData.email, password: userData.password) { result, err in
             guard err == nil else {
+                completion(.failure(.incorrectEmailOrLogin))
                 return
             }
             

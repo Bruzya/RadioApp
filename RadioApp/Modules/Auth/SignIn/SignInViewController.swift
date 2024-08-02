@@ -38,17 +38,17 @@ final class SignInViewController: UIViewController {
     
     @objc func didTapSignInButton() {
         guard let email = signInView.emailView.textField.text, !email.isEmpty else {
-            print("введите email")
+            showErrorView(.enterEmail)
             return
         }
         
         guard let password = signInView.passwordView.textField.text, !password.isEmpty else {
-            print("введите password")
+            showErrorView(.enterPassword)
             return
         }
         
         auth.signIn(
-            userData: AuthUserData(email: email, password: password)) { result in
+            userData: AuthUserData(email: email, password: password)) { [weak self] result in
                 switch result {
                 case .success(let success):
                     switch success {
@@ -58,7 +58,7 @@ final class SignInViewController: UIViewController {
                         print("подтвердите email по ссылке в почте 😋")
                     }
                 case .failure:
-                    print("неправильный логин и/или пароль ☹️")
+                    self?.showErrorView(.incorrectEmailOrLogin)
                 }
             }
     }

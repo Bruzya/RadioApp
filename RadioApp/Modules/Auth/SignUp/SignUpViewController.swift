@@ -32,12 +32,12 @@ final class SignUpViewController: UIViewController {
         let name = signUpView.nameView.textField.text
         
         guard let email = signUpView.emailView.textField.text, !email.isEmpty else {
-            print("введите email")
+            showErrorView(.enterEmail)
             return
         }
         
         guard let password = signUpView.passwordView.textField.text, !password.isEmpty else {
-            print("введите password")
+            showErrorView(.enterPassword)
             return
         }
         
@@ -54,9 +54,11 @@ final class SignUpViewController: UIViewController {
                 case .failure(let failure):
                     switch failure {
                     case .incorrectEmail:
-                        print("проверьте email ☹️")
+                        self?.showErrorView(.incorrectEmail)
                     case .incorrectPassword:
-                        print("пароль должен быть не короче 6 символов ☹️")
+                        self?.showErrorView(.incorrectPassword)
+                    default:
+                        break
                     }
                 }
             }
