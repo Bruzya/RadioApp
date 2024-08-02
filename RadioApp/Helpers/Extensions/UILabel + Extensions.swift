@@ -25,7 +25,7 @@ extension UILabel {
             let firstWord = NSAttributedString(
                 string: text,
                 attributes: [
-                    .font: Font.getFont(.displayBold, size: 50)
+                    .font: UIFont.systemFont(ofSize: 50, weight: .bold)
                 ]
             )
             attributedText.append(firstWord)
@@ -34,7 +34,7 @@ extension UILabel {
             let secondWord = NSAttributedString(
                 string: "to start play",
                 attributes: [
-                    .font: Font.getFont(.displayRegular, size: 25)
+                    .font: UIFont.systemFont(ofSize: 25, weight: .regular)
                 ]
             )
             attributedText.append(secondWord)
@@ -44,7 +44,7 @@ extension UILabel {
             let firstWord = NSAttributedString(
                 string: "Forgot",
                 attributes: [
-                    .font: Font.getFont(.displayBold, size: 50)
+                    .font: UIFont.systemFont(ofSize: 50, weight: .bold)
                 ]
             )
             attributedText.append(firstWord)
@@ -53,14 +53,14 @@ extension UILabel {
             let secondWord = NSAttributedString(
                 string: "Password",
                 attributes: [
-                    .font: Font.getFont(.displayBold, size: 50)
+                    .font: UIFont.systemFont(ofSize: 50, weight: .bold)
                 ]
             )
             attributedText.append(secondWord)
             self.attributedText = attributedText
         case .nameField:
             self.text = textFirstLine
-            self.font = Font.getFont(.displayMedium, size: 16)
+            self.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         case .connectWith:
             self.text = "Or connect with"
             self.textColor = UIColor(
@@ -69,7 +69,7 @@ extension UILabel {
                 blue: 163/255,
                 alpha: 1
             )
-            self.font = Font.getFont(.displayBold, size: 11)
+            self.font = UIFont.systemFont(ofSize: 11, weight: .bold)
             self.textAlignment = .center
         }
     }

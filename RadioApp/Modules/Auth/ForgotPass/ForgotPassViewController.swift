@@ -38,7 +38,6 @@ final class ForgotPassViewController: UIViewController {
         }
         sender.setTitle("Change password", for: .normal)
         forgotPassView.updateView()
-        print(sender.currentTitle ?? "")
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

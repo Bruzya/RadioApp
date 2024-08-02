@@ -12,6 +12,7 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Private properties
     private let signUpView = SignUpView()
+    private let auth = FirebaseService.shared
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -28,11 +29,40 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     @objc func didTapSignUpButton() {
-        print("sign up")
+        let name = signUpView.nameView.textField.text
+        
+        guard let email = signUpView.emailView.textField.text, !email.isEmpty else {
+            print("введите email")
+            return
+        }
+        
+        guard let password = signUpView.passwordView.textField.text, !password.isEmpty else {
+            print("введите password")
+            return
+        }
+        
+        auth.signUp(
+            userData: UserRegData(
+                name: name,
+                email: email,
+                password: password
+            )) { [weak self] result in
+                switch result {
+                case .success:
+                    print("получилось! 😋")
+                    self?.dismiss(animated: true)
+                case .failure(let failure):
+                    switch failure {
+                    case .incorrectEmail:
+                        print("проверьте email ☹️")
+                    case .incorrectPassword:
+                        print("пароль должен быть не короче 6 символов ☹️")
+                    }
+                }
+            }
     }
     
     @objc func didTapSignInButton() {
-        print("sign in")
         dismiss(animated: true)
     }
     
