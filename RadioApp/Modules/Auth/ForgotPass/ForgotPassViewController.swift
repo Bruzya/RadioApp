@@ -12,6 +12,7 @@ final class ForgotPassViewController: UIViewController {
     
     // MARK: - Private properties
     private let forgotPassView = ForgotPassView()
+    private let auth = FirebaseService.shared
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -36,6 +37,13 @@ final class ForgotPassViewController: UIViewController {
         guard sender.currentTitle != "Change password" else {
             return
         }
+        
+        guard let emailText = forgotPassView.emailView.textField.text, !emailText.isEmpty else {
+            return
+        }
+        
+        auth.resetPassword(email: emailText)
+        
         sender.setTitle("Change password", for: .normal)
         forgotPassView.updateView()
     }

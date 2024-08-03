@@ -124,7 +124,13 @@ final class FirebaseService {
         try? Auth.auth().signOut()
     }
     
-    func resetPassword() {}
+    func resetPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            guard error == nil else {
+                return
+            }
+        }
+    }
     
     func getCurrentUser() -> String? {
         if let userId = Auth.auth().currentUser?.uid {
