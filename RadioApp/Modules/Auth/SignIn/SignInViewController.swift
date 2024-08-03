@@ -36,6 +36,9 @@ final class SignInViewController: UIViewController {
     
     /// Авторизация через Google
     @objc func didTapGoogleAuthButton() {
+        auth.signInWithGoogle(with: self) {
+            print("Sign In with Google") // Авторизация пройдена, переходим на главный экран
+        }
     }
     
     /// Авторизация через email + password

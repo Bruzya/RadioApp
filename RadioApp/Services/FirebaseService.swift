@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
 struct UserRegData {
     let name: String?
@@ -99,6 +100,23 @@ final class FirebaseService {
             } else {
                 completion(.success(.noVerified))
             }
+        }
+    }
+    
+    func signInWithGoogle(with controller: UIViewController, completion: @escaping () -> ()) {
+        GIDSignIn.sharedInstance.signIn(withPresenting: controller) { [weak self] result, err in
+            guard err == nil else {
+                return
+            }
+            
+            if let user = result?.user, user.userID != nil {
+                self?.setUserData(
+                    name: user.profile?.name,
+                    userId: user.userID!
+                )
+            }
+            
+            completion()
         }
     }
     

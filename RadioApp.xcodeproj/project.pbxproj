@@ -52,12 +52,12 @@
 		FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */; };
 		FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */; };
 		FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */; };
-		FA9688E92C5CF87100DE491C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9688E82C5CF87100DE491C /* GoogleService-Info.plist */; };
 		FA9688EB2C5CF92A00DE491C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EA2C5CF92A00DE491C /* FirebaseAuth */; };
 		FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */; };
 		FA9688EF2C5CF92A00DE491C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EE2C5CF92A00DE491C /* FirebaseStorage */; };
 		FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688F22C5D73BF00DE491C /* AlertLoading.swift */; };
 		FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688F52C5E26D700DE491C /* GoogleSignIn */; };
+		FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -113,8 +113,8 @@
 		FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView.swift; sourceTree = "<group>"; };
 		FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
-		FA9688E82C5CF87100DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9688F22C5D73BF00DE491C /* AlertLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLoading.swift; sourceTree = "<group>"; };
+		FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +230,7 @@
 				5228996D2C57C87D0013FF87 /* Assets.xcassets */,
 				5228996F2C57C87D0013FF87 /* LaunchScreen.storyboard */,
 				522899722C57C87D0013FF87 /* Info.plist */,
-				FA9688E82C5CF87100DE491C /* GoogleService-Info.plist */,
+				FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				522899712C57C87D0013FF87 /* Base in Resources */,
 				522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */,
 				522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */,
-				FA9688E92C5CF87100DE491C /* GoogleService-Info.plist in Resources */,
+				FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
