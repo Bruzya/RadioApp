@@ -13,7 +13,7 @@ import SnapKit
 
 
 final class PlayerView: UIView {
-
+    
     private let hStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -21,52 +21,50 @@ final class PlayerView: UIView {
         stack.distribution = .equalSpacing
         return stack
     }()
-
+    
     private let leftButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .previous)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private let playButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .player)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private let rightButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .next)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
-    private let frequencyBarsView = FrequencyBarsView()
-
+    
+    
     var audioPlayer: AVPlayer?
     var timer: Timer?
     var volumeSlider: UISlider!
-
+    
     private let disposeBag = DisposeBag()
-
+    
     init() {
         super.init(frame: .zero)
         if let url = URL(string: "http://icecast.vgtrk.cdnvideo.ru/vestifm_mp3_192kbps") {
             audioPlayer = AVPlayer(url: url)
             print("Player initialized: \(String(describing: audioPlayer))")
         }
-
+        
         setupUI()
         setupBindings()
-        startAudioProcessing()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupBindings() {
         playButton.rx.tapGesture()
             .when(.recognized)
@@ -76,7 +74,7 @@ final class PlayerView: UIView {
                 animate(with: playButton)
             })
             .disposed(by: disposeBag)
-
+        
         leftButton.rx.tapGesture()
             .when(.recognized)
             .mapToVoid()
@@ -84,7 +82,7 @@ final class PlayerView: UIView {
                 animate(with: leftButton)
             })
             .disposed(by: disposeBag)
-
+        
         rightButton.rx.tapGesture()
             .when(.recognized)
             .mapToVoid()
@@ -92,34 +90,21 @@ final class PlayerView: UIView {
                 animate(with: rightButton)
             })
             .disposed(by: disposeBag)
-
+        
         volumeSlider.rx.value
             .bind(onNext: { [unowned self] value in
                 audioPlayer?.volume = Float(value)
             })
             .disposed(by: disposeBag)
     }
-
+    
     private func togglePlayPause() {
-         if audioPlayer?.rate == 0 {
-             audioPlayer?.play()
-             print("Play sound")
-         } else {
-             print("pause")
-             audioPlayer?.pause()
-         }
-     }
-
-    private func startAudioProcessing() {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            guard let self, audioPlayer?.rate != 0 else { return }
-            let magnitudes = AudioProcessor.sharedInstance.frequencyMagnitudes
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.1) {
-                    self.frequencyBarsView.updateBars(with: magnitudes)
-                }
-            }
-            print(magnitudes)
+        if audioPlayer?.rate == 0 {
+            audioPlayer?.play()
+            print("Play sound")
+        } else {
+            print("pause")
+            audioPlayer?.pause()
         }
     }
 }
@@ -145,27 +130,13 @@ private extension PlayerView {
                 hStack.addArrangedSubview($0)
             }
 
-        [frequencyBarsView, hStack, volumeSlider]
+        [hStack, volumeSlider]
             .forEach {
             addSubview($0)
         }
     }
 
     func setupConstraints() {
-        
-        frequencyBarsView.snp.makeConstraints { make in
-            make
-                .bottom
-                .equalTo(hStack.snp.top)
-            make
-                .leading.trailing
-                .equalToSuperview()
-                .inset(20)
-            make
-                .height
-                .equalTo(100)
-        }
-
         hStack.snp.makeConstraints { make in
             make
                 .top.leading.trailing
