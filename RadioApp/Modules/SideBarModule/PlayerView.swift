@@ -117,6 +117,9 @@ private extension PlayerView {
         volumeSlider.minimumValue = 0
         volumeSlider.maximumValue = 1
         volumeSlider.value = 1
+        volumeSlider.thumbTintColor = Colors.teal
+        volumeSlider.minimumTrackTintColor = Colors.teal
+        volumeSlider.maximumTrackTintColor = Colors.grey
 
         addSubviews()
         setupConstraints()
