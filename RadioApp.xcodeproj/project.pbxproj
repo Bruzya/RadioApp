@@ -14,6 +14,8 @@
 		11AFEF142C5B956D00249DA7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF132C5B956D00249DA7 /* Model.swift */; };
 		11AFEF182C5B960500249DA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF162C5B960500249DA7 /* Constants.swift */; };
 		11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF172C5B960500249DA7 /* LabelFactory.swift */; };
+		3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2987D92C5E513E003A5872 /* RX + ext.swift */; };
+		3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA05CE52C5E49300070A804 /* PlayerView.swift */; };
 		3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */; };
 		3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */; };
 		3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E72C58360B00EE5B8A /* RealmService.swift */; };
@@ -69,6 +71,8 @@
 		11AFEF132C5B956D00249DA7 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = RadioApp/Modules/AllStations/Model/Model.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF162C5B960500249DA7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = RadioApp/Modules/AllStations/Helpers/Constants.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF172C5B960500249DA7 /* LabelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelFactory.swift; path = RadioApp/Modules/AllStations/Helpers/LabelFactory.swift; sourceTree = SOURCE_ROOT; };
+		3C2987D92C5E513E003A5872 /* RX + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RX + ext.swift"; sourceTree = "<group>"; };
+		3CA05CE52C5E49300070A804 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		3CCE94E72C58360B00EE5B8A /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				3CCE95152C59509D00EE5B8A /* SideBarCell.swift */,
 				3CCE94FA2C58397A00EE5B8A /* SideBarVC.swift */,
 				3CCE94FF2C583FC500EE5B8A /* ContainerVC.swift */,
+				3CA05CE52C5E49300070A804 /* PlayerView.swift */,
 			);
 			path = SideBarModule;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				11AFEF162C5B960500249DA7 /* Constants.swift */,
+				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
 				11AFEF172C5B960500249DA7 /* LabelFactory.swift */,
 				522899862C57DC230013FF87 /* Font */,
 			);
@@ -450,6 +456,8 @@
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
+				3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */,
+				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
@@ -457,6 +465,7 @@
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
+				3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
