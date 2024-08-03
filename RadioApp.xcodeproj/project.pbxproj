@@ -42,7 +42,6 @@
 		5228997E2C57D3450013FF87 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997D2C57D3450013FF87 /* SnapKit */; };
 		522899832C57D4290013FF87 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 522899822C57D4290013FF87 /* Kingfisher */; };
 		522899882C57DC290013FF87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899872C57DC290013FF87 /* Font.swift */; };
-		522899982C57E6E00013FF87 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899972C57E6E00013FF87 /* AuthVC.swift */; };
 		5228999B2C57E6F10013FF87 /* PopularVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999A2C57E6F10013FF87 /* PopularVC.swift */; };
 		5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */; };
 		522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A32C57E72B0013FF87 /* SearchVC.swift */; };
@@ -51,6 +50,25 @@
 		522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */; };
 		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
 		522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */; };
+		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
+		FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */; };
+		FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CC2C59303E00DE491C /* SignInViewController.swift */; };
+		FA9688CF2C598C4D00DE491C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CE2C598C4D00DE491C /* CustomTextField.swift */; };
+		FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */; };
+		FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D42C5A497500DE491C /* SignButtonsView.swift */; };
+		FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */; };
+		FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DA2C5A634900DE491C /* TitleView.swift */; };
+		FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */; };
+		FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E02C5A7F6100DE491C /* SignUpView.swift */; };
+		FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */; };
+		FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */; };
+		FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */; };
+		FA9688EB2C5CF92A00DE491C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EA2C5CF92A00DE491C /* FirebaseAuth */; };
+		FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */; };
+		FA9688EF2C5CF92A00DE491C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EE2C5CF92A00DE491C /* FirebaseStorage */; };
+		FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688F22C5D73BF00DE491C /* AlertLoading.swift */; };
+		FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688F52C5E26D700DE491C /* GoogleSignIn */; };
+		FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,7 +114,6 @@
 		522899702C57C87D0013FF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522899722C57C87D0013FF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522899872C57DC290013FF87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		522899972C57E6E00013FF87 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		5228999A2C57E6F10013FF87 /* PopularVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularVC.swift; sourceTree = "<group>"; };
 		5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		522899A32C57E72B0013FF87 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
@@ -105,6 +122,21 @@
 		522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
+		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		FA9688CC2C59303E00DE491C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FA9688CE2C598C4D00DE491C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithTitleView.swift; sourceTree = "<group>"; };
+		FA9688D42C5A497500DE491C /* SignButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignButtonsView.swift; sourceTree = "<group>"; };
+		FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectWithGoogleView.swift; sourceTree = "<group>"; };
+		FA9688DA2C5A634900DE491C /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControlle + Extension.swift"; sourceTree = "<group>"; };
+		FA9688E02C5A7F6100DE491C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassView.swift; sourceTree = "<group>"; };
+		FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
+		FA9688F22C5D73BF00DE491C /* AlertLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLoading.swift; sourceTree = "<group>"; };
+		FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +147,13 @@
 				3CCE94F62C58380100EE5B8A /* RxCocoa in Frameworks */,
 				522899832C57D4290013FF87 /* Kingfisher in Frameworks */,
 				3CCE95032C5847E500EE5B8A /* RxGesture in Frameworks */,
+				FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */,
 				3CCE94F82C58380100EE5B8A /* RxRelay in Frameworks */,
+				FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */,
+				FA9688EB2C5CF92A00DE491C /* FirebaseAuth in Frameworks */,
 				5228997E2C57D3450013FF87 /* SnapKit in Frameworks */,
 				3CCE94F02C5837B700EE5B8A /* RxSwift in Frameworks */,
+				FA9688EF2C5CF92A00DE491C /* FirebaseStorage in Frameworks */,
 				3CCE94ED2C58376600EE5B8A /* RealmSwift in Frameworks */,
 				3CCE94F42C58380100EE5B8A /* RxBlocking in Frameworks */,
 			);
@@ -244,6 +280,7 @@
 				5228996D2C57C87D0013FF87 /* Assets.xcassets */,
 				5228996F2C57C87D0013FF87 /* LaunchScreen.storyboard */,
 				522899722C57C87D0013FF87 /* Info.plist */,
+				FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -285,6 +322,7 @@
 		522899892C57DC510013FF87 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9688DC2C5A72C200DE491C /* Extensions */,
 				11AFEF162C5B960500249DA7 /* Constants.swift */,
 				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
 				11AFEF172C5B960500249DA7 /* LabelFactory.swift */,
@@ -298,7 +336,10 @@
 		522899962C57E6D40013FF87 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				522899972C57E6E00013FF87 /* AuthVC.swift */,
+				FA9688DD2C5A72CD00DE491C /* Components */,
+				FA9688BE2C5927C900DE491C /* SignIn */,
+				FA9688BF2C5927D300DE491C /* SignUp */,
+				FA9688C02C5927EA00DE491C /* ForgotPass */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -354,6 +395,55 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		FA9688BE2C5927C900DE491C /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688C12C59280800DE491C /* SignInView.swift */,
+				FA9688CC2C59303E00DE491C /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		FA9688BF2C5927D300DE491C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688E02C5A7F6100DE491C /* SignUpView.swift */,
+				FA9688E22C5A7F6A00DE491C /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		FA9688C02C5927EA00DE491C /* ForgotPass */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688E42C5A8FBF00DE491C /* ForgotPassView.swift */,
+				FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */,
+			);
+			path = ForgotPass;
+			sourceTree = "<group>";
+		};
+		FA9688DC2C5A72C200DE491C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
+				FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA9688DD2C5A72CD00DE491C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA9688DA2C5A634900DE491C /* TitleView.swift */,
+				FA9688CE2C598C4D00DE491C /* CustomTextField.swift */,
+				FA9688D22C5A40E700DE491C /* TextFieldWithTitleView.swift */,
+				FA9688D62C5A5CCE00DE491C /* ConnectWithGoogleView.swift */,
+				FA9688D42C5A497500DE491C /* SignButtonsView.swift */,
+				FA9688F22C5D73BF00DE491C /* AlertLoading.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -380,6 +470,10 @@
 				3CCE94F52C58380100EE5B8A /* RxCocoa */,
 				3CCE94F72C58380100EE5B8A /* RxRelay */,
 				3CCE95022C5847E500EE5B8A /* RxGesture */,
+				FA9688EA2C5CF92A00DE491C /* FirebaseAuth */,
+				FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */,
+				FA9688EE2C5CF92A00DE491C /* FirebaseStorage */,
+				FA9688F52C5E26D700DE491C /* GoogleSignIn */,
 			);
 			productName = RadioApp;
 			productReference = 522899612C57C87B0013FF87 /* RadioApp.app */;
@@ -416,6 +510,7 @@
 				522899852C57D51C0013FF87 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				3CCE94E92C58376600EE5B8A /* XCRemoteSwiftPackageReference "realm-swift" */,
 				3CCE95012C5847E500EE5B8A /* XCRemoteSwiftPackageReference "RxGesture" */,
+				FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 522899622C57C87B0013FF87 /* Products */;
 			projectDirPath = "";
@@ -436,6 +531,7 @@
 				522899712C57C87D0013FF87 /* Base in Resources */,
 				522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */,
 				522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */,
+				FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,9 +542,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9688CF2C598C4D00DE491C /* CustomTextField.swift in Sources */,
+				FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */,
+				FA9688D32C5A40E700DE491C /* TextFieldWithTitleView.swift in Sources */,
 				5228999B2C57E6F10013FF87 /* PopularVC.swift in Sources */,
-				522899982C57E6E00013FF87 /* AuthVC.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
+				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
+				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
+				522899882C57DC290013FF87 /* Font.swift in Sources */,
+				FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */,
+				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,
+				FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */,
+				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */,
@@ -468,6 +573,9 @@
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
 				3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
+				FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */,
+				FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */,
+				FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */,
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,
 				3CD434CD2C5E6A77006A8136 /* FadeTransitionAnimator.swift in Sources */,
@@ -475,6 +583,8 @@
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */,
+				FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */,
 				3CD434CF2C5E88C7006A8136 /* AudioProcessor.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 				3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */,
@@ -750,6 +860,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -792,6 +910,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 522899812C57D4290013FF87 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		FA9688EA2C5CF92A00DE491C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 522899842C57D47C0013FF87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 522899842C57D47C0013FF87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		FA9688EE2C5CF92A00DE491C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 522899842C57D47C0013FF87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		FA9688F52C5E26D700DE491C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
