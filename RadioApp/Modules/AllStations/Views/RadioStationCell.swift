@@ -9,6 +9,16 @@ import UIKit
 
 class RadioStationCell: UITableViewCell {
     
+    private lazy var conteinerView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 2.0
+        view.layer.borderColor = Colors.grey.cgColor
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -51,19 +61,23 @@ class RadioStationCell: UITableViewCell {
         setView()
         
         NSLayoutConstraint.activate([
+            conteinerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            conteinerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            conteinerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            conteinerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             
-            tagLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
-            tagLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
+            tagLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 18),
+            tagLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
             
             nameLabel.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -46),
+            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
+            nameLabel.bottomAnchor.constraint(equalTo: conteinerView.bottomAnchor, constant: -46),
             
-            votesLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            votesLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 16),
             votesLabel.trailingAnchor.constraint(equalTo: likeButtons.leadingAnchor, constant: -4),
             
-            likeButtons.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
-            likeButtons.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+            likeButtons.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 14),
+            likeButtons.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -10)
         ])
     }
     
@@ -73,16 +87,24 @@ class RadioStationCell: UITableViewCell {
     
     
     @objc private func likeTaped() {
-        likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
+        if likeButtons.currentImage == UIImage(named: "likeFilled") {
+            likeButtons.setImage(UIImage(named: "like"), for: .normal)
+        } else {
+            likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
+//            добавить votes
+        }
     }
     
     // MARK: - Set CellView
     
     private func setView() {
-        contentView.addSubview(tagLabel)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(votesLabel)
-        contentView.addSubview(likeButtons)
+        
+        contentView.addSubview(conteinerView)
+        
+        conteinerView.addSubview(tagLabel)
+        conteinerView.addSubview(nameLabel)
+        conteinerView.addSubview(votesLabel)
+        conteinerView.addSubview(likeButtons)
     }
     
     
@@ -90,5 +112,13 @@ class RadioStationCell: UITableViewCell {
         tagLabel.text = viewModel.name
         nameLabel.text = viewModel.tag
         votesLabel.text = "\(K.votes) \(viewModel.votes)"
+    }
+    
+    func selectCell() {
+        conteinerView.backgroundColor = Colors.pink
+    }
+    
+    func deselectCell() {
+        conteinerView.backgroundColor = .clear
     }
 }

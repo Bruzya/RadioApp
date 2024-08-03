@@ -11,16 +11,7 @@ import SnapKit
 class StationsVC: UIViewController {
     
     // MARK: - UI properties
-    
-    private lazy var mainStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 10
-        
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
+
     private lazy var topStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -28,31 +19,23 @@ class StationsVC: UIViewController {
         return stack
     }()
     
-    private lazy var titleImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "playNavigation")
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = Colors.white
         label.font = Font.getFont(Font.displayBold, size: 24)
-        //        label.text = K.appName
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var profileButton: UIButton = {
-        let button = UIButton()
-        button.sizeToFit()
-        button.setImage(UIImage(named: "profileButton"), for: .normal)
-        button.addTarget(self, action: #selector(profileDetailTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var profileImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profileButton")
+        imageView.isUserInteractionEnabled = true
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(profileDetailTaped))
+        imageView.addGestureRecognizer(tapImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private lazy var subtitleLabel: UILabel = {
@@ -70,6 +53,9 @@ class StationsVC: UIViewController {
         textField.leftView = Search.icon
         textField.leftViewMode = .always
         textField.leftView = Search.iconPadding
+        textField.rightView = Search.result
+        textField.rightViewMode = .always
+        textField.rightView = Search.resultPadding
         textField.textColor = Colors.white
         textField.attributedPlaceholder = NSAttributedString(
             string: K.placeholder,
@@ -82,19 +68,16 @@ class StationsVC: UIViewController {
         return textField
     }()
     
-    private lazy var midleStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 10
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
+    let volumeView: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var volumeLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.getFont(Font.displayRegular, size: 10)
+        label.font = Font.getFont(Font.displayRegular, size: 12)
         label.textColor = Colors.white
-        label.text = String(format: "%f.1", volumeSlider.value)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
 
@@ -102,7 +85,7 @@ class StationsVC: UIViewController {
     }()
     
     private lazy var volumeSlider: UISlider = {
-        let slider = UISlider()
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
         slider.thumbTintColor = Colors.teal
         slider.minimumValue = 0.0
@@ -110,12 +93,20 @@ class StationsVC: UIViewController {
         slider.minimumTrackTintColor = Colors.teal
         slider.maximumTrackTintColor = Colors.grey
         slider.tintColor = Colors.grey
-        //        ОРИЕНТАЦИЯ !!!!!!
-        slider.minimumValueImage = UIImage(named: "sound")
+        slider.addTarget(self, action: #selector(updateVolumeLabel), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.isHidden = true
         return slider
     }()
+    
+    private lazy var volumeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "sound")
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     
     private lazy var radioTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -123,56 +114,10 @@ class StationsVC: UIViewController {
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         tableView.isScrollEnabled = true
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
-    }()
-    
-    
-    private lazy var bottomStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 10
-        stack.distribution = .equalCentering
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.isHidden = true
-        return stack
-    }()
-    
-    private lazy var backwardsButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "previous"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(backwardsButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = true
-        return button
-    }()
-    
-    private lazy var playButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "player"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = true
-        return button
-    }()
-    
-    private lazy var forwardButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "next"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(forwardButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = true
-        return button
-    }()
-    
-    private lazy var emptiView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     // MARK: - Properties
@@ -180,9 +125,9 @@ class StationsVC: UIViewController {
     var viewModel: RadioStationListVM!
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //        инициализируем до вызова делегата
         viewModel = RadioStationListVM()
         
@@ -194,6 +139,10 @@ class StationsVC: UIViewController {
         
         radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
         radioTableView.reloadData()
+        
+        volumeSlider.value = 10
+        volumeLabel.text = String(format: "%.0f", volumeSlider.value) + "%"
+        
     }
     
     // MARK: - Set Views
@@ -201,26 +150,20 @@ class StationsVC: UIViewController {
     private func setView() {
         view.backgroundColor = Colors.background
         
-        view.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(topStackView)
+        view.addSubview(topStackView)
         
-        topStackView.addArrangedSubview(titleImage)
         topStackView.addArrangedSubview(titleLabel)
-        topStackView.addArrangedSubview(profileButton)
+        topStackView.addArrangedSubview(profileImage)
         
-        mainStackView.addArrangedSubview(subtitleLabel)
-        mainStackView.addArrangedSubview(searchTextField)
-        mainStackView.addArrangedSubview(midleStackView)
-        midleStackView.addArrangedSubview(volumeSlider)
-        midleStackView.addArrangedSubview(radioTableView)
+        view.addSubview(subtitleLabel)
+        view.addSubview(searchTextField)
+        view.addSubview(volumeView)
         
-        mainStackView.addArrangedSubview(bottomStack)
+        volumeView.addSubview(volumeLabel)
+        volumeView.addSubview(volumeSlider)
+        volumeView.addSubview(volumeImage)
         
-        bottomStack.addArrangedSubview(backwardsButton)
-        bottomStack.addArrangedSubview(playButton)
-        bottomStack.addArrangedSubview(forwardButton)
-        
-        mainStackView.addArrangedSubview(emptiView)
+        view.addSubview(radioTableView)
     }
     
     private func setDelegate() {
@@ -234,16 +177,8 @@ class StationsVC: UIViewController {
         print("Show detail profile info")
     }
     
-    @objc private func backwardsButtonTaped() {
-        print("Play backwards")
-    }
-    
-    @objc private func playButtonTaped() {
-        print("Play sound")
-    }
-    
-    @objc private func forwardButtonTaped() {
-        print("Play forward")
+    @objc private func updateVolumeLabel() {
+        volumeLabel.text = "\(Int(volumeSlider.value))%"
     }
 }
 
@@ -252,53 +187,52 @@ class StationsVC: UIViewController {
 extension StationsVC {
     private func setConstraints() {
         
-        mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
         topStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(68)
-        }
-        
-        titleImage.snp.makeConstraints { make in
-            make.size.equalTo(33)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalTo(titleLabel.snp.leading).offset(-5)
-        }
-        
-        profileButton.snp.makeConstraints { make in
-            make.width.equalTo(58)
-            make.trailing.equalTo(mainStackView).offset(-16)
+            make.top.equalTo(view).offset(80)
+            make.leading.equalTo(view).offset(62)
+            make.trailing.equalTo(view).offset(-8)
         }
         
         subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(topStackView.snp.bottom)
             make.leading.equalToSuperview().offset(60)
-            make.top.equalTo(topStackView.snp.bottom).offset(20)
         }
         
         searchTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(mainStackView).inset(16)
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(6)
+            make.leading.trailing.equalTo(view).inset(10)
             make.height.equalTo(56)
         }
         
-        midleStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
+        volumeView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(60)
+            make.trailing.equalTo(radioTableView.snp.leading).offset(-10)
+            make.width.equalTo(30)
+            make.height.equalTo(300)
+        }
+        
+        volumeLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(volumeView)
+            make.bottom.equalTo(volumeView.snp.top).offset(40)
         }
         
         volumeSlider.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(-70)
+            make.center.equalTo(volumeView)
             make.width.equalTo(200)
         }
         
-        radioTableView.snp.makeConstraints { make in
-            make.leading.equalTo(volumeSlider.snp.trailing).offset(-60)
-            make.height.equalTo(400)
+        volumeImage.snp.makeConstraints { make in
+            make.centerX.equalTo(volumeView)
+            make.top.equalTo(volumeSlider.snp.bottom).offset(105)
         }
         
-        bottomStack.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(75)
+        radioTableView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom)
+            make.centerX.equalTo(view)
+            make.height.equalTo(400)
+            make.width.equalTo(293)
         }
+        
     }
 }
 
@@ -314,9 +248,7 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
         cell.configure(with: stationViewModel)
         cell.selectionStyle = .none
-        cell.layer.borderColor = Colors.grey.cgColor
-        cell.layer.borderWidth = 2.0
-        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = false
         cell.backgroundColor = .clear
         return cell
     }
@@ -325,12 +257,16 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
 
+//    выбор ячейки в которой играет радио
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        if selectedCell?.backgroundColor != Colors.pink {
-            selectedCell?.backgroundColor = Colors.pink
-        } else {
-            selectedCell?.backgroundColor = .clear
+        if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
+            cell.selectCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
+            cell.deselectCell()
         }
     }
 }
