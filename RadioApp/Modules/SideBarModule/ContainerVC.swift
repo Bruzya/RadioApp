@@ -22,7 +22,7 @@ final class ContainerVC: UIViewController {
     var navigationVC: UINavigationController?
     
     private let menuVC = SideBarVC()
-    private let allStationsVC = AllStationsVC()
+    private let allStationsVC = StationsVC()
     private let favoritesVC = FavoritesVC()
     private let popularVC = PopularVC()
     
