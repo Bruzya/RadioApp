@@ -28,13 +28,14 @@ class StationsVC: UIViewController {
         return label
     }()
     
-    private lazy var profileButton: UIButton = {
-        let button = UIButton()
-        button.sizeToFit()
-        button.setImage(UIImage(named: "profileButton"), for: .normal)
-        button.addTarget(self, action: #selector(profileDetailTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var profileImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profileButton")
+        imageView.isUserInteractionEnabled = true
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(profileDetailTaped))
+        imageView.addGestureRecognizer(tapImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private lazy var subtitleLabel: UILabel = {
@@ -67,14 +68,10 @@ class StationsVC: UIViewController {
         return textField
     }()
     
-    let volumeStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.clipsToBounds = false
-        stack.backgroundColor = .brown
-        stack.distribution = .fillProportionally
-        stack.spacing = 10
-        return stack
+    let volumeView: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var volumeLabel: UILabel = {
@@ -90,7 +87,6 @@ class StationsVC: UIViewController {
     private lazy var volumeSlider: UISlider = {
         let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         slider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
-        slider.backgroundColor = .red
         slider.thumbTintColor = Colors.teal
         slider.minimumValue = 0.0
         slider.maximumValue = 100.0
@@ -115,54 +111,10 @@ class StationsVC: UIViewController {
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
-
         tableView.isScrollEnabled = true
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
-    }()
-    
-    
-    private lazy var bottomStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 10
-        stack.distribution = .equalCentering
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private lazy var backwardsButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "previous"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(backwardsButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var playButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "player"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var forwardButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "next"), for: .normal)
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(forwardButtonTaped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var emptiView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     // MARK: - Properties
@@ -184,6 +136,7 @@ class StationsVC: UIViewController {
         
         radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
         radioTableView.reloadData()
+        
     }
     
     // MARK: - Set Views
@@ -194,21 +147,17 @@ class StationsVC: UIViewController {
         view.addSubview(topStackView)
         
         topStackView.addArrangedSubview(titleLabel)
-        topStackView.addArrangedSubview(profileButton)
+        topStackView.addArrangedSubview(profileImage)
         
         view.addSubview(subtitleLabel)
         view.addSubview(searchTextField)
-        view.addSubview(volumeStackView)
+        view.addSubview(volumeView)
         
-        volumeStackView.addArrangedSubview(volumeLabel)
-        volumeStackView.addArrangedSubview(volumeSlider)
-        volumeStackView.addArrangedSubview(volumeImage)
+        volumeView.addSubview(volumeLabel)
+        volumeView.addSubview(volumeSlider)
+        volumeView.addSubview(volumeImage)
         
         view.addSubview(radioTableView)
-        
-        bottomStack.addArrangedSubview(backwardsButton)
-        bottomStack.addArrangedSubview(playButton)
-        bottomStack.addArrangedSubview(forwardButton)
     }
     
     private func setDelegate() {
@@ -220,18 +169,6 @@ class StationsVC: UIViewController {
     
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
-    }
-    
-    @objc private func backwardsButtonTaped() {
-        print("Play backwards")
-    }
-    
-    @objc private func playButtonTaped() {
-        print("Play sound")
-    }
-    
-    @objc private func forwardButtonTaped() {
-        print("Play forward")
     }
 }
 
@@ -257,27 +194,34 @@ extension StationsVC {
             make.height.equalTo(56)
         }
         
-        volumeStackView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(80)
-            make.leading.equalTo(view).offset(80)
+        volumeView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(60)
+            make.trailing.equalTo(radioTableView.snp.leading).offset(-10)
             make.width.equalTo(30)
-            
-            
+            make.height.equalTo(300)
+        }
+        
+        volumeLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(volumeView)
+            make.bottom.equalTo(volumeView.snp.top).offset(40)
         }
         
         volumeSlider.snp.makeConstraints { make in
-            make.height.equalTo(200)
-            make.width.equalTo(300)
+            make.center.equalTo(volumeView)
+            make.width.equalTo(200)
         }
         
         volumeImage.snp.makeConstraints { make in
-            make.height.equalTo(10)
+            make.centerX.equalTo(volumeView)
+            make.top.equalTo(volumeSlider.snp.bottom).offset(105)
         }
         
-//        radioTableView.snp.makeConstraints { make in
-//            make.leading.equalTo(volumeSlider.snp.trailing).offset(-60)
-//            make.height.equalTo(400)
-//        }
+        radioTableView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom)
+            make.centerX.equalTo(view)
+            make.height.equalTo(400)
+            make.width.equalTo(293)
+        }
         
     }
 }
@@ -294,9 +238,7 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
         cell.configure(with: stationViewModel)
         cell.selectionStyle = .none
-        cell.layer.borderColor = Colors.grey.cgColor
-        cell.layer.borderWidth = 2.0
-        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = false
         cell.backgroundColor = .clear
         return cell
     }
