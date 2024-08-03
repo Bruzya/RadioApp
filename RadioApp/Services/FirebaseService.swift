@@ -127,7 +127,13 @@ final class FirebaseService {
     func resetPassword() {}
     
     func getCurrentUser() -> String? {
-        Auth.auth().currentUser?.uid
+        if let userId = Auth.auth().currentUser?.uid {
+            return userId
+        } else if let userId = GIDSignIn.sharedInstance.currentUser?.userID {
+            return userId
+        } else {
+            return nil
+        }
     }
     
     func isValidEmail(_ email: String) -> Bool {
