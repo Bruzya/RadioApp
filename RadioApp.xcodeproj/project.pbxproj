@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BE8707D2C5E48A3000DE6AB /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */; };
+		0BE8707F2C5E4961000DE6AB /* OnboardingPage1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE8707E2C5E4961000DE6AB /* OnboardingPage1VC.swift */; };
+		0BE870812C5E497B000DE6AB /* OnboardingPage2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE870802C5E497B000DE6AB /* OnboardingPage2VC.swift */; };
+		0BE870832C5E52C6000DE6AB /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE870822C5E52C6000DE6AB /* UserDefaultsService.swift */; };
+		0BE870852C5E5400000DE6AB /* OnboardingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE870842C5E5400000DE6AB /* OnboardingPageVC.swift */; };
 		3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */; };
 		3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */; };
 		3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E72C58360B00EE5B8A /* RealmService.swift */; };
@@ -24,7 +29,7 @@
 		3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE95152C59509D00EE5B8A /* SideBarCell.swift */; };
 		522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899642C57C87B0013FF87 /* AppDelegate.swift */; };
 		522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899662C57C87B0013FF87 /* SceneDelegate.swift */; };
-		522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingVC.swift */; };
+		522899692C57C87B0013FF87 /* OnboardingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingMainVC.swift */; };
 		5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5228996D2C57C87D0013FF87 /* Assets.xcassets */; };
 		522899712C57C87D0013FF87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 522899702C57C87D0013FF87 /* Base */; };
 		5228997E2C57D3450013FF87 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997D2C57D3450013FF87 /* SnapKit */; };
@@ -56,6 +61,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		0BE8707E2C5E4961000DE6AB /* OnboardingPage1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage1VC.swift; sourceTree = "<group>"; };
+		0BE870802C5E497B000DE6AB /* OnboardingPage2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2VC.swift; sourceTree = "<group>"; };
+		0BE870822C5E52C6000DE6AB /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		0BE870842C5E5400000DE6AB /* OnboardingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageVC.swift; sourceTree = "<group>"; };
 		3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		3CCE94E72C58360B00EE5B8A /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -68,7 +78,7 @@
 		522899612C57C87B0013FF87 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522899642C57C87B0013FF87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522899662C57C87B0013FF87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		522899682C57C87B0013FF87 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		522899682C57C87B0013FF87 /* OnboardingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainVC.swift; sourceTree = "<group>"; };
 		5228996D2C57C87D0013FF87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522899702C57C87D0013FF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522899722C57C87D0013FF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,11 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BE8707B2C5E4878000DE6AB /* Onboarding Flow */ = {
+			isa = PBXGroup;
+			children = (
+				0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */,
+			);
+			path = "Onboarding Flow";
+			sourceTree = "<group>";
+		};
 		3CCE94E42C5835AF00EE5B8A /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */,
 				3CCE94E72C58360B00EE5B8A /* RealmService.swift */,
+				0BE870822C5E52C6000DE6AB /* UserDefaultsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,7 +220,8 @@
 		5228997A2C57C8D00013FF87 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				5228997B2C57C8D30013FF87 /* Onboarding */,
+				0BE8707B2C5E4878000DE6AB /* Onboarding Flow */,
+				5228997B2C57C8D30013FF87 /* Onboarding Screen */,
 				522899962C57E6D40013FF87 /* Auth */,
 				3CCE94F92C58395B00EE5B8A /* SideBarModule */,
 				522899992C57E6E80013FF87 /* PopularModule */,
@@ -213,12 +233,15 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		5228997B2C57C8D30013FF87 /* Onboarding */ = {
+		5228997B2C57C8D30013FF87 /* Onboarding Screen */ = {
 			isa = PBXGroup;
 			children = (
-				522899682C57C87B0013FF87 /* OnboardingVC.swift */,
+				0BE870842C5E5400000DE6AB /* OnboardingPageVC.swift */,
+				522899682C57C87B0013FF87 /* OnboardingMainVC.swift */,
+				0BE8707E2C5E4961000DE6AB /* OnboardingPage1VC.swift */,
+				0BE870802C5E497B000DE6AB /* OnboardingPage2VC.swift */,
 			);
-			path = Onboarding;
+			path = "Onboarding Screen";
 			sourceTree = "<group>";
 		};
 		522899862C57DC230013FF87 /* Font */ = {
@@ -398,16 +421,21 @@
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
 				3CCE94FB2C58397A00EE5B8A /* SideBarVC.swift in Sources */,
 				3CCE950A2C593ED100EE5B8A /* Coordinator.swift in Sources */,
-				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
+				522899692C57C87B0013FF87 /* OnboardingMainVC.swift in Sources */,
+				0BE8707D2C5E48A3000DE6AB /* OnboardingCoordinator.swift in Sources */,
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
+				0BE870832C5E52C6000DE6AB /* UserDefaultsService.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
+				0BE8707F2C5E4961000DE6AB /* OnboardingPage1VC.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
+				0BE870812C5E497B000DE6AB /* OnboardingPage2VC.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				0BE870852C5E5400000DE6AB /* OnboardingPageVC.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
