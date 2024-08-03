@@ -61,7 +61,6 @@ class RadioStationCell: UITableViewCell {
         setView()
         
         NSLayoutConstraint.activate([
-            
             conteinerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             conteinerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             conteinerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -88,7 +87,12 @@ class RadioStationCell: UITableViewCell {
     
     
     @objc private func likeTaped() {
-        likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
+        if likeButtons.currentImage == UIImage(named: "likeFilled") {
+            likeButtons.setImage(UIImage(named: "like"), for: .normal)
+        } else {
+            likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
+//            добавить votes
+        }
     }
     
     // MARK: - Set CellView
@@ -108,5 +112,13 @@ class RadioStationCell: UITableViewCell {
         tagLabel.text = viewModel.name
         nameLabel.text = viewModel.tag
         votesLabel.text = "\(K.votes) \(viewModel.votes)"
+    }
+    
+    func selectCell() {
+        conteinerView.backgroundColor = Colors.pink
+    }
+    
+    func deselectCell() {
+        conteinerView.backgroundColor = .clear
     }
 }

@@ -217,7 +217,7 @@ extension StationsVC {
         }
         
         radioTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom)
+            make.top.equalTo(searchTextField.snp.bottom).offset(-25)
             make.centerX.equalTo(view)
             make.height.equalTo(400)
             make.width.equalTo(293)
@@ -247,12 +247,18 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
 
+//    выбор ячейки в которой играет радио
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        if selectedCell?.backgroundColor != Colors.pink {
-            selectedCell?.backgroundColor = Colors.pink
-        } else {
-            selectedCell?.backgroundColor = .clear
+        if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
+            cell.selectCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
+            cell.deselectCell()
+        }
+    }
+    
+    
 }
