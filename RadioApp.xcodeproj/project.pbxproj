@@ -57,6 +57,7 @@
 		FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */; };
 		FA9688EF2C5CF92A00DE491C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688EE2C5CF92A00DE491C /* FirebaseStorage */; };
 		FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688F22C5D73BF00DE491C /* AlertLoading.swift */; };
+		FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688F52C5E26D700DE491C /* GoogleSignIn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -126,6 +127,7 @@
 				3CCE95032C5847E500EE5B8A /* RxGesture in Frameworks */,
 				FA9688ED2C5CF92A00DE491C /* FirebaseFirestore in Frameworks */,
 				3CCE94F82C58380100EE5B8A /* RxRelay in Frameworks */,
+				FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */,
 				FA9688EB2C5CF92A00DE491C /* FirebaseAuth in Frameworks */,
 				5228997E2C57D3450013FF87 /* SnapKit in Frameworks */,
 				3CCE94F02C5837B700EE5B8A /* RxSwift in Frameworks */,
@@ -414,6 +416,7 @@
 				FA9688EA2C5CF92A00DE491C /* FirebaseAuth */,
 				FA9688EC2C5CF92A00DE491C /* FirebaseFirestore */,
 				FA9688EE2C5CF92A00DE491C /* FirebaseStorage */,
+				FA9688F52C5E26D700DE491C /* GoogleSignIn */,
 			);
 			productName = RadioApp;
 			productReference = 522899612C57C87B0013FF87 /* RadioApp.app */;
@@ -450,6 +453,7 @@
 				522899852C57D51C0013FF87 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				3CCE94E92C58376600EE5B8A /* XCRemoteSwiftPackageReference "realm-swift" */,
 				3CCE95012C5847E500EE5B8A /* XCRemoteSwiftPackageReference "RxGesture" */,
+				FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 522899622C57C87B0013FF87 /* Products */;
 			projectDirPath = "";
@@ -786,6 +790,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -843,6 +855,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 522899842C57D47C0013FF87 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FA9688F52C5E26D700DE491C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA9688F42C5E26D700DE491C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
