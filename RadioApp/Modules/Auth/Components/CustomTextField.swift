@@ -34,7 +34,7 @@ final class CustomTextField: UITextField {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray,
-            .font: Font.getFont(.displayRegular, size: 16)
+            .font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ]
         
         let attributedPlaceholder = NSAttributedString(

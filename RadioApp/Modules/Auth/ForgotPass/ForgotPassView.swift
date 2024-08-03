@@ -56,7 +56,7 @@ final class ForgotPassView: UIView {
     let sentButton: UIButton = {
         let element = UIButton(type: .system)
         element.backgroundColor = .blueLight
-        element.titleLabel?.font = Font.getFont(.displayRegular, size: 30)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .regular)
         element.setTitleColor(.white, for: .normal)
         element.setTitle("Sent", for: .normal)
         return element

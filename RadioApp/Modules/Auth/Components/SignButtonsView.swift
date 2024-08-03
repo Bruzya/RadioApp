@@ -31,7 +31,7 @@ final class SignButtonsView: UIView {
     lazy var signButton: UIButton = {
         let element = UIButton(type: .system)
         element.setTitle(titleButton, for: .normal)
-        element.titleLabel?.font = Font.getFont(.displayRegular, size: 20)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         element.tintColor = .white
         return element
     }()

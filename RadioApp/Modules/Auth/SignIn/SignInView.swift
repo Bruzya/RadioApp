@@ -49,7 +49,7 @@ final class SignInView: UIView {
     private lazy var forgotPasswordButton: UIButton = {
         let element = UIButton(type: .system)
         element.setTitle("Forgot Password ?", for: .normal)
-        element.titleLabel?.font = Font.getFont(.displayRegular, size: 14)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         element.tintColor = .white
         return element
     }()

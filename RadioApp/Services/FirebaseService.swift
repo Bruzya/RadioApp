@@ -41,6 +41,14 @@ final class FirebaseService {
         true
     }
     
+    var isAuthorized: Bool {
+        if let _ = Auth.auth().currentUser?.isEmailVerified {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func signUp(userData: UserRegData, completion: @escaping (Result<Bool, AuthError>) ->()) {
         Auth.auth().createUser(
             withEmail: userData.email,
