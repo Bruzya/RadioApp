@@ -78,8 +78,6 @@ class StationsVC: UIViewController {
         let label = UILabel()
         label.font = Font.getFont(Font.displayRegular, size: 12)
         label.textColor = Colors.white
-        label.text = "61%"
-//        label.text = String(format: "%.0f", volumeSlider.value) + "%"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -93,6 +91,7 @@ class StationsVC: UIViewController {
         slider.minimumTrackTintColor = Colors.teal
         slider.maximumTrackTintColor = Colors.grey
         slider.tintColor = Colors.grey
+        slider.addTarget(self, action: #selector(updateVolumeLabel), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
@@ -112,6 +111,7 @@ class StationsVC: UIViewController {
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         tableView.isScrollEnabled = true
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -122,9 +122,9 @@ class StationsVC: UIViewController {
     var viewModel: RadioStationListVM!
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //        инициализируем до вызова делегата
         viewModel = RadioStationListVM()
         
@@ -136,6 +136,9 @@ class StationsVC: UIViewController {
         
         radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
         radioTableView.reloadData()
+        
+        volumeSlider.value = 10
+        volumeLabel.text = String(format: "%.0f", volumeSlider.value) + "%"
         
     }
     
@@ -169,6 +172,10 @@ class StationsVC: UIViewController {
     
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
+    }
+    
+    @objc private func updateVolumeLabel() {
+        volumeLabel.text = "\(Int(volumeSlider.value))%"
     }
 }
 
@@ -217,7 +224,7 @@ extension StationsVC {
         }
         
         radioTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(-25)
+            make.top.equalTo(searchTextField.snp.bottom)
             make.centerX.equalTo(view)
             make.height.equalTo(400)
             make.width.equalTo(293)
@@ -259,6 +266,4 @@ extension StationsVC: UITableViewDelegate, UITableViewDataSource {
             cell.deselectCell()
         }
     }
-    
-    
 }
