@@ -10,7 +10,6 @@ import AVFoundation
 import RxSwift
 import RxGesture
 import SnapKit
-import MediaPlayer
 
 final class PlayerView: UIView {
 
@@ -54,7 +53,6 @@ final class PlayerView: UIView {
         if let url = URL(string: "http://icecast.vgtrk.cdnvideo.ru/vestifm_mp3_192kbps") {
             audioPlayer = AVPlayer(url: url)
             print("Player initialized: \(String(describing: audioPlayer))")
-            audioPlayer?.play()
         }
 
         setupUI()
@@ -91,7 +89,6 @@ final class PlayerView: UIView {
             })
             .disposed(by: disposeBag)
 
-        // Bind the volume slider to the volume of the audio player
         volumeSlider.rx.value
             .bind(onNext: { [unowned self] value in
                 audioPlayer?.volume = Float(value)
@@ -128,8 +125,10 @@ private extension PlayerView {
                 hStack.addArrangedSubview($0)
             }
 
-        addSubview(hStack)
-        addSubview(volumeSlider)
+        [hStack, volumeSlider]
+            .forEach {
+            addSubview($0)
+        }
     }
 
     func setupConstraints() {
