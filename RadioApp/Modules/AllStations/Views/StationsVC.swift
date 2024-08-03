@@ -96,6 +96,8 @@ class StationsVC: UIViewController {
         label.textColor = Colors.white
         label.text = String(format: "%f.1", volumeSlider.value)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+
         return label
     }()
     
@@ -111,6 +113,7 @@ class StationsVC: UIViewController {
         //        ОРИЕНТАЦИЯ !!!!!!
         slider.minimumValueImage = UIImage(named: "sound")
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.isHidden = true
         return slider
     }()
     
@@ -132,6 +135,7 @@ class StationsVC: UIViewController {
         stack.spacing = 10
         stack.distribution = .equalCentering
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.isHidden = true
         return stack
     }()
     
@@ -141,6 +145,7 @@ class StationsVC: UIViewController {
         button.sizeToFit()
         button.addTarget(self, action: #selector(backwardsButtonTaped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
     
@@ -150,6 +155,7 @@ class StationsVC: UIViewController {
         button.sizeToFit()
         button.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
     
@@ -159,6 +165,7 @@ class StationsVC: UIViewController {
         button.sizeToFit()
         button.addTarget(self, action: #selector(forwardButtonTaped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
     

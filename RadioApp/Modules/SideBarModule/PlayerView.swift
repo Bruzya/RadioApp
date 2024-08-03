@@ -11,6 +11,7 @@ import RxSwift
 import RxGesture
 import SnapKit
 
+
 final class PlayerView: UIView {
 
     private let hStack: UIStackView = {
@@ -42,6 +43,8 @@ final class PlayerView: UIView {
         return image
     }()
 
+    private let frequencyBarsView = FrequencyBarsView()
+
     var audioPlayer: AVPlayer?
     var timer: Timer?
     var volumeSlider: UISlider!
@@ -57,6 +60,7 @@ final class PlayerView: UIView {
 
         setupUI()
         setupBindings()
+        startAudioProcessing()
     }
 
     required init?(coder: NSCoder) {
@@ -105,6 +109,19 @@ final class PlayerView: UIView {
              audioPlayer?.pause()
          }
      }
+
+    private func startAudioProcessing() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            guard let self, audioPlayer?.rate != 0 else { return }
+            let magnitudes = AudioProcessor.sharedInstance.frequencyMagnitudes
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.1) {
+                    self.frequencyBarsView.updateBars(with: magnitudes)
+                }
+            }
+            print(magnitudes)
+        }
+    }
 }
 
 // MARK: - UI
@@ -125,13 +142,27 @@ private extension PlayerView {
                 hStack.addArrangedSubview($0)
             }
 
-        [hStack, volumeSlider]
+        [frequencyBarsView, hStack, volumeSlider]
             .forEach {
             addSubview($0)
         }
     }
 
     func setupConstraints() {
+        
+        frequencyBarsView.snp.makeConstraints { make in
+            make
+                .bottom
+                .equalTo(hStack.snp.top)
+            make
+                .leading.trailing
+                .equalToSuperview()
+                .inset(20)
+            make
+                .height
+                .equalTo(100)
+        }
+
         hStack.snp.makeConstraints { make in
             make
                 .top.leading.trailing
@@ -140,6 +171,7 @@ private extension PlayerView {
                 .height
                 .equalTo(100)
         }
+        
         playButton.snp.makeConstraints { make in
             make
                 .size
@@ -155,6 +187,7 @@ private extension PlayerView {
                 .size
                 .equalTo(48)
         }
+
         volumeSlider.snp.makeConstraints { make in
             make
                 .top

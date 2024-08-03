@@ -32,6 +32,8 @@
 		3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE950B2C593EF400EE5B8A /* AppCoordinator.swift */; };
 		3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE95152C59509D00EE5B8A /* SideBarCell.swift */; };
 		3CD434CD2C5E6A77006A8136 /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD434CC2C5E6A77006A8136 /* FadeTransitionAnimator.swift */; };
+		3CD434CF2C5E88C7006A8136 /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD434CE2C5E88C7006A8136 /* AudioProcessor.swift */; };
+		3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD434D02C5E8990006A8136 /* FrequencyBarsView.swift */; };
 		522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899642C57C87B0013FF87 /* AppDelegate.swift */; };
 		522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899662C57C87B0013FF87 /* SceneDelegate.swift */; };
 		522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingVC.swift */; };
@@ -85,6 +87,8 @@
 		3CCE950B2C593EF400EE5B8A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3CCE95152C59509D00EE5B8A /* SideBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCell.swift; sourceTree = "<group>"; };
 		3CD434CC2C5E6A77006A8136 /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
+		3CD434CE2C5E88C7006A8136 /* AudioProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessor.swift; sourceTree = "<group>"; };
+		3CD434D02C5E8990006A8136 /* FrequencyBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyBarsView.swift; sourceTree = "<group>"; };
 		522899612C57C87B0013FF87 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522899642C57C87B0013FF87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522899662C57C87B0013FF87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				3CCE95152C59509D00EE5B8A /* SideBarCell.swift */,
 				3CCE94FA2C58397A00EE5B8A /* SideBarVC.swift */,
 				3CA05CE52C5E49300070A804 /* PlayerView.swift */,
+				3CD434D02C5E8990006A8136 /* FrequencyBarsView.swift */,
 			);
 			path = SideBarModule;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				11AFEF172C5B960500249DA7 /* LabelFactory.swift */,
 				522899862C57DC230013FF87 /* Font */,
 				3CD434CC2C5E6A77006A8136 /* FadeTransitionAnimator.swift */,
+				3CD434CE2C5E88C7006A8136 /* AudioProcessor.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
+				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
@@ -471,6 +478,7 @@
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
+				3CD434CF2C5E88C7006A8136 /* AudioProcessor.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 				3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */,
 			);
