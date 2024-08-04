@@ -1,161 +1,65 @@
 //
-//  OnboardingVC.swift
+//  OnboardingPageVC.swift
 //  RadioApp
 //
-//  Created by Evgenii Mazrukho on 29.07.2024.
+//  Created by Andrew Linkov on 03.08.2024.
 //
 
 import UIKit
-import SnapKit
 
-final class OnboardingMainVC: UIViewController {
+final class OnboardingMainVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var pages = [UIViewController]()
-    let pageControl = UIPageControl()
-    let initialPage = 0
+    var pageControllers: [UIViewController] = []
+    var onComplete: (() -> Void)?
     
-    // MARK: - UI Properties
-    private lazy var backgroundImageView: UIImageView = {
-        let element = UIImageView()
-        element.image = .background
-        element.contentMode = .scaleAspectFill
-        return element
-    }()
-    
-    private var gradientLayer: CAGradientLayer {
-        let element = CAGradientLayer()
-        element.frame = view.bounds
-        element.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        element.startPoint = CGPoint(x: 0.5, y: 1.0)
-        element.endPoint = CGPoint(x: 0.5, y: 0.0)
-        return element
-    }
-    
-    private lazy var headerStackView: UIStackView = {
-        let element = UIStackView()
-        element.axis = .horizontal
-        element.alignment = .center
-        element.spacing = 5
-        element.distribution = .fillProportionally
-        return element
-    }()
-    
-    private lazy var starImageView: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(systemName: "star.fill")
-        element.contentMode = .scaleAspectFit
-        element.tintColor = .black
-        return element
-    }()
-    
-    private lazy var firstHeaderLabel: UILabel = {
-        let element = UILabel()
-        element.text = "100k +"
-        element.font = .systemFont(ofSize: 20, weight: .bold)
-        element.textColor = .white
-        return element
-    }()
-    
-    private lazy var secondHeaderLabel: UILabel = {
-        let element = UILabel()
-        element.text = "Premium recipes"
-        element.font = .systemFont(ofSize: 20, weight: .regular)
-        element.textColor = .white
-        return element
-    }()
-    
-    private lazy var getStartedButton: UIButton = {
-        let element = UIButton()
-        element.setTitle("Get started", for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        element.backgroundColor = UIColor(named: "buttonColor")
-        element.layer.cornerRadius = 40
-        element.addTarget(self, action: #selector(getStartedButtonTapped), for: .touchUpInside)
-        return element
-    }()
-    
-    private lazy var findBestLabel: UILabel = {
-        let element = UILabel()
-        element.text = "Find best recipes for cooking"
-        element.font = .systemFont(ofSize: 20, weight: .regular)
-        element.textColor = .white
-        return element
-    }()
-    
-    private lazy var bestRecipeLabel: UILabel = {
-        let element = UILabel()
-        element.text = "Best \n Recipe"
-        element.textAlignment = .center
-        element.font = .systemFont(ofSize: 70, weight: .bold)
-        element.textColor = .white
-        element.numberOfLines = 0
-        return element
-    }()
-    
-    //    weak var coordinator: OnboardingCoordinator!
-    //
-    //    init(coordinator: OnboardingCoordinator!) {
-    //        super.init(nibName: nil, bundle: nil)
-    //        self.coordinator = coordinator
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
-    
-    // MARK: - Life Cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        setupUI()
-        setupConstraints()
+        
+        dataSource = self
+        delegate  = self
+        
+        let firstController = OnboardingPage1VC()
+        let secondController = OnboardingPage2VC()
+        let thirdController = OnboardingPage3VC()
+        
+        thirdController.onComplete = { [weak self] in
+            self?.onComplete?()
+        }
+        
+        pageControllers = [firstController, secondController, thirdController]
+        
+        if let firstVC = pageControllers.first {
+            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        }
     }
     
-    // MARK: - Private Methods
-    private func setupUI() {
-        view.addSubview(backgroundImageView)
-        view.layer.addSublayer(gradientLayer)
-        view.addSubview(headerStackView)
-        view.addSubview(getStartedButton)
-        view.addSubview(findBestLabel)
-        view.addSubview(bestRecipeLabel)
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pageControllers.firstIndex(of: viewController) else {
+            return nil
+        }
         
-        headerStackView.addArrangedSubview(starImageView)
-        headerStackView.addArrangedSubview(firstHeaderLabel)
-        headerStackView.addArrangedSubview(secondHeaderLabel)
+        let previousIndex = currentIndex - 1
+        
+        guard previousIndex >= 0 else {
+            return nil
+        }
+        
+        return pageControllers[previousIndex]
     }
-    // MARK: - Selector methods
-    @objc private func getStartedButtonTapped() {
-        print("getStartedButtonTapped")
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pageControllers.firstIndex(of: viewController) else {
+            return nil
+        }
+        
+        let nextIndex = currentIndex + 1
+        
+        guard nextIndex < pageControllers.count else {
+            return nil
+        }
+        
+        return pageControllers[nextIndex]
     }
 }
 
-// MARK: - Setup Constraints
-extension OnboardingMainVC {
-    func setupConstraints() {
-        backgroundImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        headerStackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
-        }
-        
-        getStartedButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(80)
-            make.width.equalTo(view.frame.width / 2)
-            make.centerX.equalToSuperview()
-        }
-        
-        findBestLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(getStartedButton).inset(-60)
-        }
-        
-        bestRecipeLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(findBestLabel).inset(-190)
-        }
-    }
-}

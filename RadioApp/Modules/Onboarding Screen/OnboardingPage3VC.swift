@@ -1,5 +1,5 @@
 //
-//  OnboardingPage1VC.swift
+//  OnboardingPage2VC.swift
 //  RadioApp
 //
 //  Created by Andrew Linkov on 03.08.2024.
@@ -8,10 +8,9 @@
 import UIKit
 import SnapKit
 
-final class OnboardingPage2VC: UIPageViewController {
+final class OnboardingPage3VC: UIViewController {
     
-    var pages = [UIViewController]()
-
+    var onComplete: (() -> Void)?
     
     // MARK: - UI Properties
     private lazy var backgroundImageView: UIImageView = {
@@ -21,21 +20,22 @@ final class OnboardingPage2VC: UIPageViewController {
         return element
     }()
     
-    private lazy var skipButton: UIButton = {
-        let element = UIButton()
-        element.setTitle("Skip", for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        element.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
+    private var gradientLayer: CAGradientLayer {
+        let element = CAGradientLayer()
+        element.frame = view.bounds
+        element.colors = [UIColor.black.withAlphaComponent(0.9).cgColor, UIColor.clear.cgColor]
+        element.startPoint = CGPoint(x: 0.5, y: 1.0)
+        element.endPoint = CGPoint(x: 0.5, y: 0.0)
         return element
-    }()
+    }
     
-    private lazy var continueButton: UIButton = {
+    private lazy var startCookingButton: UIButton = {
         let element = UIButton()
-        element.setTitle("Continue", for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        element.setTitle("Start Listening", for: .normal)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
         element.layer.cornerRadius = 25
-        element.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+        element.addTarget(self, action: #selector(startListening), for: .touchUpInside)
         return element
     }()
     
@@ -49,7 +49,7 @@ final class OnboardingPage2VC: UIPageViewController {
     
     private lazy var firstProgressView: UIView = {
         let element = UIView()
-        element.backgroundColor = UIColor(red: 0.98, green: 0.61, blue: 0.69, alpha: 1.00)
+        element.backgroundColor = .lightGray
         element.layer.cornerRadius = 5
         return element
     }()
@@ -67,10 +67,9 @@ final class OnboardingPage2VC: UIPageViewController {
         element.font = .systemFont(ofSize: 55, weight: .bold)
         element.textColor = .white
         element.numberOfLines = 0
-        let fullString = "LET'S GET STARTED"
+        let fullString = "OVER 30 000 SONGS"
         return element
     }()
-
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -82,49 +81,39 @@ final class OnboardingPage2VC: UIPageViewController {
     // MARK: - Private Methods
     private func setupUI() {
         view.addSubview(backgroundImageView)
-        view.addSubview(skipButton)
-        view.addSubview(continueButton)
+        view.layer.addSublayer(gradientLayer)
+        view.addSubview(startCookingButton)
         view.addSubview(progressStackView)
         view.addSubview(mainLabel)
-        
         
         progressStackView.addArrangedSubview(firstProgressView)
         progressStackView.addArrangedSubview(secondProgressView)
     }
     
     // MARK: - Selector methods
-    @objc private func continueButtonTapped() {
-        print("continueButtonTapped")
-        navigationController?.pushViewController(OnboardingPage3VC(),animated: true)
-    }
-    
-    @objc private func skipButtonTapped() {
-        print("skipButtonTapped")
+    @objc private func startListening() {
+        onComplete?()
+        print("Start Listening")
     }
 }
 
 // MARK: - Setup Constraints
-extension OnboardingPage2VC {
+extension OnboardingPage3VC {
     private func setupConstraints() {
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        skipButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+        startCookingButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-        }
-        
-        continueButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(skipButton).inset(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(70)
             make.height.equalTo(50)
-            make.width.equalTo(view.frame.width / 1.8)
+            make.width.equalTo(view.frame.width / 1.7)
         }
         
         progressStackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(continueButton).inset(90)
+            make.bottom.equalTo(startCookingButton).inset(90)
         }
         
         firstProgressView.snp.makeConstraints { make in
