@@ -10,5 +10,4 @@ import Foundation
 final class AppDIContainer {
     let firebase = FirebaseService()
     let realm = RealmService()
-    let network = NetworkService()
 }
