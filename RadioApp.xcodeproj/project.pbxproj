@@ -39,6 +39,7 @@
 		522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */; };
 		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
 		522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */; };
+		64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */; };
 		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
 		FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */; };
 		FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CC2C59303E00DE491C /* SignInViewController.swift */; };
@@ -100,6 +101,7 @@
 		522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
+		64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		FA9688CC2C59303E00DE491C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		5228999C2C57E6F30013FF87 /* FavoritesModule */ = {
 			isa = PBXGroup;
 			children = (
+				64CEDC8A2C5FC80800CB46BB /* Cell */,
 				5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */,
 			);
 			path = FavoritesModule;
@@ -336,6 +339,14 @@
 				522899A92C57E7530013FF87 /* ProfileVC.swift */,
 			);
 			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		64CEDC8A2C5FC80800CB46BB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		FA9688BE2C5927C900DE491C /* SignIn */ = {
@@ -513,6 +524,7 @@
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
+				64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				522899AA2C57E7530013FF87 /* ProfileVC.swift in Sources */,
 				FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */,
