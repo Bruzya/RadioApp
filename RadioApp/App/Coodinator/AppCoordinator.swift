@@ -25,8 +25,6 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         configWindow()
-        makeOnboardingFlow()
-//        makeMainFlow()
     }
     
     private func configWindow() {
@@ -37,12 +35,10 @@ final class AppCoordinator: Coordinator {
     func makeOnboardingFlow() {
         let vc = OnboardingMainVC()
         vc.onComplete = { [weak self] in
-            print ("main flow")
+            self?.makeMainFlow()
         }
         navigationController.setViewControllers([vc], animated: false)
-        
     }
-    
     
     func makeAuthFlow() {
         

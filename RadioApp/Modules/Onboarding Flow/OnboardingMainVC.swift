@@ -23,6 +23,15 @@ final class OnboardingMainVC: UIPageViewController, UIPageViewControllerDataSour
         let secondController = OnboardingPage2VC()
         let thirdController = OnboardingPage3VC()
         
+        
+        firstController.onNext = { [weak self] in
+            self?.navigateToNextPage()
+        }
+        
+        secondController.onNext = { [weak self] in
+            self?.navigateToNextPage()
+        }
+        
         thirdController.onComplete = { [weak self] in
             self?.onComplete?()
         }
@@ -32,6 +41,18 @@ final class OnboardingMainVC: UIPageViewController, UIPageViewControllerDataSour
         if let firstVC = pageControllers.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    deinit {
+        print("onboarding deinit")
+    }
+    
+    private func navigateToNextPage() {
+        guard let currentVC = viewControllers?.first,
+              let nextVC = pageViewController(self, viewControllerAfter: currentVC) else {
+            return
+        }
+        setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BE8707D2C5E48A3000DE6AB /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */; };
 		0BE8707F2C5E4961000DE6AB /* OnboardingPage2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE8707E2C5E4961000DE6AB /* OnboardingPage2VC.swift */; };
 		0BE870812C5E497B000DE6AB /* OnboardingPage3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE870802C5E497B000DE6AB /* OnboardingPage3VC.swift */; };
 		0BE870832C5E52C6000DE6AB /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE870822C5E52C6000DE6AB /* UserDefaultsService.swift */; };
@@ -61,7 +60,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		0BE8707E2C5E4961000DE6AB /* OnboardingPage2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2VC.swift; sourceTree = "<group>"; };
 		0BE870802C5E497B000DE6AB /* OnboardingPage3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage3VC.swift; sourceTree = "<group>"; };
 		0BE870822C5E52C6000DE6AB /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
@@ -117,7 +115,10 @@
 		0BE8707B2C5E4878000DE6AB /* Onboarding Flow */ = {
 			isa = PBXGroup;
 			children = (
-				0BE8707C2C5E48A3000DE6AB /* OnboardingCoordinator.swift */,
+				0BE870842C5E5400000DE6AB /* OnboardingMainVC.swift */,
+				522899682C57C87B0013FF87 /* OnboardingPage1VC.swift */,
+				0BE8707E2C5E4961000DE6AB /* OnboardingPage2VC.swift */,
+				0BE870802C5E497B000DE6AB /* OnboardingPage3VC.swift */,
 			);
 			path = "Onboarding Flow";
 			sourceTree = "<group>";
@@ -221,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				0BE8707B2C5E4878000DE6AB /* Onboarding Flow */,
-				5228997B2C57C8D30013FF87 /* Onboarding Screen */,
 				522899962C57E6D40013FF87 /* Auth */,
 				3CCE94F92C58395B00EE5B8A /* SideBarModule */,
 				522899992C57E6E80013FF87 /* PopularModule */,
@@ -231,17 +231,6 @@
 				522899A52C57E7360013FF87 /* StationDetailsScreen */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		5228997B2C57C8D30013FF87 /* Onboarding Screen */ = {
-			isa = PBXGroup;
-			children = (
-				0BE870842C5E5400000DE6AB /* OnboardingMainVC.swift */,
-				522899682C57C87B0013FF87 /* OnboardingPage1VC.swift */,
-				0BE8707E2C5E4961000DE6AB /* OnboardingPage2VC.swift */,
-				0BE870802C5E497B000DE6AB /* OnboardingPage3VC.swift */,
-			);
-			path = "Onboarding Screen";
 			sourceTree = "<group>";
 		};
 		522899862C57DC230013FF87 /* Font */ = {
@@ -422,7 +411,6 @@
 				3CCE94FB2C58397A00EE5B8A /* SideBarVC.swift in Sources */,
 				3CCE950A2C593ED100EE5B8A /* Coordinator.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingPage1VC.swift in Sources */,
-				0BE8707D2C5E48A3000DE6AB /* OnboardingCoordinator.swift in Sources */,
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
 				0BE870832C5E52C6000DE6AB /* UserDefaultsService.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
