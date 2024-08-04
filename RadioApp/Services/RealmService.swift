@@ -9,7 +9,7 @@ import RealmSwift
 
 final class RealmService {
     static let shared = RealmService()
-      
+    
     let realm: Realm
     
     private init() {
@@ -39,7 +39,7 @@ final class RealmService {
     func fetchStations() -> Results<Station> {
         realm.objects(Station.self)
     }
-
+    
     func delete(_ station: Station) {
         write {
             realm.delete(station)

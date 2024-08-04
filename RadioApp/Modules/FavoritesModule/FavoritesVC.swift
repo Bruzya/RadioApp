@@ -7,8 +7,13 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class FavoritesVC: UIViewController {
+    
+    // MARK: - Private Properties
+    private var stations: Results<Station>!
+    private let realmService = RealmService.shared
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -29,6 +34,8 @@ final class FavoritesVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .blueDark
         
+        stations = realmService.fetchStations()
+         
         setupCollectionView()
         addSubviews()
         setupConstraints()
