@@ -75,12 +75,13 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     
     // MARK: - UITableViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        return stations.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteViewCell", for: indexPath) as! FavoriteViewCell
-        
+        let station = stations[indexPath.item]
+        cell.configure(with: station)
         return cell
     }
     

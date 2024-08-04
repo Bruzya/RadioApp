@@ -115,10 +115,10 @@ final class FavoriteViewCell: UICollectionViewCell {
     }
     
     // MARK: - Public Methods
-//    func configure(with station: Station) {
-//        tagsLabel.text = station.tags
-//        nameLabel.text = station.name
-//    }
+    func configure(with station: Station) {
+        tagsLabel.text = station.tags
+        nameLabel.text = station.name
+    }
 }
 
 // MARK: - Private Methods
