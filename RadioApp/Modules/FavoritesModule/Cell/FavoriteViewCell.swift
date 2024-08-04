@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol FavoriteViewCellDelegate: AnyObject {
+    func didTapFavoriteButton(in cell: FavoriteViewCell)
+}
+
 final class FavoriteViewCell: UICollectionViewCell {
+    
+    // MARK: - Public Properties
+    weak var delegate: FavoriteViewCellDelegate?
     
     // MARK: - Private Properties
     private let randomColor: UIColor = {
@@ -124,7 +131,7 @@ final class FavoriteViewCell: UICollectionViewCell {
 // MARK: - Private Methods
 private extension FavoriteViewCell {
     @objc func favoriteButtonTapped() {
-        
+        delegate?.didTapFavoriteButton(in: self)
     }
     
     func setupWaveContainerView() {
@@ -196,4 +203,3 @@ private extension FavoriteViewCell {
         }
     }
 }
-

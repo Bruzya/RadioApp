@@ -44,6 +44,11 @@ final class FavoritesVC: UIViewController {
 
 // MARK: - Private Methods
 private extension FavoritesVC {
+    func deleteStation(at indexPath: IndexPath) {
+        let station = stations[indexPath.item]
+        realmService.delete(station)
+        collectionView.deleteItems(at: [indexPath])
+    }
     
     func setupCollectionView() {
         collectionView.backgroundColor = .clear
@@ -71,7 +76,7 @@ private extension FavoritesVC {
     }
 }
 
-extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavoriteViewCellDelegate {
     
     // MARK: - UITableViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,11 +87,19 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowL
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteViewCell", for: indexPath) as! FavoriteViewCell
         let station = stations[indexPath.item]
         cell.configure(with: station)
+        cell.delegate = self
         return cell
     }
     
     // MARK: - UITableViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 100, height: 123)
+    }
+    
+    // MARK: - FavoriteViewCellDelegate
+    func didTapFavoriteButton(in cell: FavoriteViewCell) {
+        if let indexPath = collectionView.indexPath(for: cell) {
+            deleteStation(at: indexPath)
+        }
     }
 }
