@@ -35,7 +35,7 @@ final class FavoritesVC: UIViewController {
         view.backgroundColor = .blueDark
         
         stations = realmService.fetchStations()
-         
+        
         setupCollectionView()
         addSubviews()
         setupConstraints()
@@ -50,11 +50,20 @@ private extension FavoritesVC {
         collectionView.deleteItems(at: [indexPath])
     }
     
+    func navigateToDetails(with station: Station) {
+        //        let detailsVC = StationDetailsVC()
+        //        detailsVC.station = station
+        //        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
     func setupCollectionView() {
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(FavoriteViewCell.self, forCellWithReuseIdentifier: "FavoriteViewCell")
+        collectionView.register(
+            FavoriteViewCell.self,
+            forCellWithReuseIdentifier: "FavoriteViewCell"
+        )
     }
     
     func addSubviews() {
@@ -76,15 +85,24 @@ private extension FavoritesVC {
     }
 }
 
-extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FavoriteViewCellDelegate {
+extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - UITableViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return stations.count
     }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteViewCell", for: indexPath) as! FavoriteViewCell
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "FavoriteViewCell",
+            for: indexPath
+        ) as! FavoriteViewCell
         let station = stations[indexPath.item]
         cell.configure(with: station)
         cell.delegate = self
@@ -92,11 +110,26 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     }
     
     // MARK: - UITableViewDelegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 100, height: 123)
     }
     
-    // MARK: - FavoriteViewCellDelegate
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let selectedStation = stations[indexPath.item]
+        navigateToDetails(with: selectedStation)
+    }
+}
+
+// MARK: - FavoriteViewCellDelegate
+extension FavoritesVC: FavoriteViewCellDelegate {
     func didTapFavoriteButton(in cell: FavoriteViewCell) {
         if let indexPath = collectionView.indexPath(for: cell) {
             deleteStation(at: indexPath)
