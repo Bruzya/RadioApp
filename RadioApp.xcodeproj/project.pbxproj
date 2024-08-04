@@ -40,6 +40,7 @@
 		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
 		522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */; };
 		64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */; };
+		64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8E2C5FD2F400CB46BB /* Station.swift */; };
 		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
 		FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */; };
 		FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CC2C59303E00DE491C /* SignInViewController.swift */; };
@@ -102,6 +103,7 @@
 		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 		64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
+		64CEDC8E2C5FD2F400CB46BB /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		FA9688CC2C59303E00DE491C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				5228997A2C57C8D00013FF87 /* Modules */,
 				522899892C57DC510013FF87 /* Helpers */,
 				3CCE94E42C5835AF00EE5B8A /* Services */,
+				64CEDC8D2C5FD2B100CB46BB /* Models */,
 				522899792C57C8BE0013FF87 /* Support */,
 			);
 			path = RadioApp;
@@ -347,6 +350,14 @@
 				64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		64CEDC8D2C5FD2B100CB46BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64CEDC8E2C5FD2F400CB46BB /* Station.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FA9688BE2C5927C900DE491C /* SignIn */ = {
@@ -502,6 +513,7 @@
 				5228999B2C57E6F10013FF87 /* PopularVC.swift in Sources */,
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
+				64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */,
 				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */,

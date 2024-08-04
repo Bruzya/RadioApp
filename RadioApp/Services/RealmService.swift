@@ -8,38 +8,52 @@
 import RealmSwift
 
 final class RealmService {
-
-    private var realm: Realm {
+    static let shared = RealmService()
+      
+    let realm: Realm
+    
+    private init() {
         do {
-            return try Realm()
+            realm = try Realm()
         } catch {
-            fatalError("Error initializing Realm: \(error.localizedDescription)")
+            fatalError("Failed to initialize Realm: \(error)")
         }
     }
+    
+    func isFavorite(withID stationID: String, stations: [Station]) -> Bool {
+        for station in stations {
+            if station.stationuuid.contains(stationID) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    // MARK: - CRUD
+    func save(_ station: Station) {
+        write {
+            realm.add(station)
+        }
+    }
+    
+    func fetchStations() -> Results<Station> {
+        realm.objects(Station.self)
+    }
 
-    // MARK: - Favorites
-
-    func saveToFavorites<T: Object>(_ object: T) {
+    func delete(_ station: Station) {
+        write {
+            realm.delete(station)
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func write(completion: () -> Void) {
         do {
             try realm.write {
-                realm.add(object, update: .modified)
+                completion()
             }
         } catch {
-            print("Error saving to favorites: \(error.localizedDescription)")
+            print(error)
         }
-    }
-
-    func removeFromFavorites<T: Object>(_ object: T) {
-        do {
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            print("Error removing from favorites: \(error.localizedDescription)")
-        }
-    }
-
-    func getFavorites<T: Object>(_ type: T.Type) -> Results<T> {
-        return realm.objects(type)
     }
 }
