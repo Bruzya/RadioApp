@@ -8,7 +8,7 @@
 import Foundation
 
 struct Station: Decodable {
-    let stationuuid: UUID
+    let stationuuid: String
     let name: String
     let url: String
     let favicon: String
