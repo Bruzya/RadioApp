@@ -8,7 +8,6 @@
 import UIKit
 
 final class AllStationsVC: UIViewController {
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 1/255, green: 1/255, blue: 42/255, alpha: 1)
