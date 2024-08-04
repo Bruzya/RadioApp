@@ -39,6 +39,9 @@
 		522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */; };
 		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
 		522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */; };
+		522899D22C6011780013FF87 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899D12C6011780013FF87 /* NetworkService.swift */; };
+		522899D42C6012080013FF87 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899D32C6012080013FF87 /* Link.swift */; };
+		522899D62C6012220013FF87 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899D52C6012220013FF87 /* Error.swift */; };
 		64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */; };
 		64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8E2C5FD2F400CB46BB /* Station.swift */; };
 		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
@@ -102,6 +105,9 @@
 		522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		522899AF2C59688B0013FF87 /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
+		522899D12C6011780013FF87 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		522899D32C6012080013FF87 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		522899D52C6012220013FF87 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 		64CEDC8E2C5FD2F400CB46BB /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 		3CCE94E42C5835AF00EE5B8A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				522899D02C60116E0013FF87 /* Network */,
 				3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */,
 				3CCE94E72C58360B00EE5B8A /* RealmService.swift */,
 			);
@@ -344,6 +351,16 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		522899D02C60116E0013FF87 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				522899D12C6011780013FF87 /* NetworkService.swift */,
+				522899D32C6012080013FF87 /* Link.swift */,
+				522899D52C6012220013FF87 /* Error.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		64CEDC8A2C5FC80800CB46BB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,10 +542,13 @@
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
 				3CCE94FB2C58397A00EE5B8A /* SideBarVC.swift in Sources */,
 				3CCE950A2C593ED100EE5B8A /* Coordinator.swift in Sources */,
+				522899D62C6012220013FF87 /* Error.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
+				522899D42C6012080013FF87 /* Link.swift in Sources */,
+				522899D22C6011780013FF87 /* NetworkService.swift in Sources */,
 				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
 				FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */,
 				FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */,
