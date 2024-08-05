@@ -119,14 +119,14 @@ class StationsVC: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel: RadioStationListVM!
+    var viewModel: RadioStationListVM = RadioStationListVM()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //        инициализируем до вызова делегата
-        viewModel = RadioStationListVM()
+//        viewModel = RadioStationListVM()
         
         titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
         
@@ -139,6 +139,12 @@ class StationsVC: UIViewController {
         
         volumeSlider.value = 10
         volumeLabel.text = String(format: "%.0f", volumeSlider.value) + "%"
+        
+        viewModel.getStations("http://all.api.radio-browser.info/json/stations?random&limit=20" ) { [weak self] in
+            DispatchQueue.main.async {
+                self?.radioTableView.reloadData()
+            }
+        }
         
     }
     

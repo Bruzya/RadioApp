@@ -8,17 +8,26 @@
 import UIKit
 
 class RadioStationListVM {
-      var radioStation: [RadioStation] = [
-        RadioStation(stationuuid: "123", name: "first", url: "www", bitrate: 16, tag: "16", votes: 2),
-        RadioStation(stationuuid: "234", name: "second", url: "www", bitrate: 28, tag: "Rock", votes: 10),
-        RadioStation(stationuuid: "345", name: "third", url: "www", bitrate: 16, tag: "Pop", votes: 5)
-    ]
+      var radioStation: [Station] = []
     
     var numberOfStations: Int {
+//        return radioStation.count
         return radioStation.count
     }
     
-//   добавить получение данных из сети с радиостанциями для заполнения массива
+    func getStations(_ link: String, complition: @escaping ()->(Void)) {
+        NetworkService.shared.fetchData(from: link) { result in
+            switch result {
+            case .success(let data): 
+                self.radioStation.append(contentsOf: data)
+                complition()
+            case .failure(let error):
+                Swift.print("error \(error)")
+            }
+        }
+    }
+    
+
     
     func radioStationViewModel(at index: Int) -> RadioStationViewModel {
         return RadioStationViewModel(radioStation: radioStation[index])

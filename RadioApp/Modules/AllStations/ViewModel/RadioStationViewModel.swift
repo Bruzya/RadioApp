@@ -7,25 +7,25 @@
 
 class  RadioStationViewModel {
     
-    private let radioStation: RadioStation
+    private let radioStation: Station
     
     var name: String {
         return radioStation.name
     }
     
-    var bitrate: Int {
-        return radioStation.bitrate
-    }
+//    var bitrate: Int {
+//        return radioStation.bitrate
+//    }
     
     var tag: String {
-        return radioStation.tag ?? String(radioStation.bitrate)
+        return radioStation.tags
     }
     
     var votes: Int {
-        return radioStation.votes ?? 0
+        return radioStation.votes
     }
     
-    init(radioStation: RadioStation) {
+    init(radioStation: Station) {
         self.radioStation = radioStation
     }
     
