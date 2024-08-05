@@ -9,6 +9,13 @@ import UIKit
 
 final class SettingsVC: UIViewController {
     
+    private var settingView: SettingsView!
+    
+    override func loadView() {
+        settingView = SettingsView()
+        view = settingView
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
