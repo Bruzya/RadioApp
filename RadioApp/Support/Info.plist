@@ -2,11 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+    <key>NSAppTransportSecurity</key>
+       <dict>
+           <key>NSExceptionDomains</key>
+           <dict>
+               <key>all.api.radio-browser.info</key>
+               <dict>
+                   <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                   <true/>
+               </dict>
+           </dict>
+       </dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.494839259756-j9qsg3qdhjab69mmv9nub0mpuab5q9so</string>
+            </array>
+        </dict>
+    </array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Regular.ttf</string>
@@ -30,5 +45,7 @@
 			</array>
 		</dict>
 	</dict>
+    <key>GIDClientID</key>
+      <string>494839259756-j9qsg3qdhjab69mmv9nub0mpuab5q9so.apps.googleusercontent.com</string>
 </dict>
 </plist>
