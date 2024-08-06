@@ -20,8 +20,8 @@ final class RenameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Rename"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayMedium, size: 16), NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white), style: .done, target: self, action: #selector(goBackToSettings))
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
         
         renameView.reinstallImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         renameView.saveButton.addTarget(self, action: #selector(saveInfo), for: .touchUpInside)
