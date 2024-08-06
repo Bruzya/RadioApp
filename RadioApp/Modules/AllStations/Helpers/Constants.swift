@@ -44,16 +44,7 @@ struct Search {
     static let result: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "search")
-        imageView.contentMode = .scaleAspectFit
         return imageView
-    }()
-    
-    static let resultPadding: UIView = {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        result.clipsToBounds = true
-        result.frame = CGRect(x: -60, y: -25, width: 120, height: 120)
-        paddingView.addSubview(result)
-        return paddingView
     }()
     
 }

@@ -50,12 +50,20 @@ class AllStationsVC: UIViewController {
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = Colors.grey
-        textField.leftView = Search.icon
-        textField.leftViewMode = .always
+        
         textField.leftView = Search.iconPadding
-        textField.rightView = Search.result
+        textField.leftViewMode = .always
+        
+        let rightButton = UIButton(type: .custom)
+        rightButton.setImage(Search.result.image, for: .normal)
+        rightButton.addTarget(self, action: #selector(toResultSearch), for: .touchUpInside)
+        
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightButton.frame = CGRect(x: -60, y: -25, width: 120, height: 120)
+        rightView.addSubview(rightButton)
+        textField.rightView = rightView
         textField.rightViewMode = .always
-        textField.rightView = Search.resultPadding
+        
         textField.textColor = Colors.white
         textField.attributedPlaceholder = NSAttributedString(
             string: K.placeholder,
@@ -64,6 +72,7 @@ class AllStationsVC: UIViewController {
         textField.returnKeyType = .search
         textField.layer.cornerRadius = 20
         textField.layer.masksToBounds = true
+        
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -179,6 +188,10 @@ class AllStationsVC: UIViewController {
     
     @objc private func updateVolumeLabel() {
         volumeLabel.text = "\(Int(volumeSlider.value))%"
+    }
+    
+    @objc private func toResultSearch() {
+        print("Result search radio stations")
     }
 }
 
