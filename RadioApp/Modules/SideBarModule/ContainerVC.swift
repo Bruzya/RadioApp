@@ -8,10 +8,13 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 import RxGesture
 
 final class ContainerVC: UIViewController {
 
+    var onProfileTap = PublishRelay<Void>()
+    
     enum MenuState {
         case opened
         case closed
@@ -26,6 +29,7 @@ final class ContainerVC: UIViewController {
     private let favoritesVC = FavoritesVC()
     private let popularVC = PopularVC()
     private let player = PlayerView()
+    private let headerView = HeaderView()
 
     private let button: UIButton = {
         let btn = UIButton()
@@ -68,6 +72,7 @@ final class ContainerVC: UIViewController {
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = UIScreen.main.bounds.width / 5
                             self.player.frame.origin.x = UIScreen.main.bounds.width / 2
+                            self.headerView.frame.origin.x = UIScreen.main.bounds.width / 4
                         } completion: { done in
                             if done {
                                 self.menuState = .opened
@@ -82,6 +87,7 @@ final class ContainerVC: UIViewController {
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = 0
                             self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                            self.headerView.frame.origin.x = UIScreen.main.bounds.width / 5
                         } completion: { done in
                             if done {
                                 self.menuState = .closed
@@ -116,12 +122,20 @@ final class ContainerVC: UIViewController {
                 options: .curveEaseInOut) {
                     self.navigationVC?.view.frame.origin.x = 0
                     self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                    self.headerView.frame.origin.x = UIScreen.main.bounds.width / 5
                 } completion: { done in
                     if done {
                         self.menuState = .closed
                     }
                 }
         }
+        
+        headerView.profileImage.rx
+            .tapGesture()
+            .when(.recognized)
+            .mapToVoid()
+            .bind(to: onProfileTap)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -135,6 +149,7 @@ private extension ContainerVC {
     func addSubviews() {
         view.addSubview(button)
         view.addSubview(player)
+        view.addSubview(headerView)
     }
     
     func setupConstraints() {
@@ -142,6 +157,7 @@ private extension ContainerVC {
             make
                 .top
                 .equalTo(view.safeAreaLayoutGuide)
+                .offset(10)
             make
                 .leading
                 .equalToSuperview()
@@ -149,6 +165,20 @@ private extension ContainerVC {
             make
                 .size
                 .equalTo(33)
+        }
+        
+        headerView.snp.makeConstraints { make in
+            make
+                .top
+                .equalTo(view.safeAreaLayoutGuide)
+            make
+                .leading
+                .equalTo(button.snp.trailing)
+                .offset(20)
+            make
+                .trailing
+                .equalToSuperview()
+                .inset(20)
         }
 
         player.snp.makeConstraints { make in
