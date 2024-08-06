@@ -48,3 +48,19 @@ struct Search {
     }()
     
 }
+
+
+/*
+ 
+ extension UIButton {
+     convenience init(titleColor: UIColor?, backgroundColor: UIColor? = .clear) {
+         self.init(type: .system)
+         self.titleLabel?.font = .systemFont(ofSize: 30)
+         self.setTitleColor(titleColor, for: .normal)
+         self.backgroundColor = backgroundColor
+         self.translatesAutoresizingMaskIntoConstraints = false
+     }
+ }
+
+ 
+ */

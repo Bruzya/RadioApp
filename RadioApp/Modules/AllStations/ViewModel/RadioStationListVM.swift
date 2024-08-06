@@ -8,7 +8,7 @@
 import UIKit
 
 final class RadioStationListVM {
-    private var radioStation: [Station] = []
+     var radioStation: [Station] = []
     
     var numberOfStations: Int {
         return radioStation.count

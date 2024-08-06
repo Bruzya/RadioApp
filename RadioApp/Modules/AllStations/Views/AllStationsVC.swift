@@ -178,6 +178,7 @@ class AllStationsVC: UIViewController {
     private func setDelegate() {
         radioTableView.delegate = self
         radioTableView.dataSource = self
+        searchTextField.delegate = self
     }
     
     // MARK: - Selectors
@@ -281,5 +282,23 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
             cell.deselectCell()
         }
+    }
+}
+
+// MARK: - Extension TextFild Delegate
+
+extension AllStationsVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        if let radioName = searchTextField.text, !radioName.isEmpty {
+                    let filteredStations = viewModel.radioStation.filter { $0.name.lowercased().contains(radioName.lowercased()) }
+                    print(filteredStations)
+                    // После фильтрации надо будет передать на др экран
+                    viewModel.radioStation = filteredStations
+                    radioTableView.reloadData()
+                }
     }
 }
