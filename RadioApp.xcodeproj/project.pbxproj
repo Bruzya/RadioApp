@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027A2C5B935500D64D01 /* RadioStationListVM.swift */; };
+		113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */; };
+		11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0C2C5B949500249DA7 /* StationsVC.swift */; };
+		11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0D2C5B949500249DA7 /* RadioStationCell.swift */; };
+		11AFEF142C5B956D00249DA7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF132C5B956D00249DA7 /* Model.swift */; };
+		11AFEF182C5B960500249DA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF162C5B960500249DA7 /* Constants.swift */; };
+		11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF172C5B960500249DA7 /* LabelFactory.swift */; };
+		3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2987D92C5E513E003A5872 /* RX + ext.swift */; };
+		3C6623C52C628D68004BB001 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 3CCE94EC2C58376600EE5B8A /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA05CE52C5E49300070A804 /* PlayerView.swift */; };
 		3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */; };
 		3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */; };
 		3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E72C58360B00EE5B8A /* RealmService.swift */; };
@@ -78,6 +88,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3C6623C52C628D68004BB001 /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				FA9688DC2C5A72C200DE491C /* Extensions */,
+				11AFEF162C5B960500249DA7 /* Constants.swift */,
+				11AFEF172C5B960500249DA7 /* LabelFactory.swift */,
 				522899862C57DC230013FF87 /* Font */,
 			);
 			path = Helpers;
@@ -459,6 +472,7 @@
 			children = (
 				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
 				FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */,
+				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -602,7 +616,7 @@
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
 				522899D42C6012080013FF87 /* Link.swift in Sources */,
 				522899D22C6011780013FF87 /* NetworkService.swift in Sources */,
-				522899A12C57E70D0013FF87 /* AllStationsVC.swift in Sources */,
+				3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */,
 				FA9688D72C5A5CCE00DE491C /* ConnectWithGoogleView.swift in Sources */,
 				FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */,
 				DD3A03482C613169001B6F36 /* ImagePicker.swift in Sources */,
@@ -761,7 +775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6P3D789X98;
+				DEVELOPMENT_TEAM = A5PP5569YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -793,7 +807,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6P3D789X98;
+				DEVELOPMENT_TEAM = A5PP5569YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadioApp/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
