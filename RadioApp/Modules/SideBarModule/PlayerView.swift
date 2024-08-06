@@ -12,8 +12,9 @@ import RxGesture
 import SnapKit
 import MediaPlayer
 
-final class PlayerView: UIView {
 
+final class PlayerView: UIView {
+    
     private let hStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -21,50 +22,48 @@ final class PlayerView: UIView {
         stack.distribution = .equalSpacing
         return stack
     }()
-
+    
     private let leftButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .previous)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private let playButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .player)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
+    
     private let rightButton: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(resource: .next)
         image.contentMode = .scaleAspectFit
         return image
     }()
-
-    var audioPlayer: AVPlayer?
-    var timer: Timer?
-    var volumeSlider: UISlider!
-
+    
+    private var audioPlayer: AVPlayer?
+    private var volumeSlider: UISlider!
+    private var volumeView = MPVolumeView()
     private let disposeBag = DisposeBag()
-
+    
     init() {
         super.init(frame: .zero)
         if let url = URL(string: "http://icecast.vgtrk.cdnvideo.ru/vestifm_mp3_192kbps") {
             audioPlayer = AVPlayer(url: url)
             print("Player initialized: \(String(describing: audioPlayer))")
-            audioPlayer?.play()
         }
-
+        
         setupUI()
         setupBindings()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupBindings() {
         playButton.rx.tapGesture()
             .when(.recognized)
@@ -74,7 +73,7 @@ final class PlayerView: UIView {
                 animate(with: playButton)
             })
             .disposed(by: disposeBag)
-
+        
         leftButton.rx.tapGesture()
             .when(.recognized)
             .mapToVoid()
@@ -82,7 +81,7 @@ final class PlayerView: UIView {
                 animate(with: leftButton)
             })
             .disposed(by: disposeBag)
-
+        
         rightButton.rx.tapGesture()
             .when(.recognized)
             .mapToVoid()
@@ -90,24 +89,41 @@ final class PlayerView: UIView {
                 animate(with: rightButton)
             })
             .disposed(by: disposeBag)
-
-        // Bind the volume slider to the volume of the audio player
+        
         volumeSlider.rx.value
             .bind(onNext: { [unowned self] value in
-                audioPlayer?.volume = Float(value)
+                audioPlayer?.volume = value
+                setSystemVolume(value)
+            })
+            .disposed(by: disposeBag)
+        
+        volumeView.rx.volume
+            .subscribe(onNext: { [unowned self] volume in
+                setSliderVolume(volume)
             })
             .disposed(by: disposeBag)
     }
-
+    
+    func setSystemVolume(_ volume: Float) {
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
+        }
+    }
+    
+    func setSliderVolume(_ volume: Float) {
+        volumeSlider.value = volume
+    }
+    
     private func togglePlayPause() {
-         if audioPlayer?.rate == 0 {
-             audioPlayer?.play()
-             print("Play sound")
-         } else {
-             print("pause")
-             audioPlayer?.pause()
-         }
-     }
+        if audioPlayer?.rate == 0 {
+            audioPlayer?.play()
+            print("Play sound")
+        } else {
+            print("pause")
+            audioPlayer?.pause()
+        }
+    }
 }
 
 // MARK: - UI
@@ -120,7 +136,6 @@ private extension PlayerView {
         volumeSlider.thumbTintColor = Colors.teal
         volumeSlider.minimumTrackTintColor = Colors.teal
         volumeSlider.maximumTrackTintColor = Colors.grey
-
         addSubviews()
         setupConstraints()
     }
@@ -131,8 +146,10 @@ private extension PlayerView {
                 hStack.addArrangedSubview($0)
             }
 
-        addSubview(hStack)
-        addSubview(volumeSlider)
+        [hStack, volumeSlider]
+            .forEach {
+            addSubview($0)
+        }
     }
 
     func setupConstraints() {
@@ -144,6 +161,7 @@ private extension PlayerView {
                 .height
                 .equalTo(100)
         }
+        
         playButton.snp.makeConstraints { make in
             make
                 .size
@@ -159,6 +177,7 @@ private extension PlayerView {
                 .size
                 .equalTo(48)
         }
+
         volumeSlider.snp.makeConstraints { make in
             make
                 .top

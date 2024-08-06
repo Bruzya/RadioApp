@@ -10,11 +10,6 @@ import SnapKit
 import RxSwift
 import RxGesture
 
-import UIKit
-import SnapKit
-import RxSwift
-import RxGesture
-
 final class ContainerVC: UIViewController {
 
     enum MenuState {
@@ -30,7 +25,7 @@ final class ContainerVC: UIViewController {
     private let allStationsVC = AllStationsVC()
     private let favoritesVC = FavoritesVC()
     private let popularVC = PopularVC()
-//    private let player = PlayerView()
+    private let player = PlayerView()
 
     private let button: UIButton = {
         let btn = UIButton()
@@ -42,26 +37,25 @@ final class ContainerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         addChildVCs()
-        setupConstraints()
+        setupUI()
         setupBindings()
+ view.backgroundColor = .green
+        setupConstraints()
     }
-
+    
     private func addChildVCs() {
         addChild(menuVC)
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
-
         navigationVC = UINavigationController(rootViewController: allStationsVC)
+        navigationVC?.delegate = self
         guard let navigationVC = navigationVC else { return }
         addChild(navigationVC)
         view.addSubview(navigationVC.view)
         navigationVC.didMove(toParent: self)
-
-        view.addSubview(button)
-//        view.addSubview(player)
     }
+    
 
     private func setupBindings() {
         button.rx.tap
@@ -75,7 +69,7 @@ final class ContainerVC: UIViewController {
                         initialSpringVelocity: 0,
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = UIScreen.main.bounds.width / 5
-//                            self.player.frame.origin.x = UIScreen.main.bounds.width / 2
+                            self.player.frame.origin.x = UIScreen.main.bounds.width / 2
                         } completion: { done in
                             if done {
                                 self.menuState = .opened
@@ -89,7 +83,7 @@ final class ContainerVC: UIViewController {
                         initialSpringVelocity: 0,
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = 0
-//                            self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                            self.player.frame.origin.x = UIScreen.main.bounds.width / 5
                         } completion: { done in
                             if done {
                                 self.menuState = .closed
@@ -104,15 +98,15 @@ final class ContainerVC: UIViewController {
             switch option {
             case .allStation:
                 if currentVC != allStationsVC {
-                    self.navigationVC?.setViewControllers([allStationsVC], animated: false)
+                    self.navigationVC?.setViewControllers([allStationsVC], animated: true)
                 }
             case .favorite:
                 if currentVC != favoritesVC {
-                    self.navigationVC?.setViewControllers([favoritesVC], animated: false)
+                    self.navigationVC?.setViewControllers([favoritesVC], animated: true)
                 }
             case .popular:
                 if currentVC != popularVC {
-                    self.navigationVC?.setViewControllers([popularVC], animated: false)
+                    self.navigationVC?.setViewControllers([popularVC], animated: true)
                 }
             }
 
@@ -123,7 +117,7 @@ final class ContainerVC: UIViewController {
                 initialSpringVelocity: 0,
                 options: .curveEaseInOut) {
                     self.navigationVC?.view.frame.origin.x = 0
-//                    self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                    self.player.frame.origin.x = UIScreen.main.bounds.width / 5
                 } completion: { done in
                     if done {
                         self.menuState = .closed
@@ -133,7 +127,18 @@ final class ContainerVC: UIViewController {
     }
 }
 
+
 private extension ContainerVC {
+    func setupUI() {
+        addSubviews()
+        setupConstraints()
+    }
+    
+    func addSubviews() {
+        view.addSubview(button)
+        view.addSubview(player)
+    }
+    
     func setupConstraints() {
         button.snp.makeConstraints { make in
             make
@@ -148,14 +153,14 @@ private extension ContainerVC {
                 .equalTo(33)
         }
 
-//        player.snp.makeConstraints { make in
-//            make
-//                .leading.trailing
-//                .equalToSuperview()
-//                .inset(75)
-//            make
-//                .bottom
-//                .equalTo(view.safeAreaLayoutGuide)
-//        }
+        player.snp.makeConstraints { make in
+            make
+                .leading.trailing
+                .equalToSuperview()
+                .inset(75)
+            make
+                .bottom
+                .equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
