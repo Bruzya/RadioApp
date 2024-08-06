@@ -27,10 +27,10 @@ final class ContainerVC: UIViewController {
     var navigationVC: UINavigationController?
 
     private let menuVC = SideBarVC()
-    private let allStationsVC = StationsVC()
+    private let allStationsVC = AllStationsVC()
     private let favoritesVC = FavoritesVC()
     private let popularVC = PopularVC()
-    private let player = PlayerView()
+//    private let player = PlayerView()
 
     private let button: UIButton = {
         let btn = UIButton()

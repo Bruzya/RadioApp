@@ -1,5 +1,5 @@
 //
-//  StationsVC.swift
+//  AllStationsVC.swift
 //  RadioApp
 //
 //  Created by Evgenii Mazrukho on 29.07.2024.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class StationsVC: UIViewController {
+class AllStationsVC: UIViewController {
     
     // MARK: - UI properties
 
@@ -119,14 +119,11 @@ class StationsVC: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel: RadioStationListVM = RadioStationListVM()
+    var viewModel = RadioStationListVM()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        инициализируем до вызова делегата
-//        viewModel = RadioStationListVM()
         
         titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
         
@@ -187,7 +184,7 @@ class StationsVC: UIViewController {
 
 // MARK: - Extensions Set Constraints
 
-extension StationsVC {
+extension AllStationsVC {
     private func setConstraints() {
         
         topStackView.snp.makeConstraints { make in
@@ -241,7 +238,7 @@ extension StationsVC {
 
 // MARK: - TableView DataSource, Delegate
 
-extension StationsVC: UITableViewDelegate, UITableViewDataSource {
+extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfStations
     }

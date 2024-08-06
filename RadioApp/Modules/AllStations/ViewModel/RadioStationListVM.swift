@@ -7,11 +7,10 @@
 
 import UIKit
 
-class RadioStationListVM {
-      var radioStation: [Station] = []
+final class RadioStationListVM {
+    private var radioStation: [Station] = []
     
     var numberOfStations: Int {
-//        return radioStation.count
         return radioStation.count
     }
     
@@ -26,8 +25,6 @@ class RadioStationListVM {
             }
         }
     }
-    
-
     
     func radioStationViewModel(at index: Int) -> RadioStationViewModel {
         return RadioStationViewModel(radioStation: radioStation[index])
