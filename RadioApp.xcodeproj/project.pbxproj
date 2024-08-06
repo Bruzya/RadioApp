@@ -16,6 +16,9 @@
 		11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF172C5B960500249DA7 /* LabelFactory.swift */; };
 		3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2987D92C5E513E003A5872 /* RX + ext.swift */; };
 		3C6623C52C628D68004BB001 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 3CCE94EC2C58376600EE5B8A /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3C6623CB2C629F18004BB001 /* UserNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6623CA2C629F18004BB001 /* UserNotificationService.swift */; };
+		3C6623CD2C62A1C9004BB001 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6623CC2C62A1C9004BB001 /* HeaderView.swift */; };
+		3C6623CF2C62AB25004BB001 /* TimerPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6623CE2C62AB25004BB001 /* TimerPickerVC.swift */; };
 		3CA05CE62C5E49300070A804 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA05CE52C5E49300070A804 /* PlayerView.swift */; };
 		3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */; };
 		3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */; };
@@ -106,6 +109,9 @@
 		11AFEF162C5B960500249DA7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = RadioApp/Modules/AllStations/Helpers/Constants.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF172C5B960500249DA7 /* LabelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelFactory.swift; path = RadioApp/Modules/AllStations/Helpers/LabelFactory.swift; sourceTree = SOURCE_ROOT; };
 		3C2987D92C5E513E003A5872 /* RX + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RX + ext.swift"; sourceTree = "<group>"; };
+		3C6623CA2C629F18004BB001 /* UserNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationService.swift; sourceTree = "<group>"; };
+		3C6623CC2C62A1C9004BB001 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3C6623CE2C62AB25004BB001 /* TimerPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerVC.swift; sourceTree = "<group>"; };
 		3CA05CE52C5E49300070A804 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		3CCE94E22C58359800EE5B8A /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -212,12 +218,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3C6623C92C629EE0004BB001 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3CD434CC2C5E6A77006A8136 /* FadeTransitionAnimator.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		3CCE94E42C5835AF00EE5B8A /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				522899D02C60116E0013FF87 /* Network */,
 				3CCE94E52C5835BF00EE5B8A /* FirebaseService.swift */,
 				3CCE94E72C58360B00EE5B8A /* RealmService.swift */,
+				3C6623CA2C629F18004BB001 /* UserNotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				3CCE94FF2C583FC500EE5B8A /* ContainerVC.swift */,
+				3C6623CC2C62A1C9004BB001 /* HeaderView.swift */,
 				3CCE95152C59509D00EE5B8A /* SideBarCell.swift */,
 				3CCE94FA2C58397A00EE5B8A /* SideBarVC.swift */,
 				3CA05CE52C5E49300070A804 /* PlayerView.swift */,
@@ -350,11 +366,11 @@
 		522899892C57DC510013FF87 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3C6623C92C629EE0004BB001 /* Animations */,
 				FA9688DC2C5A72C200DE491C /* Extensions */,
+				522899862C57DC230013FF87 /* Font */,
 				11AFEF162C5B960500249DA7 /* Constants.swift */,
 				11AFEF172C5B960500249DA7 /* LabelFactory.swift */,
-				522899862C57DC230013FF87 /* Font */,
-				3CD434CC2C5E6A77006A8136 /* FadeTransitionAnimator.swift */,
 				3CD434CE2C5E88C7006A8136 /* AudioProcessor.swift */,
 			);
 			path = Helpers;
@@ -420,6 +436,7 @@
 			children = (
 				3CCE94FD2C583BB500EE5B8A /* SettingsVC.swift */,
 				DD6151B72C60CFA10095E1B5 /* SettingsView.swift */,
+				3C6623CE2C62AB25004BB001 /* TimerPickerVC.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -643,6 +660,7 @@
 				64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */,
 				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
+				3C6623CB2C629F18004BB001 /* UserNotificationService.swift in Sources */,
 				FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */,
 				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,
 				DD6151C32C60D26F0095E1B5 /* RenameView.swift in Sources */,
@@ -654,6 +672,7 @@
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
+				3C6623CF2C62AB25004BB001 /* TimerPickerVC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
 				113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */,
@@ -681,6 +700,7 @@
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				DD6151BB2C60D06E0095E1B5 /* PrivacyVC.swift in Sources */,
 				3CCE950C2C593EF400EE5B8A /* AppCoordinator.swift in Sources */,
+				3C6623CD2C62A1C9004BB001 /* HeaderView.swift in Sources */,
 				64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */,
 				522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */,
 				FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */,

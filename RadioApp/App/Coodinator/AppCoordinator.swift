@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class AppCoordinator: Coordinator {
     
@@ -16,6 +18,8 @@ final class AppCoordinator: Coordinator {
     var window: UIWindow?
     
     var appDIContainer: AppDIContainer?
+    
+    private let disposeBag = DisposeBag()
     
     init(navigationController: UINavigationController, window: UIWindow?, appDIContainer: AppDIContainer?) {
         self.navigationController = navigationController
@@ -44,6 +48,18 @@ final class AppCoordinator: Coordinator {
     
     func makeMainFlow() {
         let vc = ContainerVC()
+        
+        vc.onProfileTap
+            .bind(onNext: { [unowned self] in
+                makeProfileFlow()
+            })
+            .disposed(by: disposeBag)
+        
         navigationController.setViewControllers([vc], animated: false)
+    }
+    
+    func makeProfileFlow() {
+        let vc = SettingsVC()
+        navigationController.pushViewController(vc, animated: true)
     }
 }
