@@ -29,7 +29,7 @@ final class UserNotificationService {
         content.sound = .default
 
         let calendar = Calendar.current
-        var dateComponents = calendar.dateComponents([.hour, .minute], from: time)
+        let dateComponents = calendar.dateComponents([.hour, .minute], from: time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: "dailyNotification", content: content, trigger: trigger)
 
