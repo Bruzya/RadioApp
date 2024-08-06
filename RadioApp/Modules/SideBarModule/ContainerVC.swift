@@ -72,6 +72,7 @@ final class ContainerVC: UIViewController {
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = UIScreen.main.bounds.width / 5
                             self.player.frame.origin.x = UIScreen.main.bounds.width / 2
+                            self.headerView.frame.origin.x = UIScreen.main.bounds.width / 4
                         } completion: { done in
                             if done {
                                 self.menuState = .opened
@@ -86,6 +87,7 @@ final class ContainerVC: UIViewController {
                         options: .curveEaseInOut) {
                             self.navigationVC?.view.frame.origin.x = 0
                             self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                            self.headerView.frame.origin.x = UIScreen.main.bounds.width / 5
                         } completion: { done in
                             if done {
                                 self.menuState = .closed
@@ -120,6 +122,7 @@ final class ContainerVC: UIViewController {
                 options: .curveEaseInOut) {
                     self.navigationVC?.view.frame.origin.x = 0
                     self.player.frame.origin.x = UIScreen.main.bounds.width / 5
+                    self.headerView.frame.origin.x = UIScreen.main.bounds.width / 5
                 } completion: { done in
                     if done {
                         self.menuState = .closed
