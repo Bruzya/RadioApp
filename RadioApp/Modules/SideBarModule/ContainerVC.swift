@@ -56,23 +56,6 @@ final class ContainerVC: UIViewController {
     
 
     private func setupBindings() {
-        favoritesVC.onDetail
-            .bind(onNext: { [weak self] _ in
-                guard let self else { return }
-                let vc = StationDetailsVC()
-                vc.audioPlayer = player.audioPlayer
-                self.favoritesVC.navigationController?.pushViewController(vc, animated: true)
-                self.button.isHidden = true
-                
-                vc.onDismiss
-                    .bind { [weak self] _ in
-                        self?.button.isHidden = false
-                    }
-                    .disposed(by: self.disposeBag)
-            })
-            .disposed(by: disposeBag)
-        
-        
         button.rx.tap
             .bind(onNext: { [unowned self] in
                 switch menuState {
