@@ -36,9 +36,10 @@ final class SettingsVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "SettingsVC"
-
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 16), NSAttributedString.Key.foregroundColor : UIColor.white]
-
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBack))
+        
         settingView.buttonLegal.addTarget(self, action: #selector(goToPrivacyVC), for: .touchUpInside)
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
@@ -62,6 +63,11 @@ final class SettingsVC: UIViewController {
 
         navigationController?.present(vc, animated: true)
     }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension SettingsVC {
