@@ -11,32 +11,6 @@ import SnapKit
 class StationsVC: UIViewController {
     
     // MARK: - UI properties
-
-    private lazy var topStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = Colors.white
-        label.font = Font.getFont(Font.displayBold, size: 24)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var profileImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "profileButton")
-        imageView.isUserInteractionEnabled = true
-        let tapImage = UITapGestureRecognizer(target: self, action: #selector(profileDetailTaped))
-        imageView.addGestureRecognizer(tapImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
@@ -130,9 +104,6 @@ class StationsVC: UIViewController {
         
         //        инициализируем до вызова делегата
         viewModel = RadioStationListVM()
-        
-        titleLabel.attributedText = LabelFactory.createColorText(for: K.appName)
-        
         setView()
         setDelegate()
         setConstraints()
@@ -149,12 +120,6 @@ class StationsVC: UIViewController {
     
     private func setView() {
         view.backgroundColor = Colors.background
-        
-        view.addSubview(topStackView)
-        
-        topStackView.addArrangedSubview(titleLabel)
-        topStackView.addArrangedSubview(profileImage)
-        
         view.addSubview(subtitleLabel)
         view.addSubview(searchTextField)
         view.addSubview(volumeView)
@@ -186,15 +151,8 @@ class StationsVC: UIViewController {
 
 extension StationsVC {
     private func setConstraints() {
-        
-        topStackView.snp.makeConstraints { make in
-            make.top.equalTo(view).offset(80)
-            make.leading.equalTo(view).offset(62)
-            make.trailing.equalTo(view).offset(-8)
-        }
-        
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().offset(60)
         }
         
