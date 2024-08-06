@@ -10,6 +10,9 @@ import SnapKit
 
 class SettingsView: UIView {
     
+    private let colorBack = UIColor(red: 37/255, green: 40/255, blue: 54/255, alpha: 1.0)
+    private let colorImage = UIColor(red: 146/255, green: 146/255, blue: 157/255, alpha: 1.0)
+    
     lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -105,15 +108,15 @@ class SettingsView: UIView {
     
     lazy var backNotificationImage: UIView = {
         let view = UIView()
-        view.backgroundColor = .darkGray
-        view.layer.cornerRadius = 20
+        view.backgroundColor = colorBack
+        view.layer.cornerRadius = 15
         return view
     }()
     
     lazy var notificationImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "bell.fill")
-        image.tintColor = .white
+        image.tintColor = colorImage
         return image
     }()
     
@@ -148,7 +151,7 @@ class SettingsView: UIView {
     
     lazy var rectangleDivider: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 15
         
         return view
@@ -165,7 +168,7 @@ class SettingsView: UIView {
     
     lazy var backLanguageView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 15
         return view
     }()
@@ -173,7 +176,7 @@ class SettingsView: UIView {
     lazy var languageImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "globe")
-        image.tintColor = .white
+        image.tintColor = colorImage
         return image
     }()
     
@@ -239,7 +242,7 @@ class SettingsView: UIView {
     
     lazy var backLegalView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 15
         return view
     }()
@@ -247,7 +250,7 @@ class SettingsView: UIView {
     lazy var shieldImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "shield.fill")
-        image.tintColor = .white
+        image.tintColor = colorImage
         return image
     }()
     
@@ -281,7 +284,7 @@ class SettingsView: UIView {
     
     lazy var dividerRectangle: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 15
         return view
     }()
@@ -295,7 +298,7 @@ class SettingsView: UIView {
     
     lazy var infoBackView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 15
         return view
     }()
@@ -303,7 +306,7 @@ class SettingsView: UIView {
     lazy var infoImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "info.circle")
-        image.tintColor = .white
+        image.tintColor = colorImage
         return image
     }()
     
@@ -335,6 +338,19 @@ class SettingsView: UIView {
         return stack
     }()
     
+    lazy var exitButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Exit account", for: .normal)
+        button.titleLabel?.textColor = .white
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = Font.getFont(.displayBold, size: 16)
+        
+        button.backgroundColor = UIColor(red: 5/255, green: 216/255, blue: 232/255, alpha: 1.0)
+        button.layer.cornerRadius = 20
+        
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -362,6 +378,7 @@ extension SettingsView {
         backgroundImage.addSubview(rectangleProfile)
         backgroundImage.addSubview(firstSettingRectangle)
         backgroundImage.addSubview(secondSettingRectangle)
+        backgroundImage.addSubview(exitButton)
         
         rectangleProfile.addSubview(profileImage)
         rectangleProfile.addSubview(stackNameWithEmail)
@@ -408,7 +425,7 @@ extension SettingsView {
         rectangleProfile.snp.makeConstraints { make in
             make.leading.equalTo(backgroundImage.snp.leading).inset(30)
             make.trailing.equalTo(backgroundImage.snp.trailing).inset(30)
-            make.top.equalTo(backgroundImage.snp.top).inset(135)
+            make.top.equalTo(backgroundImage.safeAreaLayoutGuide.snp.top).inset(35)
             make.height.equalTo(90)
         }
         
@@ -569,6 +586,13 @@ extension SettingsView {
         
         chevronImage2.snp.makeConstraints { make in
             make.width.height.equalTo(30)
+        }
+        
+        exitButton.snp.makeConstraints { make in
+            make.leading.equalTo(backView.snp.leading).inset(30)
+            make.trailing.equalTo(backView.snp.trailing).inset(30)
+            make.height.equalTo(50)
+            make.bottom.equalTo(backView.safeAreaLayoutGuide.snp.bottom).inset(25)
         }
         
         

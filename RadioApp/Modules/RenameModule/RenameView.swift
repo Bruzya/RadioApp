@@ -29,6 +29,7 @@ class RenameView: UIView{
     lazy var avatarView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
+        
         return view
     }()
     
@@ -44,7 +45,7 @@ class RenameView: UIView{
     
     lazy var pencilBackView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray2
+        view.backgroundColor = colorBack
         view.layer.cornerRadius = 16
         return view
     }()
@@ -169,14 +170,15 @@ extension RenameView {
         addSubview(backView)
         backView.addSubview(backgroundImage)
         backgroundImage.addSubview(avatarImage)
+        backgroundImage.addSubview(avatarView)
         backgroundImage.addSubview(stackUnderImage)
         backgroundImage.addSubview(backViewNameTextField)
         backgroundImage.addSubview(backViewEmailTextField)
         backgroundImage.addSubview(saveButton)
-        
-        avatarImage.addSubview(avatarView)
+    
         avatarView.addSubview(pencilBackView)
         pencilBackView.addSubview(reinstallImageButton)
+        
         backViewNameTextField.addSubview(textFieldNameLabel)
         backViewNameTextField.addSubview(textFieldName)
         
@@ -206,9 +208,9 @@ extension RenameView {
         }
         
         avatarView.snp.makeConstraints { make in
-            make.centerX.equalTo(avatarImage.snp.centerX)
-            make.centerY.equalTo(avatarImage.snp.centerY)
+            make.top.equalTo(backView.safeAreaLayoutGuide.snp.top).inset(20)
             make.width.height.equalTo(90)
+            make.centerX.equalTo(backView.snp.centerX)
         }
         
         pencilBackView.snp.makeConstraints { make in

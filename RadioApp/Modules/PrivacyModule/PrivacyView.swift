@@ -91,6 +91,7 @@ class PrivacyView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        createMainStack()
         
         setupUI()
         
@@ -137,7 +138,7 @@ extension PrivacyView{
         stackMain.snp.makeConstraints { make in
             make.leading.equalTo(backgroundImage.snp.leading).inset(30)
             make.trailing.equalTo(backgroundImage.snp.trailing).inset(30)
-            make.top.equalTo(backgroundImage.snp.top).inset(110)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).inset(15)
             make.height.equalTo(615)
         }
     }
