@@ -136,3 +136,4 @@ extension FavoritesVC: FavoriteViewCellDelegate {
         }
     }
 }
+
