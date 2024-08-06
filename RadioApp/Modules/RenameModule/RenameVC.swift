@@ -24,6 +24,7 @@ final class RenameVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white), style: .done, target: self, action: #selector(goBackToSettings))
         
         renameView.reinstallImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
+        renameView.saveButton.addTarget(self, action: #selector(saveInfo), for: .touchUpInside)
         
     }
     
@@ -48,6 +49,10 @@ final class RenameVC: UIViewController {
         alertController.addAction(canselButton)
         
         present(alertController, animated: true)
+        
+    }
+    
+    @objc func saveInfo() {
         
     }
     

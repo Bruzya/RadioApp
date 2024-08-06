@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 final class SettingsVC: UIViewController {
     
@@ -33,6 +34,7 @@ final class SettingsVC: UIViewController {
         
         settingView.buttonLegal.addTarget(self, action: #selector(goToPrivacyVC), for: .touchUpInside)
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
+        settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
     }
     
     @objc func goToPrivacyVC(){
@@ -43,6 +45,14 @@ final class SettingsVC: UIViewController {
     @objc func goToRenameVC() {
         let vc = RenameVC()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToAboutVC() {
+        let vc = WebViewController()
+        vc.urlString = "https://dino.zone/ru/"
+        guard let url = URL(string: vc.urlString) else {fatalError("Problems with URL")}
+        
+        navigationController?.present(vc, animated: true)
     }
     
 }

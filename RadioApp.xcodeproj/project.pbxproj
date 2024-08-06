@@ -44,6 +44,7 @@
 		64CEDC8C2C5FC83300CB46BB /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */; };
 		64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEDC8E2C5FD2F400CB46BB /* Station.swift */; };
 		DD3A03482C613169001B6F36 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3A03472C613169001B6F36 /* ImagePicker.swift */; };
+		DD3A034D2C628237001B6F36 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3A034C2C628237001B6F36 /* WebViewController.swift */; };
 		DD6151B82C60CFA10095E1B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151B72C60CFA10095E1B5 /* SettingsView.swift */; };
 		DD6151BB2C60D06E0095E1B5 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151BA2C60D06E0095E1B5 /* PrivacyVC.swift */; };
 		DD6151BD2C60D08D0095E1B5 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151BC2C60D08D0095E1B5 /* PrivacyView.swift */; };
@@ -115,6 +116,7 @@
 		64CEDC8B2C5FC83300CB46BB /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 		64CEDC8E2C5FD2F400CB46BB /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		DD3A03472C613169001B6F36 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DD3A034C2C628237001B6F36 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DD6151B72C60CFA10095E1B5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD6151BA2C60D06E0095E1B5 /* PrivacyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		DD6151BC2C60D08D0095E1B5 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		3CCE94FC2C583AA100EE5B8A /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				DD3A034B2C628202001B6F36 /* WebView */,
 				522899A82C57E74C0013FF87 /* ProfileScreen */,
 			);
 			path = SettingsModule;
@@ -397,6 +400,14 @@
 			path = ChangeAvatar;
 			sourceTree = "<group>";
 		};
+		DD3A034B2C628202001B6F36 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				DD3A034C2C628237001B6F36 /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		DD6151B92C60D05A0095E1B5 /* PrivacyModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +597,7 @@
 				522899D62C6012220013FF87 /* Error.swift in Sources */,
 				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
+				DD3A034D2C628237001B6F36 /* WebViewController.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
 				3CCE94E62C5835BF00EE5B8A /* FirebaseService.swift in Sources */,
 				522899D42C6012080013FF87 /* Link.swift in Sources */,
