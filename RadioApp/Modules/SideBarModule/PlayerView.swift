@@ -10,6 +10,7 @@ import AVFoundation
 import RxSwift
 import RxGesture
 import SnapKit
+import MediaPlayer
 
 
 final class PlayerView: UIView {
@@ -43,11 +44,9 @@ final class PlayerView: UIView {
         return image
     }()
     
-    
-    var audioPlayer: AVPlayer?
-    var timer: Timer?
-    var volumeSlider: UISlider!
-    
+    private var audioPlayer: AVPlayer?
+    private var volumeSlider: UISlider!
+    private var volumeView = MPVolumeView()
     private let disposeBag = DisposeBag()
     
     init() {
@@ -93,9 +92,27 @@ final class PlayerView: UIView {
         
         volumeSlider.rx.value
             .bind(onNext: { [unowned self] value in
-                audioPlayer?.volume = Float(value)
+                audioPlayer?.volume = value
+                setSystemVolume(value)
             })
             .disposed(by: disposeBag)
+        
+        volumeView.rx.volume
+            .subscribe(onNext: { [unowned self] volume in
+                setSliderVolume(volume)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setSystemVolume(_ volume: Float) {
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
+        }
+    }
+    
+    func setSliderVolume(_ volume: Float) {
+        volumeSlider.value = volume
     }
     
     private func togglePlayPause() {
@@ -119,7 +136,6 @@ private extension PlayerView {
         volumeSlider.thumbTintColor = Colors.teal
         volumeSlider.minimumTrackTintColor = Colors.teal
         volumeSlider.maximumTrackTintColor = Colors.grey
-
         addSubviews()
         setupConstraints()
     }
