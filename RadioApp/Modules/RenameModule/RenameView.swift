@@ -35,7 +35,6 @@ class RenameView: UIView{
     
     lazy var avatarImage: UIImageView = {
         let image = UIImageView()
-        image.image = .profileAvatar
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 40
         image.clipsToBounds = true
@@ -59,7 +58,7 @@ class RenameView: UIView{
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mark"
+        label.text = User.shared.name ?? "User"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         label.textAlignment = .center
@@ -68,7 +67,7 @@ class RenameView: UIView{
     
     lazy var emailLabel: UILabel = {
         let label = UILabel()
-        label.text = "MarkMark@gmail.com"
+        label.text = User.shared.email
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .gray
         label.textAlignment = .center

@@ -10,14 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-import UIKit
-import RxSwift
-import RxCocoa
-
 final class SettingsVC: UIViewController {
 
     private var settingView: SettingsView!
     private let disposeBag = DisposeBag()
+    private let auth = FirebaseService.shared
 
     override func loadView() {
         settingView = SettingsView()
@@ -44,6 +41,12 @@ final class SettingsVC: UIViewController {
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
         setupBindings()
+        getUserData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
     }
 
     @objc func goToPrivacyVC(){
@@ -53,6 +56,12 @@ final class SettingsVC: UIViewController {
 
     @objc func goToRenameVC() {
         let vc = RenameVC()
+        vc.completionHandler = { [weak self] img, name, email in
+            self?.settingView.profileImage.image = img
+            self?.settingView.nameProfile.text = name
+            self?.settingView.emailProfile.text = email
+        }
+        vc.avatar = settingView.profileImage.image
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -126,5 +135,13 @@ extension SettingsVC {
             alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+}
+
+extension SettingsVC {
+    fileprivate func getUserData() {
+        settingView.profileImage.getImage(from: User.shared.avatarUrl)
+        settingView.nameProfile.text = User.shared.name
+        settingView.emailProfile.text = User.shared.email
     }
 }

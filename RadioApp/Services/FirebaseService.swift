@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 import GoogleSignIn
 
 struct UserRegData {
@@ -50,6 +51,7 @@ final class FirebaseService {
         }
     }
     
+    // MARK: - Регистрация
     func signUp(userData: UserRegData, completion: @escaping (Result<Bool, AuthError>) ->()) {
         Auth.auth().createUser(
             withEmail: userData.email,
@@ -73,7 +75,8 @@ final class FirebaseService {
             if let userId = result?.user.uid {
                 self?.setUserData(
                     name: userData.name,
-                    userId: userId
+                    userId: userId,
+                    email: userData.email
                 )
                 self?.signOut()
                 completion(.success(true))
@@ -81,21 +84,19 @@ final class FirebaseService {
         }
     }
     
-    func setUserData(name: String?, userId: String) {
-        Firestore.firestore()
-            .collection("users")
-            .document(userId)
-            .setData(["name": name ?? ""])
-    }
-            
+    // MARK: - Авторизация
+    /// Авторизация через почту + пароль
     func signIn(userData: AuthUserData, completion: @escaping (Result<UserVerification, AuthError>) -> ()) {
-        Auth.auth().signIn(withEmail: userData.email, password: userData.password) { result, err in
+        Auth.auth().signIn(withEmail: userData.email, password: userData.password) { [weak self] result, err in
+            guard let self else { return }
+
             guard err == nil else {
                 completion(.failure(.incorrectEmailOrLogin))
                 return
             }
             
             if let verify = result?.user.isEmailVerified, verify {
+                getCurrentUser()
                 completion(.success(.verified))
             } else {
                 completion(.success(.noVerified))
@@ -103,6 +104,7 @@ final class FirebaseService {
         }
     }
     
+    /// Авторизация через гугл
     func signInWithGoogle(with controller: UIViewController, completion: @escaping () -> ()) {
         GIDSignIn.sharedInstance.signIn(withPresenting: controller) { [weak self] result, err in
             guard err == nil else {
@@ -112,7 +114,8 @@ final class FirebaseService {
             if let user = result?.user, user.userID != nil {
                 self?.setUserData(
                     name: user.profile?.name,
-                    userId: user.userID!
+                    userId: user.userID!,
+                    email: user.profile!.email
                 )
             }
             
@@ -120,10 +123,12 @@ final class FirebaseService {
         }
     }
     
+    // MARK: - Выход из аккаунта
     func signOut() {
         try? Auth.auth().signOut()
     }
     
+    // MARK: - Сброс пароля
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             guard error == nil else {
@@ -132,7 +137,8 @@ final class FirebaseService {
         }
     }
     
-    func getCurrentUser() -> String? {
+    // MARK: - Получение данных юзера
+    private func getUserId() -> String? {
         if let userId = Auth.auth().currentUser?.uid {
             return userId
         } else if let userId = GIDSignIn.sharedInstance.currentUser?.userID {
@@ -142,6 +148,82 @@ final class FirebaseService {
         }
     }
     
+    func getCurrentUser() {
+        guard let id = getUserId() else { return }
+        Firestore.firestore()
+            .collection("users")
+            .document(id)
+            .addSnapshotListener { snap, err in
+                guard err == nil else { return }
+                if let document = snap {
+                    let username = document["name"]
+                    let avatarUrl = document["avatarUrl"]
+                    let email = document["email"]
+
+                    User.shared.name = username as? String
+                    User.shared.avatar = avatarUrl as? String
+                    User.shared.email = email as? String
+                }
+            }
+    }
+    
+    // MARK: - Загрузка аватара в Firebase
+    private func uploadOneImage(image: Data?, storageLink: StorageReference, completion: @escaping (Result<URL, Error>) -> ()) {
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        guard let image else { return }
+        storageLink.putData(image, metadata: metadata) { meta, err in
+            guard err == nil else {
+                completion(.failure(err!))
+                return
+            }
+            storageLink.downloadURL { url, err in
+                guard err == nil else {
+                    completion(.failure(err!))
+                    return
+                }
+                
+                guard let url else { return }
+                completion(.success(url))
+            }
+        }
+    }
+    
+    func uploadImage(image: Data) {
+        guard let userId = getUserId() else { return }
+        let imageName = "avatar.jpeg"
+        let ref = Storage.storage().reference().child("avatars/" + userId).child(imageName)
+        self.uploadOneImage(image: image, storageLink: ref) { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.setUserAvatar(urlString: success.absoluteString)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Запись данных в Firebase
+    private func setUserAvatar(urlString: String) {
+        guard let userId = getUserId() else { return }
+        Firestore.firestore()
+            .collection("users")
+            .document(userId)
+            .updateData(["avatarUrl": urlString]) { [weak self] _ in
+                self?.getCurrentUser()
+            }
+    }
+    
+    func setUserData(name: String?, userId: String, email: String) {
+        Firestore.firestore()
+            .collection("users")
+            .document(userId)
+            .setData(["name": name ?? "User", "email": email]) { [weak self] _ in
+                self?.getCurrentUser()
+            }
+    }
+    
+    // MARK: - Верификация почты
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 

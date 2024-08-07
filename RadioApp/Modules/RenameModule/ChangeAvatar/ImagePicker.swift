@@ -11,6 +11,7 @@ import UIKit
 class ImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private var renameView: RenameView?
+    private let auth = FirebaseService.shared
     
     func showImagePicker(for viewController: UIViewController ,sourseType: UIImagePickerController.SourceType, renameView: RenameView){
         let imagePickerVC = UIImagePickerController()

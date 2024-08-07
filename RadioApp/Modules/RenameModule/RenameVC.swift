@@ -9,8 +9,12 @@ import UIKit
 
 final class RenameVC: UIViewController {
     
+    var completionHandler: ((UIImage?, String?, String?) -> ())?
+    var avatar: UIImage?
+    
     private var renameView: RenameView!
     private let imagePicker = ImagePicker()
+    private let auth = FirebaseService.shared
     
     override func loadView() {
         renameView = RenameView()
@@ -19,13 +23,13 @@ final class RenameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        renameView.avatarImage.image = avatar ?? UIImage(systemName: "person.circle")
         navigationItem.title = "Rename"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
         
         renameView.reinstallImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         renameView.saveButton.addTarget(self, action: #selector(saveInfo), for: .touchUpInside)
-        
     }
     
     @objc func goBackToSettings() {
@@ -53,7 +57,11 @@ final class RenameVC: UIViewController {
     }
     
     @objc func saveInfo() {
-        
+        if let imageData = renameView.avatarImage.image?.jpegData(compressionQuality: 0.1) {
+            auth.uploadImage(image: imageData)
+        }
+        completionHandler?(renameView.avatarImage.image, renameView.nameLabel.text, renameView.emailLabel.text)
+        navigationController?.popViewController(animated: true)
     }
     
 }
