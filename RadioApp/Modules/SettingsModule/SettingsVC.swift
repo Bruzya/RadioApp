@@ -15,6 +15,8 @@ final class SettingsVC: UIViewController {
     private var settingView: SettingsView!
     private let disposeBag = DisposeBag()
     private let auth = FirebaseService.shared
+    
+    var onLogout: (() -> Void)?
 
     override func loadView() {
         settingView = SettingsView()
@@ -80,9 +82,9 @@ final class SettingsVC: UIViewController {
     }
     
     @objc func logOut() {
-        auth.signOut { [weak self] in
+        auth.signOut { [unowned self] in
             #warning("Вышли из профиля, возвращаемся на SignInViewController")
-            self?.navigationController?.popToRootViewController(animated: true)
+            onLogout?()
         }
     }
     

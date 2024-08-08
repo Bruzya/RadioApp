@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(
             navigationController: UINavigationController(),
             window: window,
-            appDIContainer: appDIContainer
+            appDIContainer: appDIContainer ?? .init()
         )
         
         appCoordinator?.start()
