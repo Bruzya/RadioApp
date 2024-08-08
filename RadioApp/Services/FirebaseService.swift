@@ -141,8 +141,11 @@ final class FirebaseService {
     }
     
     // MARK: - Сброс пароля
-    func resetPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email)
+    func resetPassword(email: String, completion: @escaping ()->()) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            guard error == nil else { return }
+            completion()
+        }
     }
     
     // MARK: - Обновление пароля
