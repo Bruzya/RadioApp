@@ -29,6 +29,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         configWindow()
+        makeOnboardingFlow()
     }
     
     private func configWindow() {
