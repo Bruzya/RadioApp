@@ -235,10 +235,10 @@
 		3CAD4D4F2C64EAA8005672B4 /* OnboardingModule */ = {
 			isa = PBXGroup;
 			children = (
-				3CAD4D502C64EAA8005672B4 /* OnboardingPage1VC.swift */,
-				3CAD4D512C64EAA8005672B4 /* OnboardingPage3VC.swift */,
 				3CAD4D522C64EAA8005672B4 /* OnboardingMainVC.swift */,
+				3CAD4D502C64EAA8005672B4 /* OnboardingPage1VC.swift */,
 				3CAD4D532C64EAA8005672B4 /* OnboardingPage2VC.swift */,
+				3CAD4D512C64EAA8005672B4 /* OnboardingPage3VC.swift */,
 			);
 			path = OnboardingModule;
 			sourceTree = "<group>";

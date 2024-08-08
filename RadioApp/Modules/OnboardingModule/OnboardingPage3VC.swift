@@ -20,21 +20,20 @@ final class OnboardingPage3VC: UIViewController {
         return element
     }()
     
-    private var gradientLayer: CAGradientLayer {
-        let element = CAGradientLayer()
-        element.frame = view.bounds
-        element.colors = [UIColor.black.withAlphaComponent(0.9).cgColor, UIColor.clear.cgColor]
-        element.startPoint = CGPoint(x: 0.5, y: 1.0)
-        element.endPoint = CGPoint(x: 0.5, y: 0.0)
+    private lazy var secondBackgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.image = .woman
+        element.contentMode = .scaleAspectFill
+        element.alpha = 0.5
         return element
-    }
+    }()
     
-    private lazy var startCookingButton: UIButton = {
+    private lazy var startListeningButton: UIButton = {
         let element = UIButton()
         element.setTitle("Start Listening", for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
-        element.layer.cornerRadius = 25
+        element.layer.cornerRadius = 10
         element.addTarget(self, action: #selector(startListening), for: .touchUpInside)
         return element
     }()
@@ -85,8 +84,8 @@ final class OnboardingPage3VC: UIViewController {
     // MARK: - Private Methods
     private func setupUI() {
         view.addSubview(backgroundImageView)
-        view.layer.addSublayer(gradientLayer)
-        view.addSubview(startCookingButton)
+        view.addSubview(secondBackgroundImageView)
+        view.addSubview(startListeningButton)
         view.addSubview(progressStackView)
         view.addSubview(mainLabel)
         
@@ -108,16 +107,20 @@ extension OnboardingPage3VC {
             make.edges.equalToSuperview()
         }
         
-        startCookingButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(70)
-            make.height.equalTo(50)
-            make.width.equalTo(view.frame.width / 1.7)
+        secondBackgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        startListeningButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
+            make.height.equalTo(80)
+            make.width.equalTo(310)
+            make.right.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
         
         progressStackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(startCookingButton).inset(90)
+            make.bottom.equalTo(startListeningButton).inset(90)
         }
         
         firstProgressView.snp.makeConstraints { make in

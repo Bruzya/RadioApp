@@ -23,7 +23,6 @@ final class OnboardingMainVC: UIPageViewController, UIPageViewControllerDataSour
         let secondController = OnboardingPage2VC()
         let thirdController = OnboardingPage3VC()
         
-        
         firstController.onNext = { [weak self] in
             self?.navigateToNextPage()
         }

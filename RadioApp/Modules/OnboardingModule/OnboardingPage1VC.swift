@@ -15,33 +15,58 @@ final class OnboardingPage1VC: UIViewController {
     // MARK: - UI Properties
     private lazy var backgroundImageView: UIImageView = {
         let element = UIImageView()
-        element.image = .background
+        element.image = .woman
         element.contentMode = .scaleAspectFill
+        element.layer.opacity = 0.9
         return element
     }()
+    
+    private lazy var secondBackgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.image = .background
+        element.contentMode = .scaleAspectFill
+        element.alpha = 0.9
+        return element
+    }()
+    
+    private var gradientLayer: CAGradientLayer {
+        let element = CAGradientLayer()
+        element.frame = view.bounds
+        element.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        element.startPoint = CGPoint(x: 0.5, y: 1.0)
+        element.endPoint = CGPoint(x: 0.5, y: 0.0)
+        return element
+    }
     
     private lazy var headerStackView: UIStackView = {
         let element = UIStackView()
-        element.axis = .horizontal
-        element.alignment = .center
-        element.spacing = 5
+        element.axis = .vertical
+        element.alignment = .leading
+        element.spacing = 10
         element.distribution = .fillProportionally
+        element.layer.borderWidth = 1
+        element.layer.borderColor = UIColor.red.cgColor
         return element
     }()
-    
+
     private lazy var firstHeaderLabel: UILabel = {
         let element = UILabel()
         element.text = "Let's Get Started"
         element.font = .systemFont(ofSize: 60, weight: .bold)
         element.textColor = .white
+        element.textAlignment = .left
+        element.numberOfLines = 0
         return element
     }()
-    
+
     private lazy var secondHeaderLabel: UILabel = {
         let element = UILabel()
-        element.text = "Enjoy the best radio stations from your home? don't miss out on anything"
+        element.text = "Enjoy the best radio stations from your home, don't miss out on anything"
         element.font = .systemFont(ofSize: 16, weight: .regular)
         element.textColor = .white
+        element.textAlignment = .left
+        element.numberOfLines = 0
+        element.lineBreakMode = .byWordWrapping
         return element
     }()
     
@@ -60,6 +85,7 @@ final class OnboardingPage1VC: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
+        view.backgroundColor = .blue
     }
     
     deinit {
@@ -69,8 +95,10 @@ final class OnboardingPage1VC: UIViewController {
     // MARK: - Private Methods
     private func setupUI() {
         view.addSubview(backgroundImageView)
+        backgroundImageView.addSubview(secondBackgroundImageView)
         view.addSubview(headerStackView)
         view.addSubview(getStartedButton)
+//        backgroundImageView.add(gradientLayer)
         
         headerStackView.addArrangedSubview(firstHeaderLabel)
         headerStackView.addArrangedSubview(secondHeaderLabel)
@@ -93,16 +121,25 @@ extension OnboardingPage1VC {
             make.edges.equalToSuperview()
         }
         
+        secondBackgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         headerStackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(100)
+            make.right.equalTo(view.safeAreaLayoutGuide).inset(90)
+            make.width.equalTo(250)
+        }
+        
+        secondHeaderLabel.snp.makeConstraints { make in
+            make.width.equalTo(220)
         }
         
         getStartedButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(80)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.height.equalTo(58)
             make.width.equalTo(310)
-            make.centerX.equalToSuperview()
+            make.right.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
 }

@@ -20,11 +20,11 @@ final class OnboardingPage2VC: UIPageViewController {
         return element
     }()
     
-    private lazy var skipButton: UIButton = {
-        let element = UIButton()
-        element.setTitle("Skip", for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        element.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
+    private lazy var secondBackgroundImageView: UIImageView = {
+        let element = UIImageView()
+        element.image = .woman
+        element.contentMode = .scaleAspectFill
+        element.alpha = 0.5
         return element
     }()
     
@@ -33,7 +33,7 @@ final class OnboardingPage2VC: UIPageViewController {
         element.setTitle("Continue", for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
-        element.layer.cornerRadius = 25
+        element.layer.cornerRadius = 10
         element.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return element
     }()
@@ -85,7 +85,7 @@ final class OnboardingPage2VC: UIPageViewController {
     // MARK: - Private Methods
     private func setupUI() {
         view.addSubview(backgroundImageView)
-        view.addSubview(skipButton)
+        view.addSubview(secondBackgroundImageView)
         view.addSubview(continueButton)
         view.addSubview(progressStackView)
         view.addSubview(mainLabel)
@@ -113,16 +113,15 @@ extension OnboardingPage2VC {
             make.edges.equalToSuperview()
         }
         
-        skipButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.centerX.equalToSuperview()
+        secondBackgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         continueButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(skipButton).inset(50)
-            make.height.equalTo(50)
-            make.width.equalTo(view.frame.width / 1.8)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
+            make.height.equalTo(80)
+            make.width.equalTo(310)
+            make.right.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
         
         progressStackView.snp.makeConstraints { make in
