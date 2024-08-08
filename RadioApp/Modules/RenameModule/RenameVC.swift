@@ -27,14 +27,39 @@ final class RenameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+        setupView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if auth.isAuthorizedWithGoogle {
+            [
+                renameView.textFieldEmail,
+                renameView.textFieldEmailLabel,
+                renameView.backViewEmailTextField
+            ].forEach {
+                $0.isHidden = true
+            }
+            
+            renameView.saveButton.snp.updateConstraints { make in
+                make.top.equalTo(renameView.textFieldName.snp.bottom).offset(40)
+            }
+        }
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Rename"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
+    }
+    
+    private func setupView() {
         renameView.avatarImage.image = avatar ?? UIImage(systemName: "person.circle")
         renameView.nameLabel.text = name
         renameView.emailLabel.text = email
         renameView.textFieldName.placeholder = name
         renameView.textFieldEmail.placeholder = email
-        navigationItem.title = "Rename"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
         
         renameView.reinstallImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         renameView.saveButton.addTarget(self, action: #selector(saveInfo), for: .touchUpInside)

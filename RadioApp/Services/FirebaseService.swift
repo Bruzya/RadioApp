@@ -55,7 +55,7 @@ final class FirebaseService {
         }
     }
     
-    private var isAuthorizedWithGoogle = false
+    var isAuthorizedWithGoogle = false
     
     // MARK: - Регистрация
     func signUp(userData: UserRegData, completion: @escaping (Result<Bool, AuthError>) ->()) {
@@ -115,11 +115,13 @@ final class FirebaseService {
             }
             
             if let user = result?.user, user.userID != nil {
-                self?.setUserData(
-                    name: user.profile?.name,
-                    userId: user.userID!,
-                    email: user.profile!.email
-                )
+                if Firestore.firestore().collection("users").document(user.userID!).documentID.isEmpty {
+                    self?.setUserData(
+                        name: user.profile?.name,
+                        userId: user.userID!,
+                        email: user.profile!.email
+                    )
+                }
             }
             self?.isAuthorizedWithGoogle = true
             completion()

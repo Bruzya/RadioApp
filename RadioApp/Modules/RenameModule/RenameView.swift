@@ -268,7 +268,8 @@ extension RenameView {
             make.leading.equalTo(backView.snp.leading).inset(30)
             make.trailing.equalTo(backView.snp.trailing).inset(30)
             make.height.equalTo(55)
-            make.top.equalTo(backViewEmailTextField.snp.bottom).offset(40)
+//            make.top.equalTo(backViewEmailTextField.snp.bottom).offset(40)
+            make.top.equalTo(textFieldName.snp.bottom).offset(154.56)
         }
         
     }
