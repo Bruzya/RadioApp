@@ -29,23 +29,12 @@ final class OnboardingPage1VC: UIViewController {
         return element
     }()
     
-    private var gradientLayer: CAGradientLayer {
-        let element = CAGradientLayer()
-        element.frame = view.bounds
-        element.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        element.startPoint = CGPoint(x: 0.5, y: 1.0)
-        element.endPoint = CGPoint(x: 0.5, y: 0.0)
-        return element
-    }
-    
     private lazy var headerStackView: UIStackView = {
         let element = UIStackView()
         element.axis = .vertical
         element.alignment = .leading
         element.spacing = 10
         element.distribution = .fillProportionally
-        element.layer.borderWidth = 1
-        element.layer.borderColor = UIColor.red.cgColor
         return element
     }()
 
@@ -98,7 +87,6 @@ final class OnboardingPage1VC: UIViewController {
         backgroundImageView.addSubview(secondBackgroundImageView)
         view.addSubview(headerStackView)
         view.addSubview(getStartedButton)
-//        backgroundImageView.add(gradientLayer)
         
         headerStackView.addArrangedSubview(firstHeaderLabel)
         headerStackView.addArrangedSubview(secondHeaderLabel)
