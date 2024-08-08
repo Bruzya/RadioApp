@@ -46,7 +46,9 @@ final class FirebaseService {
     }
     
     var isAuthorized: Bool {
-        if let _ = Auth.auth().currentUser?.isEmailVerified {
+        if let _ = Auth.auth().currentUser {
+            return true
+        } else if let _ = GIDSignIn.sharedInstance.currentUser {
             return true
         } else {
             return false
