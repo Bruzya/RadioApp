@@ -233,7 +233,7 @@ private extension PlayerView {
         
         volumeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(volumeConteiner)
-            make.trailing.equalTo(volumeConteiner)
+            make.leading.equalTo(volumeSlider.snp.trailing).offset(5)
         }
     }
 }

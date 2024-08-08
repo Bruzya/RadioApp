@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113C89762C64D83A0072FB2D /* UIKit-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */; };
 		113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027A2C5B935500D64D01 /* RadioStationListVM.swift */; };
 		113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */; };
 		11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AFEF0C2C5B949500249DA7 /* AllStationsVC.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit-Extensions.swift"; sourceTree = "<group>"; };
 		113E027A2C5B935500D64D01 /* RadioStationListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationListVM.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationListVM.swift; sourceTree = SOURCE_ROOT; };
 		113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationViewModel.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationViewModel.swift; sourceTree = SOURCE_ROOT; };
 		11AFEF0C2C5B949500249DA7 /* AllStationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllStationsVC.swift; path = RadioApp/Modules/AllStations/Views/AllStationsVC.swift; sourceTree = SOURCE_ROOT; };
@@ -206,14 +208,6 @@
 				11AFEF0D2C5B949500249DA7 /* RadioStationCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		11AFEF122C5B953700249DA7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				11AFEF132C5B956D00249DA7 /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3C6623C92C629EE0004BB001 /* Animations */ = {
@@ -532,6 +526,7 @@
 				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
 				FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */,
 				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
+				113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -665,7 +660,7 @@
 				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
-				11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */,
+				11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
@@ -689,6 +684,7 @@
 				FA9688D52C5A497500DE491C /* SignButtonsView.swift in Sources */,
 				DD3A03482C613169001B6F36 /* ImagePicker.swift in Sources */,
 				FA9688DB2C5A634900DE491C /* TitleView.swift in Sources */,
+				113C89762C64D83A0072FB2D /* UIKit-Extensions.swift in Sources */,
 				DD6151BD2C60D08D0095E1B5 /* PrivacyView.swift in Sources */,
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,

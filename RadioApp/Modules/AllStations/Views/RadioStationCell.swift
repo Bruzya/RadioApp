@@ -21,11 +21,11 @@ class RadioStationCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.font = Font.getFont(Font.displayBold, size: 24)
         label.textColor = Colors.white
         label.numberOfLines = 2
-        label.lineBreakMode = .byWordWrapping
+//        label.lineBreakMode = .byWordWrapping
         label.backgroundColor = .green
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
