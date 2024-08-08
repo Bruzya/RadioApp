@@ -25,8 +25,7 @@ class RadioStationCell: UITableViewCell {
         label.font = Font.getFont(Font.displayBold, size: 24)
         label.textColor = Colors.white
         label.numberOfLines = 2
-//        label.lineBreakMode = .byWordWrapping
-        label.backgroundColor = .green
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

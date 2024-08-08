@@ -47,20 +47,9 @@ struct Search {
         return imageView
     }()
     
+    static let backToAll: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "close")
+        return imageView
+    }()
 }
-
-
-/*
- 
- extension UIButton {
-     convenience init(titleColor: UIColor?, backgroundColor: UIColor? = .clear) {
-         self.init(type: .system)
-         self.titleLabel?.font = .systemFont(ofSize: 30)
-         self.setTitleColor(titleColor, for: .normal)
-         self.backgroundColor = backgroundColor
-         self.translatesAutoresizingMaskIntoConstraints = false
-     }
- }
-
- 
- */

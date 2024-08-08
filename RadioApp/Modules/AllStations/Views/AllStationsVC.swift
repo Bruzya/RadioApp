@@ -88,6 +88,7 @@ final class AllStationsVC: UIViewController {
     @objc private func toResultSearch() {
         print("Result search radio stations")
         searchRadio()
+        
         navigationController?.pushViewController(SearchVC(), animated: true)
     }
 }
