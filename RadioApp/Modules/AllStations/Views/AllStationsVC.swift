@@ -12,6 +12,13 @@ final class AllStationsVC: UIViewController {
     
     // MARK: - UI properties
     
+    private let vStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        return stack
+    }()
+    
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.getFont(Font.displayMedium, size: 20)
@@ -32,6 +39,10 @@ final class AllStationsVC: UIViewController {
     
     var viewModel = RadioStationListVM()
     
+//    private var rightButton = UIButton(type: .custom)
+////    rightButton.setImage(Search.backToAll.image, for: .normal)
+//    rightButton.addTarget(self, action: #selector(toAllStation), for: .touchUpInside)
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +54,7 @@ final class AllStationsVC: UIViewController {
         radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
         radioTableView.reloadData()
         
-        viewModel.getStations(Link.allStations.url) { [weak self] in
-            DispatchQueue.main.async {
-                self?.radioTableView.reloadData()
-            }
-        }
+        loadAllRadioStation()
         
     }
     
@@ -57,10 +64,11 @@ final class AllStationsVC: UIViewController {
         view.backgroundColor = Colors.background
         radioTableView.createTable()
         
-        view.addSubview(subtitleLabel)
-        view.addSubview(searchTextField)
+        view.addSubview(vStack)
         
-        view.addSubview(radioTableView)
+        vStack.addArrangedSubview(subtitleLabel)
+        vStack.addArrangedSubview(searchTextField)
+        vStack.addArrangedSubview(radioTableView)
     }
     
     private func setDelegate() {
@@ -79,17 +87,35 @@ final class AllStationsVC: UIViewController {
         }
     }
     
+    func loadAllRadioStation() {
+        viewModel.getStations(Link.allStations.url) { [weak self] in
+            DispatchQueue.main.async {
+                self?.radioTableView.reloadData()
+            }
+        }
+    }
+    
     // MARK: - Selectors
     
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
     }
     
+    var count = 0
+    
     @objc private func toResultSearch() {
         print("Result search radio stations")
-        searchRadio()
         
-        navigationController?.pushViewController(SearchVC(), animated: true)
+        
+        if count == 0 {
+            subtitleLabel.isHidden = true
+            searchRadio()
+            count += 1
+        } else {
+            subtitleLabel.isHidden = false
+            loadAllRadioStation()
+            count -= 1
+        }
     }
 }
 
@@ -98,22 +124,23 @@ final class AllStationsVC: UIViewController {
 extension AllStationsVC {
     private func setConstraints() {
         
+        vStack.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().offset(60)
         }
         
         searchTextField.snp.makeConstraints { make in
-            make.top.equalTo(subtitleLabel.snp.bottom).offset(6)
-            make.leading.trailing.equalTo(view).inset(10)
+            make.leading.trailing.equalToSuperview().inset(10)
             make.height.equalTo(56)
         }
         
         radioTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom)
-            make.centerX.equalTo(view)
+            make.leading.trailing.equalToSuperview().inset(40)
             make.height.equalTo(400)
-            make.width.equalTo(293)
         }
         
     }

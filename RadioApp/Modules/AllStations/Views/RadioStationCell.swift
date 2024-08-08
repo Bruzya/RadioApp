@@ -119,9 +119,11 @@ class RadioStationCell: UITableViewCell {
     
     func selectCell() {
         conteinerView.backgroundColor = Colors.pink
+        print("Play music")
     }
     
     func deselectCell() {
         conteinerView.backgroundColor = .clear
+        print("Stop music")
     }
 }
