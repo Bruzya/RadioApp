@@ -46,6 +46,7 @@ final class ForgotPassViewController: UIViewController {
             guard let self else { return }
             AlertLoading.shared.isPresented(false, from: self)
             showAlert { [weak self] in
+                #warning("Письмо со ссылкой на сброс пароля отправлено, возвращаемся на SignInViewController")
                 self?.navigationController?.popViewController(animated: true)
             }
         }

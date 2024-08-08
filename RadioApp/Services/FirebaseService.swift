@@ -162,7 +162,7 @@ final class FirebaseService {
     func updateEmail(_ email: String, completion: @escaping () -> ()) {
         Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email, completion: { error in
             guard error == nil else {
-                print(error!.localizedDescription)
+                print("failed to update the email")
                 return
             }
             completion()

@@ -43,9 +43,9 @@ final class SignInViewController: UIViewController {
     @objc func didTapGoogleAuthButton() {
         auth.signInWithGoogle(with: self) { [weak self] in
             guard let self else { return }
-            navigationController?.pushViewController(SettingsVC(), animated: true)
             clearTextField()
-            print("Sign In with Google") // Авторизация пройдена, переходим на главный экран
+            #warning("Авторизация через Гугл пройдена, переходим на главный экран")
+            navigationController?.pushViewController(SettingsVC(), animated: true)
         }
     }
     
@@ -74,9 +74,9 @@ final class SignInViewController: UIViewController {
                     switch success {
                     case .verified:
                         auth.updateUserEmail(email)
-                        navigationController?.pushViewController(SettingsVC(), animated: true)
                         clearTextField()
-                        print("SIGN IN") // Авторизация пройдена, переходим на главный экран
+                        #warning("Авторизация через почту пройдена, переходим на главный экран")
+                        navigationController?.pushViewController(SettingsVC(), animated: true)
                     case .noVerified:
                         showAlert()
                     }

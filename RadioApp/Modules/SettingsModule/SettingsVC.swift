@@ -81,6 +81,7 @@ final class SettingsVC: UIViewController {
     
     @objc func logOut() {
         auth.signOut { [weak self] in
+            #warning("Вышли из профиля, возвращаемся на SignInViewController")
             self?.navigationController?.popToRootViewController(animated: true)
         }
     }
