@@ -65,6 +65,8 @@ final class SignInViewController: UIViewController {
                 case .success(let success):
                     switch success {
                     case .verified:
+                        auth.updateUserEmail(email)
+                        navigationController?.pushViewController(SettingsVC(), animated: true)
                         print("SIGN IN") // Авторизация пройдена, переходим на главный экран
                     case .noVerified:
                         showAlert()

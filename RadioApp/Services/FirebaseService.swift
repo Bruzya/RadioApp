@@ -31,6 +31,8 @@ enum AuthError: String, Error {
     case incorrectEmail = "Check your email is spelled correctly"
     case incorrectPassword = "Password must be 6 characters or more"
     case incorrectEmailOrLogin = "Incorrect email and/or password"
+    case nameExist = "Name already exist"
+    case emailExist = "Email already exist"
     
     static var isPresentedError = false
 }
@@ -38,7 +40,7 @@ enum AuthError: String, Error {
 final class FirebaseService {
     
     static let shared = FirebaseService()
-    
+        
     var isSessionActive: Bool {
         true
     }
@@ -87,16 +89,13 @@ final class FirebaseService {
     // MARK: - Авторизация
     /// Авторизация через почту + пароль
     func signIn(userData: AuthUserData, completion: @escaping (Result<UserVerification, AuthError>) -> ()) {
-        Auth.auth().signIn(withEmail: userData.email, password: userData.password) { [weak self] result, err in
-            guard let self else { return }
+        Auth.auth().signIn(withEmail: userData.email, password: userData.password) { result, err in
 
             guard err == nil else {
                 completion(.failure(.incorrectEmailOrLogin))
                 return
             }
-            
             if let verify = result?.user.isEmailVerified, verify {
-                getCurrentUser()
                 completion(.success(.verified))
             } else {
                 completion(.success(.noVerified))
@@ -128,13 +127,20 @@ final class FirebaseService {
         try? Auth.auth().signOut()
     }
     
-    // MARK: - Сброс пароля
+    // MARK: - Обновление пароля
     func resetPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        Auth.auth().sendPasswordReset(withEmail: email)
+    }
+    
+    // MARK: - Обновление почты
+    func updateEmail(_ email: String, completion: @escaping () -> ()) {
+        Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email, completion: { error in
             guard error == nil else {
+                print(error!.localizedDescription)
                 return
             }
-        }
+            completion()
+        })
     }
     
     // MARK: - Получение данных юзера
@@ -148,7 +154,7 @@ final class FirebaseService {
         }
     }
     
-    func getCurrentUser() {
+    func getCurrentUser(completion: (()->())? = nil) {
         guard let id = getUserId() else { return }
         Firestore.firestore()
             .collection("users")
@@ -163,6 +169,8 @@ final class FirebaseService {
                     User.shared.name = username as? String
                     User.shared.avatar = avatarUrl as? String
                     User.shared.email = email as? String
+                    
+                    completion?()
                 }
             }
     }
@@ -219,6 +227,26 @@ final class FirebaseService {
             .collection("users")
             .document(userId)
             .setData(["name": name ?? "User", "email": email]) { [weak self] _ in
+                self?.getCurrentUser()
+            }
+    }
+    
+    func updateUserEmail(_ email: String) {
+        guard let userId = getUserId() else { return }
+        Firestore.firestore()
+            .collection("users")
+            .document(userId)
+            .updateData(["email": email]) { [weak self] _ in
+                self?.getCurrentUser()
+            }
+    }
+    
+    func updateUserName(_ name: String) {
+        guard let userId = getUserId() else { return }
+        Firestore.firestore()
+            .collection("users")
+            .document(userId)
+            .updateData(["name": name]) { [weak self] _ in
                 self?.getCurrentUser()
             }
     }

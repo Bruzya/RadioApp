@@ -56,12 +56,18 @@ final class SettingsVC: UIViewController {
 
     @objc func goToRenameVC() {
         let vc = RenameVC()
-        vc.completionHandler = { [weak self] img, name, email in
+        vc.completionHandlerAvatar = { [weak self] img in
             self?.settingView.profileImage.image = img
+        }
+        vc.completionHandlerName = { [weak self] name in
             self?.settingView.nameProfile.text = name
+        }
+        vc.completionHandlerEmail = { [weak self] email in
             self?.settingView.emailProfile.text = email
         }
         vc.avatar = settingView.profileImage.image
+        vc.name = settingView.nameProfile.text
+        vc.email = settingView.emailProfile.text
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -140,8 +146,11 @@ extension SettingsVC {
 
 extension SettingsVC {
     fileprivate func getUserData() {
-        settingView.profileImage.getImage(from: User.shared.avatarUrl)
-        settingView.nameProfile.text = User.shared.name
-        settingView.emailProfile.text = User.shared.email
+        auth.getCurrentUser { [weak self] in
+            guard let self else { return }
+            settingView.profileImage.getImage(from: User.shared.avatarUrl)
+            settingView.nameProfile.text = User.shared.name
+            settingView.emailProfile.text = User.shared.email
+        }
     }
 }

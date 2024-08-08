@@ -35,6 +35,7 @@ class RenameView: UIView{
     
     lazy var avatarImage: UIImageView = {
         let image = UIImageView()
+        image.tintColor = .white
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 40
         image.clipsToBounds = true
@@ -50,9 +51,9 @@ class RenameView: UIView{
     }()
     
     lazy var reinstallImageButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
+        button.tintColor = .blueLight
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
-        button.tintColor = .white
         return button
     }()
     
@@ -139,7 +140,8 @@ class RenameView: UIView{
     }()
     
     lazy var saveButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
+        button.tintColor = .white
         button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = Font.getFont(.displayMedium, size: 16)
         button.titleLabel?.textColor = .white
