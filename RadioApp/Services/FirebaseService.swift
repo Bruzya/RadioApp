@@ -126,7 +126,11 @@ final class FirebaseService {
     
     // MARK: - Выход из аккаунта
     func signOut() {
-        try? Auth.auth().signOut()
+        do {
+            try Auth.auth().signOut()            
+        } catch {
+            GIDSignIn.sharedInstance.signOut()
+        }
     }
     
     // MARK: - Обновление пароля
