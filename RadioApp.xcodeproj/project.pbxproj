@@ -86,6 +86,7 @@
 		FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */; };
 		FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */; };
 		FA9689022C64133500DE491C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689012C64133500DE491C /* User.swift */; };
+		FA9689042C651A6000DE491C /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689032C651A6000DE491C /* CustomTF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -171,6 +172,7 @@
 		FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		FA9689012C64133500DE491C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA9689032C651A6000DE491C /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +505,7 @@
 				DD3A03462C6130F0001B6F36 /* ChangeAvatar */,
 				DD6151C02C60D1E70095E1B5 /* RenameVC.swift */,
 				DD6151C22C60D26F0095E1B5 /* RenameView.swift */,
+				FA9689032C651A6000DE491C /* CustomTF.swift */,
 			);
 			path = RenameModule;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,
 				FA9689022C64133500DE491C /* User.swift in Sources */,
+				FA9689042C651A6000DE491C /* CustomTF.swift in Sources */,
 				3CD434CD2C5E6A77006A8136 /* FadeTransitionAnimator.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				DD6151BB2C60D06E0095E1B5 /* PrivacyVC.swift in Sources */,

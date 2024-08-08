@@ -37,13 +37,18 @@ final class RenameVC: UIViewController {
             [
                 renameView.textFieldEmail,
                 renameView.textFieldEmailLabel,
-                renameView.backViewEmailTextField
+                renameView.backViewEmailTextField,
+                renameView.passwordTextField,
+                renameView.confirmPasswordTextField
             ].forEach {
                 $0.isHidden = true
             }
             
-            renameView.saveButton.snp.updateConstraints { make in
-                make.top.equalTo(renameView.textFieldName.snp.bottom).offset(40)
+            renameView.saveButton.snp.remakeConstraints { make in
+                make.top.equalTo(renameView.backViewNameTextField.snp.bottom).offset(46.56)
+                make.leading.equalTo(renameView.backView.snp.leading).inset(30)
+                make.trailing.equalTo(renameView.backView.snp.trailing).inset(30)
+                make.height.equalTo(55)
             }
         }
     }

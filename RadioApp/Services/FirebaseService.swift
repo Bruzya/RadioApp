@@ -140,9 +140,19 @@ final class FirebaseService {
         completion?()
     }
     
-    // MARK: - Обновление пароля
+    // MARK: - Сброс пароля
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email)
+    }
+    
+    // MARK: - Обновление пароля
+    func updatePassword(_ password: String) {
+        Auth.auth().currentUser?.updatePassword(to: password) { error in
+            guard error == nil else {
+                print("failed to update the password")
+                return
+            }
+        }
     }
     
     // MARK: - Обновление почты
