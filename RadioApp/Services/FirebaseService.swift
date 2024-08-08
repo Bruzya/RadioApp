@@ -55,6 +55,8 @@ final class FirebaseService {
         }
     }
     
+    private var isAuthorizedWithGoogle = false
+    
     // MARK: - Регистрация
     func signUp(userData: UserRegData, completion: @escaping (Result<Bool, AuthError>) ->()) {
         Auth.auth().createUser(
@@ -119,18 +121,21 @@ final class FirebaseService {
                     email: user.profile!.email
                 )
             }
-            
+            self?.isAuthorizedWithGoogle = true
             completion()
         }
     }
     
     // MARK: - Выход из аккаунта
-    func signOut() {
-        do {
-            try Auth.auth().signOut()            
-        } catch {
+    func signOut(completion: (()->())? = nil) {
+        if isAuthorizedWithGoogle {
             GIDSignIn.sharedInstance.signOut()
+            isAuthorizedWithGoogle = false
+        } else {
+            try? Auth.auth().signOut()
         }
+        
+        completion?()
     }
     
     // MARK: - Обновление пароля

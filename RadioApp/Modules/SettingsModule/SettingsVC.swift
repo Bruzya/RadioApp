@@ -40,13 +40,9 @@ final class SettingsVC: UIViewController {
         settingView.buttonLegal.addTarget(self, action: #selector(goToPrivacyVC), for: .touchUpInside)
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
+        settingView.exitButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         setupBindings()
         getUserData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
     }
 
     @objc func goToPrivacyVC(){
@@ -81,6 +77,12 @@ final class SettingsVC: UIViewController {
     
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func logOut() {
+        auth.signOut { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 }

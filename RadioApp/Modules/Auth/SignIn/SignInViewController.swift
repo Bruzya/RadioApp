@@ -27,6 +27,11 @@ final class SignInViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    private func clearTextField() {
+        signInView.emailView.textField.text = nil
+        signInView.passwordView.textField.text = nil
+    }
+    
     // MARK: - Actions
     /// Переход на экран Forgot Password
     @objc func didTapForgotPassButton() {
@@ -36,7 +41,10 @@ final class SignInViewController: UIViewController {
     
     /// Авторизация через Google
     @objc func didTapGoogleAuthButton() {
-        auth.signInWithGoogle(with: self) {
+        auth.signInWithGoogle(with: self) { [weak self] in
+            guard let self else { return }
+            navigationController?.pushViewController(SettingsVC(), animated: true)
+            clearTextField()
             print("Sign In with Google") // Авторизация пройдена, переходим на главный экран
         }
     }
@@ -67,6 +75,7 @@ final class SignInViewController: UIViewController {
                     case .verified:
                         auth.updateUserEmail(email)
                         navigationController?.pushViewController(SettingsVC(), animated: true)
+                        clearTextField()
                         print("SIGN IN") // Авторизация пройдена, переходим на главный экран
                     case .noVerified:
                         showAlert()

@@ -341,7 +341,7 @@ class SettingsView: UIView {
     lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
-        button.setTitle("Exit account", for: .normal)
+        button.setTitle("Log Out", for: .normal)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = Font.getFont(.displayBold, size: 16)

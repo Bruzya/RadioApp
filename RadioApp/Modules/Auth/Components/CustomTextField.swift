@@ -27,7 +27,8 @@ final class CustomTextField: UITextField {
         }
         self.isSecureTextEntry = isPassword ? true : false
         self.textColor = .white
-
+        self.textContentType = .oneTimeCode
+        
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.pinkBase.cgColor
         self.layer.cornerRadius = 5
