@@ -29,6 +29,7 @@ final class RenameVC: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupView()
+        addTapGestureToHideKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
