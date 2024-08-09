@@ -9,8 +9,10 @@ import UIKit
 
 final class PopularVC: UIViewController {
     
-    // MARK: - UI
+    // MARK: - Private properties
     private let popularView = PopularView()
+    private var stations: [Station] = []
+    private let networkService = NetworkService.shared
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -21,10 +23,24 @@ final class PopularVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Colors.background
         popularView.setDelegates(self)
+        fetchPopularStations()
     }
     
-    deinit {
-        print("Deinit \(type(of: self))")
+    // MARK: - Private methods
+    private func fetchPopularStations() {
+        networkService.fetchData(from: Link.popular.url) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let success):
+                stations = success
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    popularView.collectionView.reloadData()
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
     
 }
@@ -32,13 +48,16 @@ final class PopularVC: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension PopularVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        stations.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCell.description(), for: indexPath) as? PopularCell else {
             return UICollectionViewCell()
         }
+        
+        let station = stations[indexPath.item]
+        cell.configureCell(station)
         
         return cell
     }
@@ -52,5 +71,9 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
         let totalSpacing = (numberOfItemsPerRow - 1) * interItemSpacing
         let itemSize = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
         return CGSize(width: itemSize, height: itemSize)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

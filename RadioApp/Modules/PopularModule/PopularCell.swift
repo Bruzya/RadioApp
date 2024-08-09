@@ -11,8 +11,8 @@ import SnapKit
 final class PopularCell: UICollectionViewCell {
     
     // MARK: - UI
-    private lazy var tagStationLabel = createLabel(fontSize: 30, fontwWeight: .bold)
-    private lazy var nameStationLabel = createLabel(fontSize: 15, fontwWeight: .regular)
+    private lazy var tagStationLabel = createLabel(fontSize: 25, fontwWeight: .bold)
+    lazy var nameStationLabel = createLabel(fontSize: 15, fontwWeight: .regular)
     private lazy var votesLabel = createLabel(fontSize: 10, fontwWeight: .bold)
     
     private lazy var playImageView: UIImageView = {
@@ -61,6 +61,13 @@ final class PopularCell: UICollectionViewCell {
         playImageView.isHidden = true
     }
     
+    // MARK: - Public methods
+    func configureCell(_ station: Station) {
+        tagStationLabel.text = station.tags.isEmpty ? "..." : station.tags.split(separator: ",").first?.capitalized
+        nameStationLabel.text = clearWhitespaceAndTabs(station.name).isEmpty ? "..." : clearWhitespaceAndTabs(station.name)
+        votesLabel.text = "votes \(station.votes.description)"
+    }
+    
     // MARK: - Private methods
     private func setupViews() {
         [
@@ -74,12 +81,10 @@ final class PopularCell: UICollectionViewCell {
             addSubview($0)
         }
         
-        votesLabel.text = "votes 1234"
         votesLabel.textAlignment = .right
-        tagStationLabel.text = "POP"
         tagStationLabel.textAlignment = .center
-        nameStationLabel.text = "Radio Record"
         nameStationLabel.textAlignment = .center
+        nameStationLabel.numberOfLines = 2
     }
     
     private func setupCell() {
@@ -123,13 +128,24 @@ final class PopularCell: UICollectionViewCell {
         
     }
     
+    private func clearWhitespaceAndTabs(_ string: String) -> String {
+        let characterSet = CharacterSet.whitespacesAndNewlines
+        let trimmedString = string.trimmingCharacters(in: characterSet)
+        
+        guard let firstLetterIndex = trimmedString.firstIndex(where: { $0.isLetter }) else {
+            return ""
+        }
+        
+        return String(trimmedString[firstLetterIndex...])
+    }
+    
     // MARK: - Actions
     @objc private func didTapLikeButton(_ sender: UIButton) {
         if sender.currentImage == UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) {
             sender.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
             sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
-//            добавить votes
+            #warning("добавить votes")
         }
     }
 }
@@ -159,19 +175,22 @@ private extension PopularCell {
         tagStationLabel.snp.makeConstraints { make in
             make.leading.equalTo(playImageView.snp.leading)
             make.trailing.equalTo(likeButton.snp.trailing)
-            make.top.equalTo(playImageView.snp.bottom).offset(5)
+            make.top.equalTo(playImageView.snp.bottom)
         }
         
         nameStationLabel.snp.makeConstraints { make in
-            make.top.equalTo(tagStationLabel.snp.bottom).offset(5)
+            make.bottom.equalTo(waveImageView.snp.top).offset(-5)
             make.leading.equalTo(playImageView.snp.leading)
             make.trailing.equalTo(likeButton.snp.trailing)
         }
         
         waveImageView.snp.makeConstraints { make in
-            make.top.equalTo(nameStationLabel.snp.bottom).offset(10)
+            make.bottom.equalToSuperview().offset(-10)
             make.height.equalTo(22.66)
             make.centerX.equalToSuperview()
         }
     }
 }
+
+
+
