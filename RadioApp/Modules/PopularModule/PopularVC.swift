@@ -13,6 +13,8 @@ final class PopularVC: UIViewController {
     private let popularView = PopularView()
     private var stations: [Station] = []
     private let networkService = NetworkService.shared
+    private var isLoadingMoreData = false
+    private var currentPage = 20
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -28,7 +30,8 @@ final class PopularVC: UIViewController {
     
     // MARK: - Private methods
     private func fetchPopularStations() {
-        networkService.fetchData(from: Link.popular.url) { [weak self] result in
+        isLoadingMoreData = true
+        networkService.fetchData(from: Link.popular(count: currentPage).url) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let success):
@@ -37,6 +40,7 @@ final class PopularVC: UIViewController {
                     guard let self else { return }
                     popularView.collectionView.reloadData()
                 }
+                isLoadingMoreData = false
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
@@ -75,5 +79,18 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            if !isLoadingMoreData {
+                fetchPopularStations()
+                currentPage += 20
+            }
+        }
     }
 }
