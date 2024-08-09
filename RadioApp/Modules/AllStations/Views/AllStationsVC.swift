@@ -29,7 +29,7 @@ final class AllStationsVC: UIViewController {
     }()
     
     private lazy var searchTextField: UITextField = {
-        let textField = UITextField(rightButtonImage: Search.result.image, target: self, action: #selector(toResultSearch))
+        let textField = UITextField(rightButton)
         return textField
     }()
     
@@ -39,9 +39,11 @@ final class AllStationsVC: UIViewController {
     
     var viewModel = RadioStationListVM()
     
-//    private var rightButton = UIButton(type: .custom)
-////    rightButton.setImage(Search.backToAll.image, for: .normal)
-//    rightButton.addTarget(self, action: #selector(toAllStation), for: .touchUpInside)
+    private var rightButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(Search.result.image, for: .normal)
+        return button
+    }()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -53,6 +55,8 @@ final class AllStationsVC: UIViewController {
         
         radioTableView.register(RadioStationCell.self, forCellReuseIdentifier: "RadioStationCell")
         radioTableView.reloadData()
+        
+        rightButton.addTarget(self, action: #selector(toResultSearch), for: .touchUpInside)
         
         loadAllRadioStation()
         
@@ -78,7 +82,9 @@ final class AllStationsVC: UIViewController {
     }
     
     func searchRadio() {
+        
         if let radioName = searchTextField.text, !radioName.isEmpty {
+            
             let filteredStations = viewModel.radioStation.filter { $0.name.lowercased().contains(radioName.lowercased()) }
             print(filteredStations)
             // После фильтрации надо будет передать на др экран
@@ -88,6 +94,7 @@ final class AllStationsVC: UIViewController {
     }
     
     func loadAllRadioStation() {
+        
         viewModel.getStations(Link.allStations.url) { [weak self] in
             DispatchQueue.main.async {
                 self?.radioTableView.reloadData()
@@ -95,6 +102,20 @@ final class AllStationsVC: UIViewController {
         }
     }
     
+    func switchSearch() {
+        if count == 0 && !(searchTextField.text?.isEmpty ?? true) {
+            subtitleLabel.isHidden = true
+            rightButton.setImage(Search.backToAll.image, for: .normal)
+            searchRadio()
+            count += 1
+        } else {
+            subtitleLabel.isHidden = false
+            rightButton.setImage(Search.result.image, for: .normal)
+            viewModel.radioStation.removeAll()
+            loadAllRadioStation()
+            count -= 1
+        }
+    }
     // MARK: - Selectors
     
     @objc private func profileDetailTaped() {
@@ -107,12 +128,16 @@ final class AllStationsVC: UIViewController {
         print("Result search radio stations")
         
         
-        if count == 0 {
+        if count == 0 && !(searchTextField.text?.isEmpty ?? true) {
             subtitleLabel.isHidden = true
+            rightButton.setImage(Search.backToAll.image, for: .normal)
             searchRadio()
             count += 1
         } else {
             subtitleLabel.isHidden = false
+            searchTextField.text = ""
+            rightButton.setImage(Search.result.image, for: .normal)
+            viewModel.radioStation.removeAll()
             loadAllRadioStation()
             count -= 1
         }
@@ -186,9 +211,13 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
 extension AllStationsVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
+        searchTextField.text = ""
+        
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         searchRadio()
     }
+    
 }

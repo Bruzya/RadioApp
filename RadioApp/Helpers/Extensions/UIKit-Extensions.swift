@@ -8,15 +8,11 @@
 import UIKit
 
 extension UITextField {
-    convenience init(rightButtonImage image: UIImage?, target: Any?, action: Selector) {
+    convenience init(_ rightButton: UIButton) {
         self.init()
         self.backgroundColor = Colors.grey
         self.leftView = Search.iconPadding
         self.leftViewMode = .always
-        
-        let rightButton = UIButton(type: .custom)
-        rightButton.setImage(image, for: .normal)
-        rightButton.addTarget(target, action: action, for: .touchUpInside)
         
         let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         rightButton.frame = CGRect(x: -60, y: -25, width: 120, height: 120)
