@@ -29,6 +29,7 @@ final class RenameVC: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupView()
+        addTapGestureToHideKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,8 +56,16 @@ final class RenameVC: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.title = "Rename"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18),
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal),
+            style: .done,
+            target: self,
+            action: #selector(goBackToSettings)
+        )
     }
     
     private func setupView() {
@@ -66,8 +75,16 @@ final class RenameVC: UIViewController {
         renameView.textFieldName.placeholder = name
         renameView.textFieldEmail.placeholder = email
         
-        renameView.reinstallImageButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
-        renameView.saveButton.addTarget(self, action: #selector(saveInfo), for: .touchUpInside)
+        renameView.reinstallImageButton.addTarget(
+            self,
+            action: #selector(addImage),
+            for: .touchUpInside
+        )
+        renameView.saveButton.addTarget(
+            self,
+            action: #selector(saveInfo),
+            for: .touchUpInside
+        )
     }
     
     @objc func goBackToSettings() {
@@ -95,70 +112,111 @@ final class RenameVC: UIViewController {
     }
     
     @objc func saveInfo() {
-        updateUserData { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+        updateUserData() { [weak self] updateEmail in
+            guard let self else { return } 
+            if updateEmail {
+                showAlert(updateEmail: true)
+            } else {
+                showAlert(updateEmail: false)
+            }
         }
     }
-    
 }
 
 // MARK: - Update User Data
 private extension RenameVC {
-    func updateUserData(completionHandler: @escaping () -> ()) {
+    func updateUserData(completion: @escaping (Bool)->()) {
+        var alertLoadingIsPresented = false
+        let name = renameView.textFieldName.text
+        let email = renameView.textFieldEmail.text
+        let password = renameView.passwordTextField.textFieldPassword.text
+        let confirmPassword = renameView.confirmPasswordTextField.textFieldPassword.text
+        
+        // устанавливаем аватар
+        completionHandlerAvatar?(renameView.avatarImage.image)
+        
+        // проверка - такое имя уже есть?
         guard renameView.textFieldName.text?.lowercased() != User.shared.name?.lowercased() else {
             showErrorView(.nameExist)
             return
         }
         
-        if let imageData = renameView.avatarImage.image?.jpegData(compressionQuality: 0.1) {
-            auth.uploadImage(image: imageData)
-        }
-        completionHandlerAvatar?(renameView.avatarImage.image)
-        
-        if let name = renameView.textFieldName.text, !name.isEmpty {
+        // устанавливаем имя
+        if let name, !name.isEmpty {
             auth.updateUserName(name)
             completionHandlerName?(renameView.textFieldName.text)
         }
         
-        guard renameView.textFieldEmail.text?.lowercased() != User.shared.email?.lowercased() else {
+        // проверка - такая почта уже есть?
+        guard email?.lowercased() != User.shared.email?.lowercased() else {
             showErrorView(.emailExist)
             return
         }
-        if let email = renameView.textFieldEmail.text, !email.isEmpty {
+        
+        // обновляем почту
+        if let email, !email.isEmpty {
+            // проверяем почту на валидность
             guard auth.isValidEmail(email) else {
                 showErrorView(.incorrectEmail)
                 return
             }
             completionHandlerEmail?(renameView.textFieldEmail.text)
             AlertLoading.shared.isPresented(true, from: self)
-            auth.updateEmail(email) { [weak self] in
+            alertLoadingIsPresented = true
+            auth.updateEmail(email) { [weak self] result in
                 guard let self else { return }
                 AlertLoading.shared.isPresented(false, from: self)
-                showAlert() {
-                    completionHandler()
+                switch result {
+                case .success(let success):
+                    completion(true)
+                case .failure(let failure):
+                    showErrorView(.failUpdateEmailOrPassword)
                 }
             }
-        } else {
-            completionHandler()
         }
+        
+        // обновляем пароль
+        if let password, !password.isEmpty {
+            // проверяем пароль на количество символов
+            guard password.count >= 6 else {
+                showErrorView(.incorrectPassword)
+                return
+            }
+            // проверяем поля паролей на совпадение
+            guard password == confirmPassword else {
+                showErrorView(.passwordNotConfirm)
+                return
+            }
+            alertLoadingIsPresented ? () : AlertLoading.shared.isPresented(true, from: self)
+            auth.updatePassword(password) { [weak self] result in
+                guard let self else { return }
+                AlertLoading.shared.isPresented(false, from: self)
+                switch result {
+                case .success(_):
+                    completion(false)
+                case .failure(_):
+                    showErrorView(.failUpdateEmailOrPassword)
+                }
+            }
+        }
+        completion(false)
     }
 }
 
 // MARK: - Alert
 private extension RenameVC {
     /// Alert с просьбой подтвердить свою почту по ссылке
-    func showAlert(completion: @escaping ()->()) {
+    func showAlert(updateEmail: Bool) {
         let alert = UIAlertController(
             title: "Fine 😊",
-            message: "Follow the link we emailed you to confirm your new email address",
+            message: updateEmail ? "Follow the link in the email to confirm the mail change" : "You have successfully updated your profile details",
             preferredStyle: .alert
         )
         
         let okAction = UIAlertAction(
             title: "Ok",
             style: .default) { [weak self] _ in
-                self?.dismiss(animated: true)
-                completion()
+                self?.navigationController?.popViewController(animated: true)
             }
         
         alert.addAction(okAction)

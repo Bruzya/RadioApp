@@ -20,4 +20,8 @@ final class User {
             return nil
         }
     }
+    
+    var nameForHeader: String {
+        "Hello " + (name ?? "User")
+    }
 }
