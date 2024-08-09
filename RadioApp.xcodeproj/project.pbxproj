@@ -84,6 +84,9 @@
 		FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688F22C5D73BF00DE491C /* AlertLoading.swift */; };
 		FA9688F62C5E26D700DE491C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FA9688F52C5E26D700DE491C /* GoogleSignIn */; };
 		FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */; };
+		FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */; };
+		FA9689022C64133500DE491C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689012C64133500DE491C /* User.swift */; };
+		FA9689042C651A6000DE491C /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689032C651A6000DE491C /* CustomTF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +170,9 @@
 		FA9688E62C5A90CE00DE491C /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		FA9688F22C5D73BF00DE491C /* AlertLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLoading.swift; sourceTree = "<group>"; };
 		FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		FA9689012C64133500DE491C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA9689032C651A6000DE491C /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				64CEDC8E2C5FD2F400CB46BB /* Station.swift */,
+				FA9689012C64133500DE491C /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -498,6 +505,7 @@
 				DD3A03462C6130F0001B6F36 /* ChangeAvatar */,
 				DD6151C02C60D1E70095E1B5 /* RenameVC.swift */,
 				DD6151C22C60D26F0095E1B5 /* RenameView.swift */,
+				FA9689032C651A6000DE491C /* CustomTF.swift */,
 			);
 			path = RenameModule;
 			sourceTree = "<group>";
@@ -535,6 +543,7 @@
 				FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */,
 				FA9688DE2C5A7AC400DE491C /* UIViewControlle + Extension.swift */,
 				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
+				FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -674,6 +683,7 @@
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				3C6623CF2C62AB25004BB001 /* TimerPickerVC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
+				FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */,
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
 				113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */,
 				3CCE94FB2C58397A00EE5B8A /* SideBarVC.swift in Sources */,
@@ -696,6 +706,8 @@
 				DD6151BD2C60D08D0095E1B5 /* PrivacyView.swift in Sources */,
 				3CCE94E82C58360B00EE5B8A /* RealmService.swift in Sources */,
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,
+				FA9689022C64133500DE491C /* User.swift in Sources */,
+				FA9689042C651A6000DE491C /* CustomTF.swift in Sources */,
 				3CD434CD2C5E6A77006A8136 /* FadeTransitionAnimator.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				DD6151BB2C60D06E0095E1B5 /* PrivacyVC.swift in Sources */,

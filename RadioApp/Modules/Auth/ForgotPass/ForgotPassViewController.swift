@@ -34,18 +34,25 @@ final class ForgotPassViewController: UIViewController {
     }
     
     @objc func didTapSentButton(_ sender: UIButton) {
-        guard sender.currentTitle != "Change password" else {
-            return
-        }
+//        guard sender.currentTitle != "Change password" else {
+//            return
+//        }
         
         guard let emailText = forgotPassView.emailView.textField.text, !emailText.isEmpty else {
             return
         }
+        AlertLoading.shared.isPresented(true, from: self)
+        auth.resetPassword(email: emailText) { [weak self] in
+            guard let self else { return }
+            AlertLoading.shared.isPresented(false, from: self)
+            showAlert { [weak self] in
+                #warning("Письмо со ссылкой на сброс пароля отправлено, возвращаемся на SignInViewController")
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
         
-        auth.resetPassword(email: emailText)
-        
-        sender.setTitle("Change password", for: .normal)
-        forgotPassView.updateView()
+//        sender.setTitle("Change password", for: .normal)
+//        forgotPassView.updateView()
     }
     
     /// Поднимаем активный textfield над клавиатурой
@@ -88,5 +95,28 @@ extension ForgotPassViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+    }
+}
+
+// MARK: - Alert
+private extension ForgotPassViewController {
+    /// Alert с просьбой подтвердить сброс пароля по ссылке в письме
+    func showAlert(completion: @escaping ()->()) {
+        let alert = UIAlertController(
+            title: "Fine 😊",
+            message: "Follow the link we've emailed you to reset your password",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: "Ok",
+            style: .default) { [weak self] _ in
+                self?.dismiss(animated: true, completion: {
+                    completion()
+                })
+            }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

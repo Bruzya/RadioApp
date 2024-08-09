@@ -35,7 +35,7 @@ class RenameView: UIView{
     
     lazy var avatarImage: UIImageView = {
         let image = UIImageView()
-        image.image = .profileAvatar
+        image.tintColor = .white
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 40
         image.clipsToBounds = true
@@ -51,16 +51,16 @@ class RenameView: UIView{
     }()
     
     lazy var reinstallImageButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
+        button.tintColor = .blueLight
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
-        button.tintColor = .white
         return button
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mark"
-        label.font = Font.getFont(.displayMedium, size: 16)
+        label.text = User.shared.name ?? "User"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .center
         return label
@@ -68,8 +68,9 @@ class RenameView: UIView{
     
     lazy var emailLabel: UILabel = {
         let label = UILabel()
-        label.text = "MarkMark@gmail.com"
+        label.text = User.shared.email
         label.font = Font.getFont(.displayMedium, size: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = .gray
         label.textAlignment = .center
         return label
@@ -139,8 +140,12 @@ class RenameView: UIView{
         return tf
     }()
     
+    let passwordTextField = CustomTF(titleLabel: "Password")
+    let confirmPasswordTextField = CustomTF(titleLabel: "Confirm password")
+    
     lazy var saveButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
+        button.tintColor = .white
         button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = Font.getFont(.displayMedium, size: 16)
         button.titleLabel?.textColor = .white
@@ -179,11 +184,14 @@ extension RenameView {
         avatarView.addSubview(pencilBackView)
         pencilBackView.addSubview(reinstallImageButton)
         
-        backViewNameTextField.addSubview(textFieldNameLabel)
+        addSubview(textFieldNameLabel)
         backViewNameTextField.addSubview(textFieldName)
         
-        backViewEmailTextField.addSubview(textFieldEmailLabel)
+        addSubview(textFieldEmailLabel)
         backViewEmailTextField.addSubview(textFieldEmail)
+        
+        backgroundImage.addSubview(passwordTextField)
+        backgroundImage.addSubview(confirmPasswordTextField)
     }
     
     func constraintsUI() {
@@ -245,6 +253,7 @@ extension RenameView {
         textFieldName.snp.makeConstraints { make in
             make.leading.equalTo(backViewNameTextField.snp.leading).inset(10)
             make.height.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-10)
         }
         
         backViewEmailTextField.snp.makeConstraints { make in
@@ -261,13 +270,26 @@ extension RenameView {
         textFieldEmail.snp.makeConstraints { make in
             make.leading.equalTo(backViewEmailTextField.snp.leading).inset(10)
             make.height.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-10)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(textFieldEmail.snp.bottom).offset(40)
+            make.leading.trailing.equalTo(saveButton)
+            make.height.equalTo(55)
+        }
+        
+        confirmPasswordTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(40)
+            make.leading.trailing.equalTo(saveButton)
+            make.height.equalTo(55)
         }
         
         saveButton.snp.makeConstraints { make in
             make.leading.equalTo(backView.snp.leading).inset(30)
             make.trailing.equalTo(backView.snp.trailing).inset(30)
             make.height.equalTo(55)
-            make.top.equalTo(backViewEmailTextField.snp.bottom).offset(40)
+            make.top.equalTo(confirmPasswordTextField.snp.bottom).offset(46.56)
         }
         
     }

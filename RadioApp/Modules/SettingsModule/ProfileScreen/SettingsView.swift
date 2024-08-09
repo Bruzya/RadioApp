@@ -80,7 +80,7 @@ class SettingsView: UIView {
     lazy var renameButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .blueLight
         
         return button
     }()
@@ -131,7 +131,7 @@ class SettingsView: UIView {
     
     lazy var switchNotification: UISwitch = {
         let switchIs = UISwitch()
-        switchIs.onTintColor = .white
+        switchIs.onTintColor = .blueLight
         switchIs.thumbTintColor = .darkGray
         return switchIs
     }()
@@ -191,7 +191,7 @@ class SettingsView: UIView {
     lazy var segueImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "chevron.right.circle")
-        image.tintColor = .systemGray2
+        image.tintColor = .blueLight
         image.layer.cornerRadius = 15
         return image
     }()
@@ -265,7 +265,7 @@ class SettingsView: UIView {
     lazy var chevronImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "chevron.right.circle")
-        image.tintColor = .systemGray2
+        image.tintColor = .blueLight
         image.layer.cornerRadius = 15
         return image
     }()
@@ -321,7 +321,7 @@ class SettingsView: UIView {
     lazy var chevronImage2: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "chevron.right.circle")
-        image.tintColor = .systemGray2
+        image.tintColor = .blueLight
         return image
     }()
     
@@ -339,8 +339,9 @@ class SettingsView: UIView {
     }()
     
     lazy var exitButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Exit account", for: .normal)
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.setTitle("Log Out", for: .normal)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = Font.getFont(.displayBold, size: 16)
