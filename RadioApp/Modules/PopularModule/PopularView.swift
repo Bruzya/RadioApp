@@ -32,11 +32,16 @@ final class PopularView: UIView {
         return collection
     }()
     
+    lazy var spinner = createSpinner(style: .large)
+    lazy var spinnerPagination = createSpinner(style: .medium)
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(title)
         addSubview(collectionView)
+        addSubview(spinnerPagination)
+        collectionView.addSubview(spinner)
         setupConstraints()
     }
     
@@ -51,7 +56,12 @@ final class PopularView: UIView {
     }
     
     // MARK: - Private methods
-    
+    private func createSpinner(style: UIActivityIndicatorView.Style) -> UIActivityIndicatorView {
+        let element = UIActivityIndicatorView(style: style)
+        element.hidesWhenStopped = true
+        element.color = .white
+        return element
+    }
 }
 
 // MARK: - Setup Constraints
@@ -62,11 +72,20 @@ private extension PopularView {
             make.leading.equalToSuperview().offset(66.1)
         }
         
+        spinner.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(26)
             make.leading.equalToSuperview().offset(60.5)
             make.trailing.equalToSuperview().offset(-60.5)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-150)
+            make.bottom.equalTo(spinnerPagination.snp.top)
+        }
+        
+        spinnerPagination.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-140)
         }
     }
 }

@@ -30,6 +30,7 @@ final class PopularVC: UIViewController {
     
     // MARK: - Private methods
     private func fetchPopularStations() {
+        currentPage > 20 ? popularView.spinnerPagination.startAnimating() : popularView.spinner.startAnimating()
         isLoadingMoreData = true
         networkService.fetchData(from: Link.popular(count: currentPage).url) { [weak self] result in
             guard let self else { return }
@@ -39,6 +40,8 @@ final class PopularVC: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     popularView.collectionView.reloadData()
+                    popularView.spinner.stopAnimating()
+                    popularView.spinnerPagination.stopAnimating()
                 }
                 isLoadingMoreData = false
             case .failure(let failure):

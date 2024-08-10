@@ -65,7 +65,7 @@ final class PopularCell: UICollectionViewCell {
     func configureCell(_ station: Station) {
         tagStationLabel.text = station.tags.isEmpty ? "..." : station.tags.split(separator: ",").first?.capitalized
         nameStationLabel.text = clearWhitespaceAndTabs(station.name).isEmpty ? "..." : clearWhitespaceAndTabs(station.name)
-        votesLabel.text = "votes \(station.votes.description)"
+        votesLabel.text = "votes\n\(station.votes.description)"
     }
     
     // MARK: - Private methods
@@ -82,9 +82,12 @@ final class PopularCell: UICollectionViewCell {
         }
         
         votesLabel.textAlignment = .right
+        votesLabel.numberOfLines = 2
         tagStationLabel.textAlignment = .center
+        tagStationLabel.numberOfLines = 2
         nameStationLabel.textAlignment = .center
         nameStationLabel.numberOfLines = 2
+        nameStationLabel.adjustsFontSizeToFitWidth = true
     }
     
     private func setupCell() {
@@ -161,6 +164,7 @@ private extension PopularCell {
         }
         
         votesLabel.snp.makeConstraints { make in
+            make.leading.equalTo(playImageView.snp.trailing).offset(10)
             make.trailing.equalTo(likeButton.snp.leading).offset(-5)
             make.centerY.equalTo(likeButton.snp.centerY)
         }
@@ -176,6 +180,7 @@ private extension PopularCell {
             make.leading.equalTo(playImageView.snp.leading)
             make.trailing.equalTo(likeButton.snp.trailing)
             make.top.equalTo(playImageView.snp.bottom)
+            make.bottom.equalTo(nameStationLabel.snp.top)
         }
         
         nameStationLabel.snp.makeConstraints { make in
