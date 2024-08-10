@@ -82,7 +82,9 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning("Воспроизводим выбранную станцию")
+        if let url = URL(string: stations[indexPath.item].url) {
+            #warning("Воспроизводим выбранную станцию")
+        }
         if selectedIndexPath == indexPath {
             #warning("Переходим на StationDetailVC")
             self.selectedIndexPath = nil
