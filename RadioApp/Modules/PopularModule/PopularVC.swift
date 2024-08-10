@@ -15,6 +15,7 @@ final class PopularVC: UIViewController {
     private let networkService = NetworkService.shared
     private var isLoadingMoreData = false
     private var currentPage = 20
+    private var selectedIndexPath: IndexPath?
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -81,7 +82,12 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        #warning("Воспроизводим выбранную станцию")
+        if selectedIndexPath == indexPath {
+            #warning("Переходим на StationDetailVC")
+            self.selectedIndexPath = nil
+        }
+        selectedIndexPath = indexPath
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
