@@ -10,7 +10,9 @@ final class  RadioStationViewModel {
     private let radioStation: Station
     
     var name: String {
-        return radioStation.name
+        let originalSting = radioStation.name
+        let newString = String(originalSting.dropFirst())
+        return newString
     }
     
     var tag: String {

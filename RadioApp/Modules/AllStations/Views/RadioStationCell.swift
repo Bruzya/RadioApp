@@ -69,7 +69,7 @@ class RadioStationCell: UITableViewCell {
             conteinerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             
             nameLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 24),
-            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 5),
+            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 10),
             nameLabel.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -100),
             
             tagLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
@@ -111,19 +111,17 @@ class RadioStationCell: UITableViewCell {
     }
     
     
-    func configure(with viewModel: RadioStationViewModel) {
+    func configure(with viewModel: RadioStationViewModel, isSelected: Bool) {
         tagLabel.text = viewModel.tag
         nameLabel.text = viewModel.name
         votesLabel.text = "\(K.votes) \(viewModel.votes)"
-    }
-    
-    func selectCell() {
-        conteinerView.backgroundColor = Colors.pink
-        print("Play music")
-    }
-    
-    func deselectCell() {
-        conteinerView.backgroundColor = .clear
-        print("Stop music")
+        
+        if isSelected {
+            conteinerView.backgroundColor = Colors.pink
+            print("Play music")
+        } else {
+            conteinerView.backgroundColor = .clear
+            print("Stop music")
+        }
     }
 }

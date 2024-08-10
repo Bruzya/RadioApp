@@ -48,7 +48,6 @@
 		522899882C57DC290013FF87 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899872C57DC290013FF87 /* Font.swift */; };
 		5228999B2C57E6F10013FF87 /* PopularVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999A2C57E6F10013FF87 /* PopularVC.swift */; };
 		5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */; };
-		522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A32C57E72B0013FF87 /* SearchVC.swift */; };
 		522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899A62C57E7450013FF87 /* StationDetailsVC.swift */; };
 		522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */; };
 		522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */; };
@@ -138,7 +137,6 @@
 		522899872C57DC290013FF87 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		5228999A2C57E6F10013FF87 /* PopularVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularVC.swift; sourceTree = "<group>"; };
 		5228999D2C57E6FC0013FF87 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
-		522899A32C57E72B0013FF87 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		522899A62C57E7450013FF87 /* StationDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsVC.swift; sourceTree = "<group>"; };
 		522899AB2C5968790013FF87 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		522899AD2C5968820013FF87 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
@@ -407,17 +405,8 @@
 			children = (
 				11AFEF0B2C5B945D00249DA7 /* Views */,
 				113E02792C5B932500D64D01 /* ViewModel */,
-				522899A22C57E7220013FF87 /* Search */,
 			);
 			path = AllStationsModule;
-			sourceTree = "<group>";
-		};
-		522899A22C57E7220013FF87 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				522899A32C57E72B0013FF87 /* SearchVC.swift */,
-			);
-			path = Search;
 			sourceTree = "<group>";
 		};
 		522899A52C57E7360013FF87 /* StationDetailsScreen */ = {
@@ -672,7 +661,6 @@
 				11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
-				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
 				3C6623CF2C62AB25004BB001 /* TimerPickerVC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
 				FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */,

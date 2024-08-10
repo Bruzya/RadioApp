@@ -82,15 +82,19 @@ final class AllStationsVC: UIViewController {
     }
     
     func searchRadio() {
-        
-        if let radioName = searchTextField.text, !radioName.isEmpty {
-            
-            let filteredStations = viewModel.radioStation.filter { $0.name.lowercased().contains(radioName.lowercased()) }
-            print(filteredStations)
-            // После фильтрации надо будет передать на др экран
-            viewModel.radioStation = filteredStations
+        guard let radioName = searchTextField.text, !radioName.isEmpty else {
+            viewModel.radioStation.removeAll() // Сбросить старые данные, если поле пустое
             radioTableView.reloadData()
+            return
         }
+
+        let filteredStations = viewModel.radioStation.filter { $0.name.lowercased().contains(radioName.lowercased()) }
+        if filteredStations.isEmpty {
+            viewModel.radioStation.removeAll() // Если ничего не найдено, сбросить данные
+        } else {
+            viewModel.radioStation = filteredStations
+        }
+        radioTableView.reloadData()
     }
     
     func loadAllRadioStation() {
@@ -102,46 +106,54 @@ final class AllStationsVC: UIViewController {
         }
     }
     
-    func switchSearch() {
-        if count == 0 && !(searchTextField.text?.isEmpty ?? true) {
-            subtitleLabel.isHidden = true
-            rightButton.setImage(Search.backToAll.image, for: .normal)
-            searchRadio()
-            count += 1
-        } else {
-            subtitleLabel.isHidden = false
-            rightButton.setImage(Search.result.image, for: .normal)
-            viewModel.radioStation.removeAll()
-            loadAllRadioStation()
-            count -= 1
-        }
-    }
     // MARK: - Selectors
     
     @objc private func profileDetailTaped() {
         print("Show detail profile info")
     }
     
-    var count = 0
+    // Переменная состояния поиска
+    private var isSearching: Bool = false
     
     @objc private func toResultSearch() {
         print("Result search radio stations")
         
-        
-        if count == 0 && !(searchTextField.text?.isEmpty ?? true) {
-            subtitleLabel.isHidden = true
-            rightButton.setImage(Search.backToAll.image, for: .normal)
-            searchRadio()
-            count += 1
-        } else {
+        if isSearching {
+            // Если мы уже находимся в состоянии поиска, то возвращаемся к начальному экрану
             subtitleLabel.isHidden = false
             searchTextField.text = ""
             rightButton.setImage(Search.result.image, for: .normal)
-            viewModel.radioStation.removeAll()
-            loadAllRadioStation()
-            count -= 1
+            viewModel.radioStation.removeAll() // Очищаем текущий список
+            loadAllRadioStation() // Загружаем все станции
+            isSearching = false
+        } else {
+            // Если мы еще не искали, выполняем поиск
+            if let radioName = searchTextField.text, !radioName.isEmpty {
+                let filteredStations = viewModel.radioStation.filter { $0.name.lowercased().contains(radioName.lowercased()) }
+                
+                if filteredStations.isEmpty {
+                    // Если ничего не найдено, показываем все станции
+                    subtitleLabel.isHidden = false
+                    searchTextField.text = ""
+                    rightButton.setImage(Search.result.image, for: .normal)
+                    viewModel.radioStation.removeAll()
+                    loadAllRadioStation()
+                } else {
+                    // Если есть результаты, переключаемся на результаты поиска
+                    subtitleLabel.isHidden = true
+                    viewModel.radioStation = filteredStations
+                    rightButton.setImage(Search.backToAll.image, for: .normal)
+                    radioTableView.reloadData()
+                    isSearching = true
+                }
+            }
         }
+        
+        // Обновление вида кнопки
+        rightButton.setNeedsLayout()
+        rightButton.layoutIfNeeded()
     }
+    
 }
 
 // MARK: - Extensions Set Constraints
@@ -179,9 +191,14 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RadioStationCell", for: indexPath) as? RadioStationCell else {
+            return UITableViewCell()
+        }
+        
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
-        cell.configure(with: stationViewModel)
+        let isSelected = tableView.indexPathsForSelectedRows?.contains(indexPath) ?? false
+        cell.configure(with: stationViewModel, isSelected: isSelected)
+        
         cell.selectionStyle = .none
         cell.clipsToBounds = false
         cell.backgroundColor = .clear
@@ -195,13 +212,13 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
     //    выбор ячейки в которой играет радио
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
-            cell.selectCell()
+            cell.configure(with: viewModel.radioStationViewModel(at: indexPath.row), isSelected: true)
         }
     }
-    
+    //    убрали выделение с ячейки в которой играло радио и поставили стоп
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
-            cell.deselectCell()
+            cell.configure(with: viewModel.radioStationViewModel(at: indexPath.row), isSelected: false)
         }
     }
 }
@@ -211,8 +228,8 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
 extension AllStationsVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
+        toResultSearch()
         searchTextField.text = ""
-        
         return true
     }
     
