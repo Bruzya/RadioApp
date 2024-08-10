@@ -14,7 +14,7 @@ enum Link {
     case tags
     case language
     case country
-    
+    case vote
     
     var url: String {
         switch self {
@@ -28,6 +28,8 @@ enum Link {
             "http://all.api.radio-browser.info/json/languages"
         case .country:
             "http://all.api.radio-browser.info/json/countries"
+        case .vote:
+            "http://91.132.145.114/json/vote/"
         }
     }
 }
