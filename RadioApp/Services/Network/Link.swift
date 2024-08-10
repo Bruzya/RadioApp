@@ -9,7 +9,7 @@ import Foundation
 
 enum Link {
     
-    case popular
+    case popular(count: Int)
     case allStations
     case tags
     case language
@@ -18,8 +18,8 @@ enum Link {
     
     var url: String {
         switch self {
-        case .popular:
-            "http://all.api.radio-browser.info/json/stations?random&limit=20"
+        case .popular(let count):
+            "http://all.api.radio-browser.info/json/stations/topclick/\(count)"
         case .allStations:
             "http://all.api.radio-browser.info/json/stations?limit=20"
         case .tags:

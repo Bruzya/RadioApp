@@ -87,6 +87,8 @@
 		FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */; };
 		FA9689022C64133500DE491C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689012C64133500DE491C /* User.swift */; };
 		FA9689042C651A6000DE491C /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689032C651A6000DE491C /* CustomTF.swift */; };
+		FA9689062C66910800DE491C /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689052C66910800DE491C /* PopularView.swift */; };
+		FA9689082C66918400DE491C /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9689072C66918400DE491C /* PopularCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,6 +175,8 @@
 		FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		FA9689012C64133500DE491C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA9689032C651A6000DE491C /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		FA9689052C66910800DE491C /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		FA9689072C66918400DE491C /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				5228999A2C57E6F10013FF87 /* PopularVC.swift */,
+				FA9689072C66918400DE491C /* PopularCell.swift */,
+				FA9689052C66910800DE491C /* PopularView.swift */,
 			);
 			path = PopularModule;
 			sourceTree = "<group>";
@@ -674,10 +680,12 @@
 				FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */,
 				DD6151C32C60D26F0095E1B5 /* RenameView.swift in Sources */,
 				FA9688E12C5A7F6100DE491C /* SignUpView.swift in Sources */,
+				FA9689082C66918400DE491C /* PopularCell.swift in Sources */,
 				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				11AFEF0E2C5B949500249DA7 /* StationsVC.swift in Sources */,
+				FA9689062C66910800DE491C /* PopularView.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
 				522899A42C57E72B0013FF87 /* SearchVC.swift in Sources */,
