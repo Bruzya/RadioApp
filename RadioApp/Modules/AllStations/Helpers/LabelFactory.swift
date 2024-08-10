@@ -13,10 +13,10 @@ final class LabelFactory {
     static func createColorText(for string: String) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
             
-        if string.contains("Mark") {
-            if let range = string.range(of: "Mark") {
+        if string.contains("Hello") {
+            if let range = string.range(of: "Hello") {
                 let nsRange = NSRange(range, in: string)
-                attributedString.addAttribute(.foregroundColor, value: Colors.pink, range: nsRange)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: nsRange)
             }
         }
         return attributedString

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CustomTF: UITextField {
+final class CustomTF: UIView {
 
     // MARK: - Private properties
     private let titleLabel: String
