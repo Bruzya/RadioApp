@@ -19,7 +19,7 @@ final class PopularCell: UICollectionViewCell {
         let element = UIImageView()
         element.contentMode = .scaleAspectFit
         element.image = .play
-        element.isHidden = true
+        element.alpha = 0
         return element
     }()
     
@@ -58,7 +58,7 @@ final class PopularCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        playImageView.isHidden = true
+        playImageView.alpha = 0
     }
     
     // MARK: - Public methods
@@ -108,25 +108,28 @@ final class PopularCell: UICollectionViewCell {
     
     private func toggleCell(_ isSelected: Bool) {
         if isSelected {
-            backgroundColor = Colors.pink
-            layer.borderWidth = 0
-            playImageView.isHidden = false
-            votesLabel.textColor = .white
-            tagStationLabel.textColor = .white
-            nameStationLabel.textColor = .white
-            nameStationLabel.textColor = .white
-            waveImageView.image = .whiteWave
+            UIView.animate(withDuration: 0.25) { [unowned self] in
+                backgroundColor = Colors.pink
+                layer.borderWidth = 0
+                playImageView.alpha = 1
+                votesLabel.textColor = .white
+                tagStationLabel.textColor = .white
+                nameStationLabel.textColor = .white
+                nameStationLabel.textColor = .white
+                waveImageView.image = .whiteWave
+            }
         } else {
-            backgroundColor = .clear
-            layer.borderWidth = 2
-            playImageView.isHidden = true
-            votesLabel.textColor = Colors.anotherGray
-            tagStationLabel.textColor = Colors.anotherGray
-            nameStationLabel.textColor = Colors.anotherGray
-            nameStationLabel.textColor = Colors.anotherGray
-            waveImageView.image = .greyWave
+            UIView.animate(withDuration: 0.25) { [unowned self] in
+                backgroundColor = .clear
+                layer.borderWidth = 2
+                playImageView.alpha = 0
+                votesLabel.textColor = Colors.anotherGray
+                tagStationLabel.textColor = Colors.anotherGray
+                nameStationLabel.textColor = Colors.anotherGray
+                nameStationLabel.textColor = Colors.anotherGray
+                waveImageView.image = .greyWave
+            }
         }
-        
     }
     
     private func clearWhitespaceAndTabs(_ string: String) -> String {
@@ -146,7 +149,7 @@ final class PopularCell: UICollectionViewCell {
             sender.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
             sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
-            #warning("добавить votes")
+            #warning("Здесь обрабатываем лайк")
         }
     }
 }
