@@ -17,11 +17,11 @@ final class AppCoordinator: Coordinator {
     
     var window: UIWindow?
     
-    var appDIContainer: AppDIContainer?
+    var appDIContainer: AppDIContainer
     
     private let disposeBag = DisposeBag()
     
-    init(navigationController: UINavigationController, window: UIWindow?, appDIContainer: AppDIContainer?) {
+    init(navigationController: UINavigationController, window: UIWindow?, appDIContainer: AppDIContainer) {
         self.navigationController = navigationController
         self.window = window
         self.appDIContainer = appDIContainer
@@ -29,7 +29,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         configWindow()
-        makeOnboardingFlow()
+        appDIContainer.firebase.isAuthorized ? makeMainFlow() : makeAuthFlow()
     }
     
     private func configWindow() {
@@ -38,31 +38,36 @@ final class AppCoordinator: Coordinator {
     }
 
     func makeOnboardingFlow() {
-        let vc = OnboardingMainVC()
-        vc.onComplete = { [weak self] in
-            self?.makeMainFlow()
-        }
-        navigationController.setViewControllers([vc], animated: false)
+        
     }
     
+    
     func makeAuthFlow() {
-        
+        let vc = SignInViewController()
+        vc.onSignIn = { [unowned self] in
+            makeMainFlow()
+        }
+        navigationController.setViewControllers([vc], animated: false)
+        navigationController.navigationBar.isHidden = true
     }
     
     func makeMainFlow() {
         let vc = ContainerVC()
-        
         vc.onProfileTap
             .bind(onNext: { [unowned self] in
                 makeProfileFlow()
             })
             .disposed(by: disposeBag)
-        
-        navigationController.setViewControllers([vc], animated: false)
+        navigationController.setViewControllers([vc], animated: true)
+        navigationController.navigationBar.isHidden = false
     }
     
     func makeProfileFlow() {
         let vc = SettingsVC()
+        vc.onLogout = { [unowned self] in
+            makeAuthFlow()
+        }
         navigationController.pushViewController(vc, animated: true)
+        navigationController.navigationBar.isHidden = false
     }
 }

@@ -13,6 +13,8 @@ final class SignInViewController: UIViewController {
     private let signInView = SignInView()
     private let auth = FirebaseService.shared
     
+    var onSignIn: (() -> Void)?
+    
     // MARK: - Life Cycle
     override func loadView() {
         view = signInView
@@ -24,7 +26,11 @@ final class SignInViewController: UIViewController {
         signInView.setTargetForButton(controller: self)
         addTapGestureToHideKeyboard()
         addNotifications()
-        navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func clearTextField() {
+        signInView.emailView.textField.text = nil
+        signInView.passwordView.textField.text = nil
     }
     
     // MARK: - Actions
@@ -36,8 +42,10 @@ final class SignInViewController: UIViewController {
     
     /// Авторизация через Google
     @objc func didTapGoogleAuthButton() {
-        auth.signInWithGoogle(with: self) {
-            print("Sign In with Google") // Авторизация пройдена, переходим на главный экран
+        auth.signInWithGoogle(with: self) { [weak self] in
+            guard let self else { return }
+            clearTextField()
+            onSignIn?()
         }
     }
     
@@ -65,7 +73,9 @@ final class SignInViewController: UIViewController {
                 case .success(let success):
                     switch success {
                     case .verified:
-                        print("SIGN IN") // Авторизация пройдена, переходим на главный экран
+                        auth.updateUserEmail(email)
+                        clearTextField()
+                        onSignIn?()
                     case .noVerified:
                         showAlert()
                     }

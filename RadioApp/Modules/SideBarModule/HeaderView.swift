@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HeaderView: UIView {
+    
+    private let auth = FirebaseService.shared
     
     // MARK: - UI properties
     
@@ -22,14 +25,15 @@ final class HeaderView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = Colors.white
-        label.font = Font.getFont(Font.displayBold, size: 24)
+        label.textColor = Colors.pink
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return label
     }()
     
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profileButton")
+        imageView.layer.cornerRadius = 27.5
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -38,6 +42,11 @@ final class HeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        auth.getCurrentUser { [weak self] in
+            guard let self else { return }
+            titleLabel.attributedText = LabelFactory.createColorText(for: User.shared.nameForHeader)
+            profileImage.getImage(from: User.shared.avatarUrl)
+        }
     }
     
     required init?(coder: NSCoder) {

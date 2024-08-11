@@ -10,14 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-import UIKit
-import RxSwift
-import RxCocoa
-
 final class SettingsVC: UIViewController {
 
     private var settingView: SettingsView!
     private let disposeBag = DisposeBag()
+    private let auth = FirebaseService.shared
+    
+    var onLogout: (() -> Void)?
 
     override func loadView() {
         settingView = SettingsView()
@@ -43,7 +42,9 @@ final class SettingsVC: UIViewController {
         settingView.buttonLegal.addTarget(self, action: #selector(goToPrivacyVC), for: .touchUpInside)
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
+        settingView.exitButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         setupBindings()
+        getUserData()
     }
 
     @objc func goToPrivacyVC(){
@@ -53,6 +54,18 @@ final class SettingsVC: UIViewController {
 
     @objc func goToRenameVC() {
         let vc = RenameVC()
+        vc.completionHandlerAvatar = { [weak self] img in
+            self?.settingView.profileImage.image = img
+        }
+        vc.completionHandlerName = { [weak self] name in
+            self?.settingView.nameProfile.text = name
+        }
+        vc.completionHandlerEmail = { [weak self] email in
+            self?.settingView.emailProfile.text = email
+        }
+        vc.avatar = settingView.profileImage.image
+        vc.name = settingView.nameProfile.text
+        vc.email = settingView.emailProfile.text
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -66,6 +79,12 @@ final class SettingsVC: UIViewController {
     
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func logOut() {
+        auth.signOut { [unowned self] in
+            onLogout?()
+        }
     }
     
 }
@@ -125,6 +144,17 @@ extension SettingsVC {
             })
             alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+extension SettingsVC {
+    fileprivate func getUserData() {
+        auth.getCurrentUser { [weak self] in
+            guard let self else { return }
+            settingView.profileImage.getImage(from: User.shared.avatarUrl)
+            settingView.nameProfile.text = User.shared.name
+            settingView.emailProfile.text = User.shared.email
         }
     }
 }

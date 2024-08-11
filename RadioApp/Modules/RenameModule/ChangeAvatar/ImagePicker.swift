@@ -11,6 +11,7 @@ import UIKit
 class ImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private var renameView: RenameView?
+    private let auth = FirebaseService.shared
     
     func showImagePicker(for viewController: UIViewController ,sourseType: UIImagePickerController.SourceType, renameView: RenameView){
         let imagePickerVC = UIImagePickerController()
@@ -26,6 +27,9 @@ class ImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickerImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
             renameView?.avatarImage.image = pickerImage
+            if let imageData = renameView?.avatarImage.image?.jpegData(compressionQuality: 0.1) {
+                auth.uploadImage(image: imageData)
+            }
         }
         picker.dismiss(animated: true)
 

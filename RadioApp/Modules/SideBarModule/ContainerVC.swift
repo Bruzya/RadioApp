@@ -25,7 +25,7 @@ final class ContainerVC: UIViewController {
     var navigationVC: UINavigationController?
 
     private let menuVC = SideBarVC()
-    private let allStationsVC = StationsVC()
+    private let allStationsVC = AllStationsVC()
     private let favoritesVC = FavoritesVC()
     private let popularVC = PopularVC()
     private let player = PlayerView()
@@ -44,6 +44,8 @@ final class ContainerVC: UIViewController {
         addChildVCs()
         setupUI()
         setupBindings()
+ view.backgroundColor = .green
+        setupConstraints()
     }
     
     private func addChildVCs() {
