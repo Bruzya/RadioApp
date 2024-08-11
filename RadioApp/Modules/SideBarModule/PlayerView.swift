@@ -44,6 +44,29 @@ final class PlayerView: UIView {
         return image
     }()
     
+    private let volumeConteiner: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var volumeLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.getFont(Font.displayRegular, size: 12)
+        label.textColor = Colors.white
+        label.text = "10%"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var volumeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "sound")
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private var audioPlayer: AVPlayer?
     private var volumeSlider: UISlider!
     private var volumeView = MPVolumeView()
@@ -108,6 +131,7 @@ final class PlayerView: UIView {
         let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
             slider?.value = volume
+            self.volumeLabel.text = String(format: "%.0f", self.volumeSlider.value) + "%"
         }
     }
     
@@ -131,7 +155,7 @@ private extension PlayerView {
     func setupUI() {
         volumeSlider = UISlider()
         volumeSlider.minimumValue = 0
-        volumeSlider.maximumValue = 1
+        volumeSlider.maximumValue = 100
         volumeSlider.value = 1
         volumeSlider.thumbTintColor = Colors.teal
         volumeSlider.minimumTrackTintColor = Colors.teal
@@ -145,8 +169,13 @@ private extension PlayerView {
             .forEach {
                 hStack.addArrangedSubview($0)
             }
+        
+        [volumeImage, volumeSlider, volumeLabel]
+            .forEach {
+                volumeConteiner.addSubview($0)
+            }
 
-        [hStack, volumeSlider]
+        [hStack, volumeConteiner]
             .forEach {
             addSubview($0)
         }
@@ -177,19 +206,34 @@ private extension PlayerView {
                 .size
                 .equalTo(48)
         }
-
-        volumeSlider.snp.makeConstraints { make in
+        
+        volumeConteiner.snp.makeConstraints { make in
             make
                 .top
                 .equalTo(hStack.snp.bottom)
-                .offset(5)
+                .offset(10)
             make
                 .leading.trailing
                 .equalToSuperview()
-                .inset(20)
             make
                 .bottom
                 .equalToSuperview()
+            make.height.equalTo(30)
+        }
+        
+        volumeImage.snp.makeConstraints { make in
+            make.centerY.equalTo(volumeConteiner)
+            make.leading.equalToSuperview()
+        }
+        
+        volumeSlider.snp.makeConstraints { make in
+            make.center.equalTo(volumeConteiner)
+            make.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        volumeLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(volumeConteiner)
+            make.leading.equalTo(volumeSlider.snp.trailing).offset(5)
         }
     }
 }

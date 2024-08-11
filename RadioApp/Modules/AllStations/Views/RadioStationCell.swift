@@ -19,19 +19,21 @@ class RadioStationCell: UITableViewCell {
         return view
     }()
     
-    private lazy var tagLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.font = Font.getFont(Font.displayBold, size: 24)
         label.textColor = Colors.white
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var nameLabel: UILabel = {
+    private lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Font.getFont(Font.displayRegular, size: 14)
+        label.font = Font.getFont(Font.displayMedium, size: 14)
         label.textColor = Colors.white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -66,17 +68,18 @@ class RadioStationCell: UITableViewCell {
             conteinerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             conteinerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             
-            tagLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 18),
+            nameLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 24),
+            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 10),
+            nameLabel.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -100),
+            
+            tagLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             tagLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
+            tagLabel.bottomAnchor.constraint(equalTo: conteinerView.bottomAnchor, constant: -46),
             
-            nameLabel.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
-            nameLabel.bottomAnchor.constraint(equalTo: conteinerView.bottomAnchor, constant: -46),
-            
-            votesLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 16),
+            votesLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 12),
             votesLabel.trailingAnchor.constraint(equalTo: likeButtons.leadingAnchor, constant: -4),
             
-            likeButtons.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 14),
+            likeButtons.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 10),
             likeButtons.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -10)
         ])
     }
@@ -85,13 +88,13 @@ class RadioStationCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     @objc private func likeTaped() {
         if likeButtons.currentImage == UIImage(named: "likeFilled") {
             likeButtons.setImage(UIImage(named: "like"), for: .normal)
         } else {
             likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
 //            добавить votes
+            
         }
     }
     
@@ -108,17 +111,17 @@ class RadioStationCell: UITableViewCell {
     }
     
     
-    func configure(with viewModel: RadioStationViewModel) {
-        tagLabel.text = viewModel.name
-        nameLabel.text = viewModel.tag
+    func configure(with viewModel: RadioStationViewModel, isSelected: Bool) {
+        tagLabel.text = viewModel.tag
+        nameLabel.text = viewModel.name
         votesLabel.text = "\(K.votes) \(viewModel.votes)"
-    }
-    
-    func selectCell() {
-        conteinerView.backgroundColor = Colors.pink
-    }
-    
-    func deselectCell() {
-        conteinerView.backgroundColor = .clear
+        
+        if isSelected {
+            conteinerView.backgroundColor = Colors.pink
+            print("Play music")
+        } else {
+            conteinerView.backgroundColor = .clear
+            print("Stop music")
+        }
     }
 }

@@ -83,7 +83,6 @@ final class SettingsVC: UIViewController {
     
     @objc func logOut() {
         auth.signOut { [unowned self] in
-            #warning("Вышли из профиля, возвращаемся на SignInViewController")
             onLogout?()
         }
     }

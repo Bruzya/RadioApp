@@ -33,6 +33,8 @@ enum AuthError: String, Error {
     case incorrectEmailOrLogin = "Incorrect email and/or password"
     case nameExist = "Name already exist"
     case emailExist = "Email already exist"
+    case failUpdateEmailOrPassword = "Failed to update your email and/or password.\nRe-authorise, then try again"
+    case passwordNotConfirm = "Passwords do not match"
     
     static var isPresentedError = false
 }
@@ -149,23 +151,24 @@ final class FirebaseService {
     }
     
     // MARK: - Обновление пароля
-    func updatePassword(_ password: String) {
+    func updatePassword(_ password: String, completion: @escaping (Result<Bool,Error>) -> ()) {
         Auth.auth().currentUser?.updatePassword(to: password) { error in
             guard error == nil else {
-                print("failed to update the password")
+                completion(.failure(error!))
                 return
             }
+            completion(.success(true))
         }
     }
     
     // MARK: - Обновление почты
-    func updateEmail(_ email: String, completion: @escaping () -> ()) {
+    func updateEmail(_ email: String, completion: @escaping (Result<Bool,Error>) -> ()) {
         Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email, completion: { error in
             guard error == nil else {
-                print("failed to update the email")
+                completion(.failure(error!))
                 return
             }
-            completion()
+            completion(.success(true))
         })
     }
     

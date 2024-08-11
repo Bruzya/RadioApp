@@ -45,7 +45,6 @@ final class SignInViewController: UIViewController {
         auth.signInWithGoogle(with: self) { [weak self] in
             guard let self else { return }
             clearTextField()
-            #warning("Авторизация через Гугл пройдена, переходим на главный экран")
             onSignIn?()
         }
     }
@@ -76,7 +75,6 @@ final class SignInViewController: UIViewController {
                     case .verified:
                         auth.updateUserEmail(email)
                         clearTextField()
-                        #warning("Авторизация через почту пройдена, переходим на главный экран")
                         onSignIn?()
                     case .noVerified:
                         showAlert()
