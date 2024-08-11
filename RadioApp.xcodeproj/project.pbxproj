@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B48D2EE2C68C897000EE879 /* OnboardingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48D2E92C68C897000EE879 /* OnboardingMainVC.swift */; };
+		0B48D2EF2C68C897000EE879 /* OnboardingPage1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48D2EA2C68C897000EE879 /* OnboardingPage1VC.swift */; };
+		0B48D2F02C68C897000EE879 /* OnboardingPage2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48D2EB2C68C897000EE879 /* OnboardingPage2VC.swift */; };
+		0B48D2F12C68C897000EE879 /* OnboardingPage3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48D2EC2C68C897000EE879 /* OnboardingPage3VC.swift */; };
 		113C89762C64D83A0072FB2D /* UIKit-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */; };
 		113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027A2C5B935500D64D01 /* RadioStationListVM.swift */; };
 		113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */; };
@@ -40,7 +44,6 @@
 		3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD434D02C5E8990006A8136 /* FrequencyBarsView.swift */; };
 		522899652C57C87B0013FF87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899642C57C87B0013FF87 /* AppDelegate.swift */; };
 		522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899662C57C87B0013FF87 /* SceneDelegate.swift */; };
-		522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522899682C57C87B0013FF87 /* OnboardingVC.swift */; };
 		5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5228996D2C57C87D0013FF87 /* Assets.xcassets */; };
 		522899712C57C87D0013FF87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 522899702C57C87D0013FF87 /* Base */; };
 		5228997E2C57D3450013FF87 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5228997D2C57D3450013FF87 /* SnapKit */; };
@@ -106,6 +109,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B48D2E92C68C897000EE879 /* OnboardingMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingMainVC.swift; sourceTree = "<group>"; };
+		0B48D2EA2C68C897000EE879 /* OnboardingPage1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPage1VC.swift; sourceTree = "<group>"; };
+		0B48D2EB2C68C897000EE879 /* OnboardingPage2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPage2VC.swift; sourceTree = "<group>"; };
+		0B48D2EC2C68C897000EE879 /* OnboardingPage3VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPage3VC.swift; sourceTree = "<group>"; };
 		113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit-Extensions.swift"; sourceTree = "<group>"; };
 		113E027A2C5B935500D64D01 /* RadioStationListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationListVM.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationListVM.swift; sourceTree = SOURCE_ROOT; };
 		113E027B2C5B935500D64D01 /* RadioStationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioStationViewModel.swift; path = RadioApp/Modules/AllStations/ViewModel/RadioStationViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -133,7 +140,6 @@
 		522899612C57C87B0013FF87 /* RadioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522899642C57C87B0013FF87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522899662C57C87B0013FF87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		522899682C57C87B0013FF87 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		5228996D2C57C87D0013FF87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		522899702C57C87D0013FF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522899722C57C87D0013FF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +208,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B48D2ED2C68C897000EE879 /* OnboardingModule */ = {
+			isa = PBXGroup;
+			children = (
+				0B48D2E92C68C897000EE879 /* OnboardingMainVC.swift */,
+				0B48D2EA2C68C897000EE879 /* OnboardingPage1VC.swift */,
+				0B48D2EB2C68C897000EE879 /* OnboardingPage2VC.swift */,
+				0B48D2EC2C68C897000EE879 /* OnboardingPage3VC.swift */,
+			);
+			name = OnboardingModule;
+			path = RadioApp/Modules/OnboardingModule;
+			sourceTree = SOURCE_ROOT;
+		};
 		113E02792C5B932500D64D01 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,9 +350,9 @@
 		5228997A2C57C8D00013FF87 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0B48D2ED2C68C897000EE879 /* OnboardingModule */,
 				DD6151BF2C60D1D90095E1B5 /* RenameModule */,
 				DD6151B92C60D05A0095E1B5 /* PrivacyModule */,
-				5228997B2C57C8D30013FF87 /* Onboarding */,
 				522899962C57E6D40013FF87 /* Auth */,
 				3CCE94F92C58395B00EE5B8A /* SideBarModule */,
 				522899992C57E6E80013FF87 /* PopularModule */,
@@ -344,14 +362,6 @@
 				522899A52C57E7360013FF87 /* StationDetailsScreen */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		5228997B2C57C8D30013FF87 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				522899682C57C87B0013FF87 /* OnboardingVC.swift */,
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		522899862C57DC230013FF87 /* Font */ = {
@@ -658,6 +668,7 @@
 				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
 				64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */,
 				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
+				0B48D2F02C68C897000EE879 /* OnboardingPage2VC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				3C6623CB2C629F18004BB001 /* UserNotificationService.swift in Sources */,
 				FA9688E72C5A90CE00DE491C /* ForgotPassViewController.swift in Sources */,
@@ -667,12 +678,14 @@
 				FA9689082C66918400DE491C /* PopularCell.swift in Sources */,
 				FA9688C22C59280800DE491C /* SignInView.swift in Sources */,
 				11AFEF192C5B960500249DA7 /* LabelFactory.swift in Sources */,
+				0B48D2EE2C68C897000EE879 /* OnboardingMainVC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
 				FA9689062C66910800DE491C /* PopularView.swift in Sources */,
 				11AFEF0E2C5B949500249DA7 /* AllStationsVC.swift in Sources */,
 				3CCE95002C583FC500EE5B8A /* ContainerVC.swift in Sources */,
 				3CD434D12C5E8990006A8136 /* FrequencyBarsView.swift in Sources */,
 				3C6623CF2C62AB25004BB001 /* TimerPickerVC.swift in Sources */,
+				0B48D2EF2C68C897000EE879 /* OnboardingPage1VC.swift in Sources */,
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
 				FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */,
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
@@ -681,7 +694,6 @@
 				113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */,
 				3CCE950A2C593ED100EE5B8A /* Coordinator.swift in Sources */,
 				522899D62C6012220013FF87 /* Error.swift in Sources */,
-				522899692C57C87B0013FF87 /* OnboardingVC.swift in Sources */,
 				3CCE95162C59509D00EE5B8A /* SideBarCell.swift in Sources */,
 				DD3A034D2C628237001B6F36 /* WebViewController.swift in Sources */,
 				5228999E2C57E6FC0013FF87 /* FavoritesVC.swift in Sources */,
@@ -710,6 +722,7 @@
 				FA9688F32C5D73BF00DE491C /* AlertLoading.swift in Sources */,
 				FA9688E52C5A8FBF00DE491C /* ForgotPassView.swift in Sources */,
 				3CD434CF2C5E88C7006A8136 /* AudioProcessor.swift in Sources */,
+				0B48D2F12C68C897000EE879 /* OnboardingPage3VC.swift in Sources */,
 				522899672C57C87B0013FF87 /* SceneDelegate.swift in Sources */,
 				DD6151B82C60CFA10095E1B5 /* SettingsView.swift in Sources */,
 				3C2987DA2C5E513E003A5872 /* RX + ext.swift in Sources */,
