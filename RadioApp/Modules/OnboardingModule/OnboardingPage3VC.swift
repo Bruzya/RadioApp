@@ -15,16 +15,17 @@ final class OnboardingPage3VC: UIViewController {
     // MARK: - UI Properties
     private lazy var backgroundImageView: UIImageView = {
         let element = UIImageView()
-        element.image = .background
+        element.image = .woman
         element.contentMode = .scaleAspectFill
+        element.layer.opacity = 0.9
         return element
     }()
     
     private lazy var secondBackgroundImageView: UIImageView = {
         let element = UIImageView()
-        element.image = .woman
+        element.image = .background
         element.contentMode = .scaleAspectFill
-        element.alpha = 0.5
+        element.alpha = 0.9
         return element
     }()
     
@@ -63,10 +64,10 @@ final class OnboardingPage3VC: UIViewController {
     private lazy var mainLabel: UILabel = {
         let element = UILabel()
         element.textAlignment = .center
-        element.font = .systemFont(ofSize: 55, weight: .bold)
+        element.font = .systemFont(ofSize: 40, weight: .bold)
         element.textColor = .white
         element.numberOfLines = 0
-        let fullString = "OVER 30 000 SONGS"
+        element.text = "Enjoy now!"
         return element
     }()
     
@@ -75,6 +76,7 @@ final class OnboardingPage3VC: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
+        view.backgroundColor = .blue
     }
     
     deinit {
@@ -112,8 +114,8 @@ extension OnboardingPage3VC {
         }
         
         startListeningButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
-            make.height.equalTo(80)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.height.equalTo(58)
             make.width.equalTo(310)
             make.right.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
@@ -134,8 +136,9 @@ extension OnboardingPage3VC {
         }
         
         mainLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(progressStackView).inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(100)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalTo(350)
         }
     }
 }
