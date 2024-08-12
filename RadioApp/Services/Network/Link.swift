@@ -19,7 +19,7 @@ enum Link {
     var url: String {
         switch self {
         case .popular(let count):
-            "http://all.api.radio-browser.info/json/stations/topclick/\(count)"
+            "http://all.api.radio-browser.info/json/stations/topvote/\(count)"
         case .allStations:
             "http://all.api.radio-browser.info/json/stations?limit=20"
         case .tags:

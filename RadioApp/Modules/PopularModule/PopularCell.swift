@@ -10,6 +10,13 @@ import SnapKit
 
 final class PopularCell: UICollectionViewCell {
     
+    private let networkService = NetworkService.shared
+    private let realmService = AppDIContainer().realm
+    private var votes: Int?
+    private var stationId: String?
+    var handlerShowAlert: (()->())?
+    var handlerSaveRealm: ((Bool)->())?
+    
     // MARK: - UI
     private lazy var tagStationLabel = createLabel(fontSize: 25, fontwWeight: .bold)
     lazy var nameStationLabel = createLabel(fontSize: 15, fontwWeight: .regular)
@@ -23,7 +30,7 @@ final class PopularCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let element = UIButton(type: .system)
         element.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
         element.addTarget(self, action: #selector(didTapLikeButton), for: .touchUpInside)
@@ -59,13 +66,21 @@ final class PopularCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         playImageView.alpha = 0
+        votes = nil
+        stationId = nil
+        likeButton.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
     // MARK: - Public methods
-    func configureCell(_ station: Station) {
+    func configureCell(_ station: Station, _ isFavorite: Bool) {
+        likeButton.setImage(isFavorite ? UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) : UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
+        stationId = station.stationuuid
         tagStationLabel.text = station.tags.isEmpty ? "..." : station.tags.split(separator: ",").first?.capitalized
         nameStationLabel.text = clearWhitespaceAndTabs(station.name).isEmpty ? "..." : clearWhitespaceAndTabs(station.name)
         votesLabel.text = "votes\n\(station.votes.description)"
+        if let vote = Int(station.votes.description) {
+            votes = vote
+        }
     }
     
     // MARK: - Private methods
@@ -86,6 +101,9 @@ final class PopularCell: UICollectionViewCell {
         tagStationLabel.textAlignment = .center
         nameStationLabel.textAlignment = .center
         nameStationLabel.numberOfLines = 2
+        votesLabel.adjustsFontSizeToFitWidth = true
+        tagStationLabel.adjustsFontSizeToFitWidth = true
+        nameStationLabel.adjustsFontSizeToFitWidth = true
     }
     
     private func setupCell() {
@@ -143,13 +161,40 @@ final class PopularCell: UICollectionViewCell {
         return String(trimmedString[firstLetterIndex...])
     }
     
+    private func fetchVotes(completion: @escaping (Bool)->()) {
+        guard let stationId else { return }
+        networkService.voteForStation(from: Link.vote.url, with: stationId) { result in
+            switch result {
+            case .success(let success):
+                success.ok ? completion(true) : completion(false)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc private func didTapLikeButton(_ sender: UIButton) {
         if sender.currentImage == UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) {
+            handlerSaveRealm?(false)
             sender.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
-            sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
-            #warning("Здесь обрабатываем лайк")
+            fetchVotes { [weak self] result in
+                guard let self else { return }
+                if result {
+                    guard votes != nil else { return }
+                    votes! += 1
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self else { return }
+                        votesLabel.text = "votes\n\(votes!.description)"
+                        sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
+                    }
+                } else {
+                    handlerShowAlert?()
+                }
+            }
+            handlerSaveRealm?(true)
         }
     }
 }
@@ -187,6 +232,7 @@ private extension PopularCell {
             make.top.equalTo(tagStationLabel.snp.bottom)
             make.leading.equalTo(playImageView.snp.leading)
             make.trailing.equalTo(likeButton.snp.trailing)
+            make.bottom.equalTo(waveImageView.snp.top).offset(-5)
         }
         
         waveImageView.snp.makeConstraints { make in
@@ -196,6 +242,3 @@ private extension PopularCell {
         }
     }
 }
-
-
-

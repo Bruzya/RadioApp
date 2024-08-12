@@ -13,6 +13,7 @@ final class PopularVC: UIViewController {
     private let popularView = PopularView()
     private var stations: [Station] = []
     private let networkService = NetworkService.shared
+    private let realmService = AppDIContainer().realm
     private var isLoadingMoreData = false
     private var currentPage = 20
     private var selectedIndexPath: IndexPath?
@@ -65,7 +66,19 @@ extension PopularVC: UICollectionViewDataSource {
         }
         
         let station = stations[indexPath.item]
-        cell.configureCell(station)
+        let isFavorite = realmService.isFavorite(withID: station.stationuuid, stations: Array(realmService.fetchStations()))
+        
+        cell.configureCell(station, isFavorite)
+        cell.handlerShowAlert = { [weak self] in
+            guard let self else { return }
+            showAlert()
+        }
+        cell.handlerSaveRealm = { [weak self] isSave in
+            guard let self else { return }
+            if isSave {
+                realmService.save(station)
+            }
+        }
         
         return cell
     }
@@ -103,5 +116,26 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
                 currentPage += 20
             }
         }
+    }
+}
+
+// MARK: - Alert
+private extension PopularVC {
+    /// Alert с просьбой повторить голосование за станцию через 10 минут
+    func showAlert() {
+        let alert = UIAlertController(
+            title: "Ooops 😳",
+            message: "You can vote for your favourite station every 10 minutes. Please repeat at a later time.",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: "Ok",
+            style: .default) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

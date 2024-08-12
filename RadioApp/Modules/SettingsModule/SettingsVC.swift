@@ -152,7 +152,9 @@ extension SettingsVC {
     fileprivate func getUserData() {
         auth.getCurrentUser { [weak self] in
             guard let self else { return }
-            settingView.profileImage.getImage(from: User.shared.avatarUrl)
+            if let _ = User.shared.avatarUrl {
+                settingView.profileImage.getImage(from: User.shared.avatarUrl)
+            }
             settingView.nameProfile.text = User.shared.name
             settingView.emailProfile.text = User.shared.email
         }

@@ -13,7 +13,7 @@ final class FavoritesVC: UIViewController {
     
     // MARK: - Private Properties
     private var stations: Results<Station>!
-    private let realmService = AppDIContainer().realm
+    private var realmService = AppDIContainer().realm
     
     private let titleLabel: UILabel = {
         let label = UILabel()
