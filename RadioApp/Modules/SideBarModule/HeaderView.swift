@@ -34,6 +34,8 @@ final class HeaderView: UIView {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 27.5
         imageView.clipsToBounds = true
+        imageView.image = UIImage(systemName: "person.circle")
+        imageView.tintColor = .white
         return imageView
     }()
     
@@ -45,7 +47,9 @@ final class HeaderView: UIView {
         auth.getCurrentUser { [weak self] in
             guard let self else { return }
             titleLabel.attributedText = LabelFactory.createColorText(for: User.shared.nameForHeader)
-            profileImage.getImage(from: User.shared.avatarUrl)
+            if let _ = User.shared.avatarUrl {
+                profileImage.getImage(from: User.shared.avatarUrl)
+            }
         }
     }
     
