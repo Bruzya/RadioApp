@@ -95,7 +95,7 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
             #warning("Воспроизводим выбранную станцию")
         }
         if selectedIndexPath == indexPath {
-            #warning("Переходим на StationDetailVC")
+            navigationController?.pushViewController(StationDetailsVC(), animated: true)
             self.selectedIndexPath = nil
         }
         selectedIndexPath = indexPath
