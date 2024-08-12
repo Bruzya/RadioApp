@@ -27,7 +27,7 @@ class RadioStationCell: UITableViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Font.getFont(Font.displayBold, size: 24)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Colors.white
         label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
@@ -38,7 +38,7 @@ class RadioStationCell: UITableViewCell {
     private lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = Font.getFont(Font.displayMedium, size: 14)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = Colors.white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -75,7 +75,7 @@ class RadioStationCell: UITableViewCell {
             conteinerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             
             nameLabel.topAnchor.constraint(equalTo: conteinerView.topAnchor, constant: 24),
-            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: conteinerView.leadingAnchor, constant: 22),
             nameLabel.trailingAnchor.constraint(equalTo: conteinerView.trailingAnchor, constant: -100),
             
             tagLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
