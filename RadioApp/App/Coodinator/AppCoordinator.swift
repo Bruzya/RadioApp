@@ -27,18 +27,37 @@ final class AppCoordinator: Coordinator {
         self.appDIContainer = appDIContainer
     }
     
+    //    func start() {
+    //        configWindow()
+    //        appDIContainer.firebase.isAuthorized ? makeMainFlow() : makeAuthFlow()
+    //    }
+    //
+    //    private func configWindow() {
+    //        window?.rootViewController = navigationController
+    //        window?.makeKeyAndVisible()
+    //    }
+    //
+    //    func makeOnboardingFlow() {
+    //        let vc = OnboardingMainVC()
+    //        vc
+    //    }
+    
     func start() {
         configWindow()
-        appDIContainer.firebase.isAuthorized ? makeMainFlow() : makeAuthFlow()
+        appDIContainer.firebase.isAuthorized ? makeOnboardingFlow() : makeAuthFlow()
     }
     
     private func configWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-
+    
     func makeOnboardingFlow() {
-        
+        let vc = OnboardingMainVC()
+        vc.onComplete = { [weak self] in
+            self?.makeAuthFlow()
+        }
+        navigationController.setViewControllers([vc], animated: false)
     }
     
     
