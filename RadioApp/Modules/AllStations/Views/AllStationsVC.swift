@@ -232,7 +232,10 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if selectedIndexPath == indexPath {
-            navigationController?.pushViewController(StationDetailsVC(), animated: true)
+            let vc = StationDetailsVC()
+            vc.radioLabel.text = viewModel.radioStationViewModel(at: indexPath.row).tag
+            vc.stationLabel.text = viewModel.radioStationViewModel(at: indexPath.row).name
+            navigationController?.pushViewController(vc, animated: true)
 
             self.selectedIndexPath = nil
         }
