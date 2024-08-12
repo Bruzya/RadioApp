@@ -13,7 +13,7 @@ final class FavoritesVC: UIViewController {
     
     // MARK: - Private Properties
     private var stations: Results<Station>!
-    private let realmService = AppDIContainer().realm
+    private var realmService = AppDIContainer().realm
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -39,6 +39,14 @@ final class FavoritesVC: UIViewController {
         setupCollectionView()
         addSubviews()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            collectionView.reloadData()
+        }
     }
 }
 

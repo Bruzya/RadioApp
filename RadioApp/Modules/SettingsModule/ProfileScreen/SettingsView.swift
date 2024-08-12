@@ -51,7 +51,6 @@ class SettingsView: UIView {
     
     lazy var nameProfile: UILabel = {
         let label = UILabel()
-        label.text = "Mark"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -59,7 +58,6 @@ class SettingsView: UIView {
     
     lazy var emailProfile: UILabel = {
         let label = UILabel()
-        label.text = "Markjearsey@gmail.com"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .gray
         return label

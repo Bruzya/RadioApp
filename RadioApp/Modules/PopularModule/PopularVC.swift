@@ -13,6 +13,7 @@ final class PopularVC: UIViewController {
     private let popularView = PopularView()
     private var stations: [Station] = []
     private let networkService = NetworkService.shared
+    private let realmService = AppDIContainer().realm
     private var isLoadingMoreData = false
     private var currentPage = 20
     private var selectedIndexPath: IndexPath?
@@ -65,7 +66,15 @@ extension PopularVC: UICollectionViewDataSource {
         }
         
         let station = stations[indexPath.item]
-        cell.configureCell(station)
+        let isFavorite = realmService.isFavorite(withID: station.stationuuid, stations: Array(realmService.fetchStations()))
+        
+        cell.configureCell(station, isFavorite)
+        cell.handlerSaveRealm = { [weak self] isSave in
+            guard let self else { return }
+            if isSave {
+                realmService.save(station)
+            }
+        }
         
         return cell
     }
@@ -105,3 +114,4 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
