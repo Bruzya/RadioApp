@@ -87,6 +87,16 @@ final class PlayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setStationURL(_ url: URL) {
+        audioPlayer?.pause()
+        audioPlayer = AVPlayer(url: url)
+        print("set url \(url)")
+    }
+    
+    func play() {
+        audioPlayer?.play()
+    }
+    
     func setupBindings() {
         playButton.rx.tapGesture()
             .when(.recognized)

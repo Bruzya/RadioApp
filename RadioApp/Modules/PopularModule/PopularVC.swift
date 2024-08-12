@@ -18,6 +18,8 @@ final class PopularVC: UIViewController {
     private var currentPage = 20
     private var selectedIndexPath: IndexPath?
     
+    var player: PlayerView?
+    
     // MARK: - Life Cycle
     override func loadView() {
         view = popularView
@@ -92,10 +94,12 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = URL(string: stations[indexPath.item].url) {
-            #warning("Воспроизводим выбранную станцию")
+            player?.setStationURL(url)
+            player?.play()
         }
         if selectedIndexPath == indexPath {
             #warning("Переходим на StationDetailVC")
+            
             self.selectedIndexPath = nil
         }
         selectedIndexPath = indexPath
