@@ -29,7 +29,7 @@ final class StationDetailsVC: UIViewController {
         return button
     }()
 
-    private let radioLabel: UILabel = {
+    let radioLabel: UILabel = {
         let label = UILabel()
         label.text = "90.5"
         label.font = UIFont.systemFont(ofSize: 36, weight: .heavy)
@@ -38,7 +38,7 @@ final class StationDetailsVC: UIViewController {
         return label
     }()
 
-    private let stationLabel: UILabel = {
+    let stationLabel: UILabel = {
         let label = UILabel()
         label.text = "Radio Divelement"
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
