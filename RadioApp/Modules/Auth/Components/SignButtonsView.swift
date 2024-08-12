@@ -11,8 +11,18 @@ import SnapKit
 final class SignButtonsView: UIView {
     
     enum TypeSignButton: String {
-        case signUp = "Or Sign Up"
-        case signIn = "Or Sign In"
+        case signUp
+        case signIn
+        
+        var localizeString: String {
+            switch self{
+                
+            case .signUp:
+                String.localize(key: "orSignUp")
+            case .signIn:
+                String.localize(key: "orSignIn")
+            }
+        }
     }
     
     // MARK: - Private properties
@@ -38,7 +48,7 @@ final class SignButtonsView: UIView {
     
     // MARK: - Init
     init(frame: CGRect = .zero, title: TypeSignButton) {
-        self.titleButton = title.rawValue
+        self.titleButton = title.localizeString
         
         super.init(frame: frame)
         setupViews()

@@ -23,7 +23,7 @@ final class CustomTextField: UITextField {
         if let text = placeholder {
             self.placeholder = text
         } else {
-            self.placeholder = isPassword ? "Your password" : "Your email"
+            self.placeholder = isPassword ? String.localize(key: "passwordPlaceholder") : String.localize(key: "emailPlaceholder")
         }
         self.isSecureTextEntry = isPassword ? true : false
         self.textColor = .white
@@ -39,7 +39,7 @@ final class CustomTextField: UITextField {
         ]
         
         let attributedPlaceholder = NSAttributedString(
-            string: isPassword ? "Your password" : placeholder != nil ? placeholder! : "Your email",
+            string: isPassword ? String.localize(key: "passwordPlaceholder") : placeholder != nil ? placeholder! : String.localize(key: "emailPlaceholder"),
             attributes: attributes
         )
         

@@ -35,6 +35,8 @@
 
 "confirmPassword" = "Confirm Password";
 
+"saveChanges" = "Save changes";
+
 "popular" = "Popular";
 "favorites" = "Favorites";
 "allStation" = "All Stations";
@@ -42,6 +44,8 @@
 "saveChagnes" = "Save chagnes";
 "zy" = "Schedule Notification";
 "timeManagment" = "Timing";
+
+"fullName" = "Full Name";
 
 "searchNewRadio" = "Search Radio Station";
 
@@ -64,6 +68,7 @@
 "more" = "More";
 "legalOrPolitical" = "Legal and Political";
 "aboutUs" = "About Us";
+"logOut" = "Log Out";
 
 "rename" = "Rename";
 
@@ -78,6 +83,7 @@
 
 "terms" = "Terms";
 "profile" = "Profile";
+"privacy" = "Privacy";
 
 "reminder" = "Reminder";
 "reminderDescriptions" = "It's time to listen to your favorite station";

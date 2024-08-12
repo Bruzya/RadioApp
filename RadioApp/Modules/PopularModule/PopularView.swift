@@ -13,7 +13,7 @@ final class PopularView: UIView {
     // MARK: - UI
     lazy var title: UILabel = {
         let element = UILabel()
-        element.text = "Popular"
+        element.text = String.localize(key: "popular")
         element.textColor = .white
         element.font = UIFont.systemFont(ofSize: 30, weight: .light)
         return element

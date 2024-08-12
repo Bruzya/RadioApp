@@ -31,7 +31,7 @@ final class OnboardingPage3VC: UIViewController {
     
     private lazy var startListeningButton: UIButton = {
         let element = UIButton()
-        element.setTitle("Start Listening", for: .normal)
+        element.setTitle(String.localize(key: "startListen"), for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
         element.layer.cornerRadius = 10
@@ -67,7 +67,7 @@ final class OnboardingPage3VC: UIViewController {
         element.font = .systemFont(ofSize: 40, weight: .bold)
         element.textColor = .white
         element.numberOfLines = 0
-        element.text = "Enjoy now!"
+        element.text = String.localize(key: "enjoy")
         return element
     }()
     

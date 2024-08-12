@@ -34,7 +34,7 @@ final class CustomTF: UIView {
     
     lazy var textFieldPassword: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Your password"
+        tf.placeholder = String.localize(key: "passwordPlaceholder")
         tf.isSecureTextEntry = true
         tf.setPlaceholderColor(.gray, textField: tf)
         tf.textColor = .white

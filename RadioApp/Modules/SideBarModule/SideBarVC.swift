@@ -15,9 +15,20 @@ final class SideBarVC: UIViewController {
     var onCellTap: ((SideBarOption) -> Void)?
     
     enum SideBarOption: String, CaseIterable {
-        case allStation = "All Station"
-        case favorite = "Favorite"
-        case popular = "Popular"
+        case allStation
+        case favorite
+        case popular
+        
+        var localizeString: String {
+            switch self{
+            case .allStation:
+                return String.localize(key: "allStation")
+            case .favorite:
+                return String.localize(key: "favorites")
+            case .popular:
+                return String.localize(key: "popular")
+            }
+        }
     }
     
     private let tableView: UITableView = {
@@ -55,7 +66,7 @@ extension SideBarVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SideBarCell
-        cell.label.text = SideBarOption.allCases[indexPath.row].rawValue
+        cell.label.text = SideBarOption.allCases[indexPath.item].localizeString
         return cell
     }
     
