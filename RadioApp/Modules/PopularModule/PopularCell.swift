@@ -14,7 +14,6 @@ final class PopularCell: UICollectionViewCell {
     private let realmService = AppDIContainer().realm
     private var votes: Int?
     private var stationId: String?
-    var handlerShowAlert: (()->())?
     var handlerSaveRealm: ((Bool)->())?
     
     // MARK: - UI
@@ -190,8 +189,6 @@ final class PopularCell: UICollectionViewCell {
                         votesLabel.text = "votes\n\(votes!.description)"
                         sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
                     }
-                } else {
-                    handlerShowAlert?()
                 }
             }
             handlerSaveRealm?(true)
