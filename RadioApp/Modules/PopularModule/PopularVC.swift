@@ -77,8 +77,6 @@ extension PopularVC: UICollectionViewDataSource {
             guard let self else { return }
             if isSave {
                 realmService.save(station)
-            } else {
-//                realmService.delete(station)
             }
         }
         
