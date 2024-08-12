@@ -2,6 +2,14 @@ RadioApp
 
 RadioApp - это приложение для прослушивания онлайн-радио, которое позволяет пользователям наслаждаться множеством радиостанций из разных жанров и стран. Приложение предоставляет простой и удобный интерфейс, обеспечивая легкий доступ к любимым радиостанциям и возможность поиска новых.
 
+<p align="center">
+<img src="https://github.com/Bruzya/RadioApp/blob/develop/Images/image1.jpeg" width="140" /> 
+<img src="https://github.com/Bruzya/RadioApp/blob/develop/Images/image2.jpeg" width="140" />  
+<img src="https://github.com/Bruzya/RadioApp/blob/develop/Images/image3.jpeg" width="140" /> 
+<img src="https://github.com/Bruzya/RadioApp/blob/develop/Images/image4.jpeg" width="140" /> 
+<img src="https://github.com/Bruzya/RadioApp/blob/develop/Images/image5.jpeg" width="140" /> 
+</p>
+
 Основные возможности
 
 	•	Поиск радиостанций: Поиск радиостанций по жанру, названию, стране или популярности.
