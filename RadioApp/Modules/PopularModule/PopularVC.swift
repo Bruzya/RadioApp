@@ -69,10 +69,6 @@ extension PopularVC: UICollectionViewDataSource {
         let isFavorite = realmService.isFavorite(withID: station.stationuuid, stations: Array(realmService.fetchStations()))
         
         cell.configureCell(station, isFavorite)
-        cell.handlerShowAlert = { [weak self] in
-            guard let self else { return }
-            showAlert()
-        }
         cell.handlerSaveRealm = { [weak self] isSave in
             guard let self else { return }
             if isSave {
@@ -119,23 +115,3 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Alert
-private extension PopularVC {
-    /// Alert с просьбой повторить голосование за станцию через 10 минут
-    func showAlert() {
-        let alert = UIAlertController(
-            title: "Ooops 😳",
-            message: "You can vote for your favourite station every 10 minutes. Please repeat at a later time.",
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(
-            title: "Ok",
-            style: .default) { [weak self] _ in
-                self?.navigationController?.popViewController(animated: true)
-            }
-        
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-}
