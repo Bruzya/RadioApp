@@ -55,7 +55,7 @@ final class RenameVC: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Rename"
+        navigationItem.title = String.localize(key: "rename")
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18),
             NSAttributedString.Key.foregroundColor : UIColor.white
@@ -92,16 +92,16 @@ final class RenameVC: UIViewController {
     }
     
     @objc func addImage() {
-        let alertController = UIAlertController(title: "Add Image?", message: "How do you want to add a picture?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: String.localize(key: "addImage"), message: String.localize(key: "addImageDesk"), preferredStyle: .actionSheet)
         
-        let alertAddWithGallery = UIAlertAction(title: "Gallery", style: .default) { alert in
+        let alertAddWithGallery = UIAlertAction(title: String.localize(key: "gallery"), style: .default) { alert in
             self.imagePicker.showImagePicker(for: self, sourseType: .photoLibrary, renameView: self.renameView)
         }
-        let alertAddWithPhotoes = UIAlertAction(title: "Photo", style: .default) { alert in
+        let alertAddWithPhotoes = UIAlertAction(title: String.localize(key: "photo"), style: .default) { alert in
             self.imagePicker.showImagePicker(for: self, sourseType: .camera, renameView: self.renameView)
 
         }
-        let canselButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let canselButton = UIAlertAction(title: String.localize(key: "cancel"), style: .cancel)
         
         alertController.addAction(alertAddWithGallery)
         alertController.addAction(alertAddWithPhotoes)

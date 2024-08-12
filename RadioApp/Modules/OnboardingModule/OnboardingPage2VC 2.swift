@@ -1,5 +1,5 @@
 //
-//  OnboardingPage2VC.swift
+//  OnboardingPage1VC.swift
 //  RadioApp
 //
 //  Created by Andrew Linkov on 03.08.2024.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-final class OnboardingPage3VC: UIViewController {
+final class OnboardingPage2VC: UIPageViewController {
     
-    var onComplete: (() -> Void)?
+    var onNext: (() -> Void)?
     
     // MARK: - UI Properties
     private lazy var backgroundImageView: UIImageView = {
@@ -29,13 +29,13 @@ final class OnboardingPage3VC: UIViewController {
         return element
     }()
     
-    private lazy var startListeningButton: UIButton = {
+    private lazy var continueButton: UIButton = {
         let element = UIButton()
-        element.setTitle(String.localize(key: "startListen"), for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+        element.setTitle("Continue", for: .normal)
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
         element.layer.cornerRadius = 10
-        element.addTarget(self, action: #selector(startListening), for: .touchUpInside)
+        element.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         return element
     }()
     
@@ -49,7 +49,7 @@ final class OnboardingPage3VC: UIViewController {
     
     private lazy var firstProgressView: UIView = {
         let element = UIView()
-        element.backgroundColor = .lightGray
+        element.backgroundColor = UIColor(red: 0.98, green: 0.61, blue: 0.69, alpha: 1.00)
         element.layer.cornerRadius = 5
         return element
     }()
@@ -64,12 +64,13 @@ final class OnboardingPage3VC: UIViewController {
     private lazy var mainLabel: UILabel = {
         let element = UILabel()
         element.textAlignment = .center
-        element.font = .systemFont(ofSize: 40, weight: .bold)
+        element.font = .systemFont(ofSize: 30, weight: .bold)
         element.textColor = .white
         element.numberOfLines = 0
-        element.text = String.localize(key: "enjoy")
+        element.text = "Over 1000+ stations in your pocket. Add the best stations to favorites"
         return element
     }()
+
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -87,7 +88,7 @@ final class OnboardingPage3VC: UIViewController {
     private func setupUI() {
         view.addSubview(backgroundImageView)
         view.addSubview(secondBackgroundImageView)
-        view.addSubview(startListeningButton)
+        view.addSubview(continueButton)
         view.addSubview(progressStackView)
         view.addSubview(mainLabel)
         
@@ -96,14 +97,14 @@ final class OnboardingPage3VC: UIViewController {
     }
     
     // MARK: - Selector methods
-    @objc private func startListening() {
-        onComplete?()
-        print("Start Listening")
+    @objc private func continueButtonTapped() {
+        onNext?()
+        print("continueButtonTapped")
     }
 }
 
 // MARK: - Setup Constraints
-extension OnboardingPage3VC {
+extension OnboardingPage2VC {
     private func setupConstraints() {
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -112,8 +113,8 @@ extension OnboardingPage3VC {
         secondBackgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        startListeningButton.snp.makeConstraints { make in
+
+        continueButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
             make.height.equalTo(58)
             make.width.equalTo(310)
@@ -122,7 +123,7 @@ extension OnboardingPage3VC {
         
         progressStackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(startListeningButton).inset(90)
+            make.bottom.equalTo(continueButton).inset(90)
         }
         
         firstProgressView.snp.makeConstraints { make in

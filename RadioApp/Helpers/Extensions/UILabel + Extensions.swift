@@ -32,7 +32,7 @@ extension UILabel {
             let tab = NSAttributedString(string: "\n")
             attributedText.append(tab)
             let secondWord = NSAttributedString(
-                string: "to start play",
+                string: String.localize(key: "toStartPlay"),
                 attributes: [
                     .font: UIFont.systemFont(ofSize: 25, weight: .regular)
                 ]
@@ -42,7 +42,7 @@ extension UILabel {
         case .titleForgotPass:
             let attributedText = NSMutableAttributedString()
             let firstWord = NSAttributedString(
-                string: "Forgot",
+                string: String.localize(key: "forgot"),
                 attributes: [
                     .font: UIFont.systemFont(ofSize: 50, weight: .bold)
                 ]
@@ -51,7 +51,7 @@ extension UILabel {
             let tab = NSAttributedString(string: "\n")
             attributedText.append(tab)
             let secondWord = NSAttributedString(
-                string: "Password",
+                string: String.localize(key: "password"),
                 attributes: [
                     .font: UIFont.systemFont(ofSize: 50, weight: .bold)
                 ]
@@ -62,7 +62,7 @@ extension UILabel {
             self.text = textFirstLine
             self.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         case .connectWith:
-            self.text = "Or connect with"
+            self.text = String.localize(key: "onConnect")
             self.textColor = UIColor(
                 red: 141/255,
                 green: 146/255,

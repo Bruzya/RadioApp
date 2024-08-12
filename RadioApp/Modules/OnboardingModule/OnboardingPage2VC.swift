@@ -31,7 +31,7 @@ final class OnboardingPage2VC: UIPageViewController {
     
     private lazy var continueButton: UIButton = {
         let element = UIButton()
-        element.setTitle("Continue", for: .normal)
+        element.setTitle(String.localize(key: "continue"), for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
         element.layer.cornerRadius = 10
@@ -67,7 +67,7 @@ final class OnboardingPage2VC: UIPageViewController {
         element.font = .systemFont(ofSize: 30, weight: .bold)
         element.textColor = .white
         element.numberOfLines = 0
-        element.text = "Over 1000+ stations in your pocket. Add the best stations to favorites"
+        element.text = String.localize(key: "continueDescription")
         return element
     }()
 

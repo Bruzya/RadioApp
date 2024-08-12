@@ -32,7 +32,7 @@ final class TimePickerVC: UIViewController {
 
     let scheduleButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Запланировать уведомление", for: .normal)
+        button.setTitle(String.localize(key: "zy"), for: .normal)
         button.addTarget(self, action: #selector(scheduleNotification), for: .touchUpInside)
         return button
     }()
@@ -40,7 +40,7 @@ final class TimePickerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        title = "Выбор времени"
+        title = String.localize(key: "timeManagment")
         view.addSubview(containerView)
         containerView.addSubview(blurEffectView)
         containerView.addSubview(datePicker)
