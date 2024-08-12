@@ -27,6 +27,10 @@ final class  RadioStationViewModel {
         return radioStation.stationuuid
     }
     
+    var url: String {
+        return radioStation.url
+    }
+    
     init(radioStation: Station) {
         self.radioStation = radioStation
     }

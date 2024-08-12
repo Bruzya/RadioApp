@@ -104,6 +104,7 @@ final class ContainerVC: UIViewController {
             switch option {
             case .allStation:
                 if currentVC != allStationsVC {
+                    allStationsVC.player = player
                     self.navigationVC?.setViewControllers([allStationsVC], animated: true)
                 }
             case .favorite:

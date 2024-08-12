@@ -11,6 +11,7 @@ import SnapKit
 final class AllStationsVC: UIViewController {
     
     private let realmService = AppDIContainer().realm
+    var player: PlayerView?
     
     // MARK: - UI properties
     
@@ -222,6 +223,11 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
             cell.configure(with: viewModel.radioStationViewModel(at: indexPath.row), isSelected: true)
+        }
+        
+        if let url = URL(string: viewModel.radioStationViewModel(at: indexPath.row).url) {
+            player?.setStationURL(url)
+            player?.play()
         }
     }
     //    убрали выделение с ячейки в которой играло радио и поставили стоп
