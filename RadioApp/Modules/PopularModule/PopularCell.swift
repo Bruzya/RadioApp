@@ -95,6 +95,9 @@ final class PopularCell: UICollectionViewCell {
         tagStationLabel.textAlignment = .center
         nameStationLabel.textAlignment = .center
         nameStationLabel.numberOfLines = 2
+        votesLabel.adjustsFontSizeToFitWidth = true
+        tagStationLabel.adjustsFontSizeToFitWidth = true
+        nameStationLabel.adjustsFontSizeToFitWidth = true
     }
     
     private func setupCell() {
@@ -217,6 +220,7 @@ private extension PopularCell {
             make.top.equalTo(tagStationLabel.snp.bottom)
             make.leading.equalTo(playImageView.snp.leading)
             make.trailing.equalTo(likeButton.snp.trailing)
+            make.bottom.equalTo(waveImageView.snp.top).offset(-5)
         }
         
         waveImageView.snp.makeConstraints { make in
