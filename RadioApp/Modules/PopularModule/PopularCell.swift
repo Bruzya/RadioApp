@@ -11,7 +11,6 @@ import SnapKit
 final class PopularCell: UICollectionViewCell {
     
     private let networkService = NetworkService.shared
-    private let realmService = AppDIContainer().realm
     private var votes: Int?
     private var stationId: String?
     var handlerSaveRealm: ((Bool)->())?

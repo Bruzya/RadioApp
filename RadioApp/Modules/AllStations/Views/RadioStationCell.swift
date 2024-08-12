@@ -9,6 +9,11 @@ import UIKit
 
 class RadioStationCell: UITableViewCell {
     
+    private let networkService = NetworkService.shared
+    private var votes: Int?
+    private var stationId: String?
+    var handlerSaveRealm: ((Bool)->())?
+    
     private lazy var conteinerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 2.0
@@ -45,6 +50,7 @@ class RadioStationCell: UITableViewCell {
         label.font = Font.getFont(Font.displayRegular, size: 14)
         label.textColor = Colors.white
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     
@@ -88,13 +94,44 @@ class RadioStationCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func likeTaped() {
-        if likeButtons.currentImage == UIImage(named: "likeFilled") {
-            likeButtons.setImage(UIImage(named: "like"), for: .normal)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        votes = nil
+        stationId = nil
+        likeButtons.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    private func fetchVotes(completion: @escaping (Bool)->()) {
+        guard let stationId else { return }
+        networkService.voteForStation(from: Link.vote.url, with: stationId) { result in
+            switch result {
+            case .success(let success):
+                success.ok ? completion(true) : completion(false)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
+    @objc private func likeTaped(_ sender: UIButton) {
+        if sender.currentImage == UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) {
+            handlerSaveRealm?(false)
+            sender.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
-            likeButtons.setImage(UIImage(named: "likeFilled"), for: .normal)
-//            добавить votes
-            
+            fetchVotes { [weak self] result in
+                guard let self else { return }
+                if result {
+                    guard votes != nil else { return }
+                    votes! += 1
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self else { return }
+                        votesLabel.text = "votes\n\(votes!.description)"
+                        sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
+                    }
+                }
+            }
+            handlerSaveRealm?(true)
         }
     }
     
@@ -111,17 +148,26 @@ class RadioStationCell: UITableViewCell {
     }
     
     
-    func configure(with viewModel: RadioStationViewModel, isSelected: Bool) {
+    func configure(with viewModel: RadioStationViewModel, isSelected: Bool, _ isFavorite: Bool? = nil) {
+    
+        if let isFavorite {
+            likeButtons.setImage(isFavorite ? UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) : UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         tagLabel.text = viewModel.tag
         nameLabel.text = viewModel.name
         votesLabel.text = "\(K.votes) \(viewModel.votes)"
         
+        stationId = viewModel.id
+        votesLabel.text = "votes\n\(viewModel.votes.description)"
+        if let vote = Int(viewModel.votes.description) {
+            votes = vote
+        }
+        
         if isSelected {
             conteinerView.backgroundColor = Colors.pink
-            print("Play music")
         } else {
             conteinerView.backgroundColor = .clear
-            print("Stop music")
         }
     }
 }
