@@ -112,6 +112,7 @@ final class ContainerVC: UIViewController {
                 }
             case .popular:
                 if currentVC != popularVC {
+                    popularVC.player = player
                     self.navigationVC?.setViewControllers([popularVC], animated: true)
                 }
             }
