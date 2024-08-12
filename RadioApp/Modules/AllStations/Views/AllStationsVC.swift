@@ -12,6 +12,7 @@ final class AllStationsVC: UIViewController {
     
     private let realmService = AppDIContainer().realm
     var player: PlayerView?
+    private var selectedIndexPath: IndexPath?
     
     // MARK: - UI properties
     
@@ -229,6 +230,13 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
             player?.setStationURL(url)
             player?.play()
         }
+        
+        if selectedIndexPath == indexPath {
+            navigationController?.pushViewController(StationDetailsVC(), animated: true)
+
+            self.selectedIndexPath = nil
+        }
+        selectedIndexPath = indexPath
     }
     //    убрали выделение с ячейки в которой играло радио и поставили стоп
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
