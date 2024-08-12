@@ -9,9 +9,9 @@ import UIKit
 
 struct K {
     static let appName = "Hello Mark"
-    static let screenName = String.localize(key: "allStation")
-    static let placeholder = String.localize(key: "searchNewRadio")
-    static let votes = String.localize(key: "votes")
+    static let screenName = "All stations"
+    static let placeholder = "Search radio station"
+    static let votes = "votes"
 }
 
 struct Colors {

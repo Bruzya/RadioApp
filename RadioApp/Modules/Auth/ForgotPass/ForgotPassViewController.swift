@@ -102,8 +102,8 @@ private extension ForgotPassViewController {
     /// Alert с просьбой подтвердить сброс пароля по ссылке в письме
     func showAlert(completion: @escaping ()->()) {
         let alert = UIAlertController(
-            title: String.localize(key: "alertFine"),
-            message: String.localize(key: "forgotDescriptions"),
+            title: "Fine 😊",
+            message: "Follow the link we've emailed you to reset your password",
             preferredStyle: .alert
         )
         

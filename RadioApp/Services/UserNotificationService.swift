@@ -24,8 +24,8 @@ final class UserNotificationService {
 
     func scheduleDailyNotification(at time: Date) {
         let content = UNMutableNotificationContent()
-        content.title = String.localize(key: "reminder")
-        content.body = String.localize(key: "reminderDescriptions")
+        content.title = "Напоминание"
+        content.body = "Пора слушать любимую станцию"
         content.sound = .default
 
         let calendar = Calendar.current

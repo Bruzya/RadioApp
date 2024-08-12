@@ -98,7 +98,7 @@ class RenameView: UIView{
     
     lazy var textFieldNameLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "name")
+        label.text = "Full Name"
         label.font = Font.getFont(.displayMedium, size: 14)
         label.backgroundColor = colorBack
         label.textAlignment = .center
@@ -108,7 +108,7 @@ class RenameView: UIView{
     
     lazy var textFieldName: UITextField = {
         let tf = UITextField()
-        tf.placeholder = String.localize(key: "writeNewName")
+        tf.placeholder = "Write new name"
         tf.setPlaceholderColor(.gray, textField: tf)
         tf.textColor = .white
         return tf
@@ -124,7 +124,7 @@ class RenameView: UIView{
     
     lazy var textFieldEmailLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "email")
+        label.text = "Email"
         label.font = Font.getFont(.displayMedium, size: 14)
         label.backgroundColor = colorBack
         label.textAlignment = .center
@@ -134,19 +134,19 @@ class RenameView: UIView{
     
     lazy var textFieldEmail: UITextField = {
         let tf = UITextField()
-        tf.placeholder = String.localize(key: "writeNewEmail")
+        tf.placeholder = "Write new Email"
         tf.setPlaceholderColor(.gray, textField: tf)
         tf.textColor = .white
         return tf
     }()
     
-    let passwordTextField = CustomTF(titleLabel: String.localize(key: "password"))
-    let confirmPasswordTextField = CustomTF(titleLabel: String.localize(key: "confirmPassword"))
+    let passwordTextField = CustomTF(titleLabel: "Password")
+    let confirmPasswordTextField = CustomTF(titleLabel: "Confirm password")
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
-        button.setTitle(String.localize(key: "saveChagnes"), for: .normal)
+        button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = Font.getFont(.displayMedium, size: 16)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center

@@ -21,7 +21,7 @@ final class TitleView: UIView {
     
     // MARK: - UI
     private lazy var titleLabel = UILabel(
-        type: typeTitle == .signIn ? .titleSign(String.localize(key: "sighIn")) : typeTitle == .signUp ? .titleSign(String.localize(key: "signUp")) : .titleForgotPass
+        type: typeTitle == .signIn ? .titleSign("Sign In") : typeTitle == .signUp ? .titleSign("Sign Up") : .titleForgotPass
     )
     
     // MARK: - Init

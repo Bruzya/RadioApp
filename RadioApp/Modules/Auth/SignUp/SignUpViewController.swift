@@ -123,8 +123,8 @@ private extension SignUpViewController {
     /// Alert с просьбой подтвердить свою почту по ссылке
     func showAlert() {
         let alert = UIAlertController(
-            title: String.localize(key: "alertFine"),
-            message: String.localize(key: "alertDescription"),
+            title: "Fine 😊",
+            message: "Follow the link we sent to your email to complete your registration",
             preferredStyle: .alert
         )
         

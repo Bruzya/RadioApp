@@ -34,7 +34,7 @@ final class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = String.localize(key: "settings")
+        title = "SettingsVC"
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBack))
@@ -42,7 +42,6 @@ final class SettingsVC: UIViewController {
         settingView.buttonLegal.addTarget(self, action: #selector(goToPrivacyVC), for: .touchUpInside)
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
-        settingView.buttonLanguage.addTarget(self, action: #selector(goToLanguageVC), for: .touchUpInside)
         settingView.exitButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         setupBindings()
         getUserData()
@@ -76,11 +75,6 @@ final class SettingsVC: UIViewController {
         guard let url = URL(string: vc.urlString) else {fatalError("Problems with URL")}
 
         navigationController?.present(vc, animated: true)
-    }
-    
-    @objc func goToLanguageVC(){
-        let vc = LanguageVC()
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func goBack() {

@@ -39,17 +39,17 @@ final class ForgotPassView: UIView {
     private let titleView = TitleView(typeTytle: .forgotPass)
     
     let emailView = TextFieldWithTitleView(
-        titleLabel: String.localize(key: "email"),
+        titleLabel: "Email",
         isPassword: false
     )
     
     let passwordView = TextFieldWithTitleView(
-        titleLabel: String.localize(key: "password"),
+        titleLabel: "Password",
         isPassword: true
     )
     
     let confirmPasswordView = TextFieldWithTitleView(
-        titleLabel: String.localize(key: "confirmPassword"),
+        titleLabel: "Confirm password",
         isPassword: true
     )
     
@@ -58,7 +58,7 @@ final class ForgotPassView: UIView {
         element.backgroundColor = .blueLight
         element.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .regular)
         element.setTitleColor(.white, for: .normal)
-        element.setTitle(String.localize(key: "sent"), for: .normal)
+        element.setTitle("Sent", for: .normal)
         return element
     }()
     

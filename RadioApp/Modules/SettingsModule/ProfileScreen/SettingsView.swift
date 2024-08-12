@@ -95,7 +95,7 @@ class SettingsView: UIView {
     
     lazy var titleFirstSettingRectangle: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "general")
+        label.text = "General"
         label.font = Font.getFont(.displayBold, size: 18)
         label.textColor = .white
         label.textAlignment = .left
@@ -120,7 +120,7 @@ class SettingsView: UIView {
     
     lazy var notificationLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "notification")
+        label.text = "Notification"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         label.textAlignment = .left
@@ -160,6 +160,7 @@ class SettingsView: UIView {
     lazy var buttonLanguage: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(getSet), for: .touchUpInside)
         return button
     }()
     
@@ -179,7 +180,7 @@ class SettingsView: UIView {
     
     lazy var languageLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "language")
+        label.text = "Language"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -218,7 +219,7 @@ class SettingsView: UIView {
     
     lazy var moreTitle: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "more")
+        label.text = "More"
         label.font = Font.getFont(.displayBold, size: 18)
         label.textColor = .white
         label.textAlignment = .left
@@ -232,6 +233,10 @@ class SettingsView: UIView {
         button.backgroundColor = .clear
         return button
     }()
+    
+    @objc func getSet() {
+        print("123")
+    }
     
     lazy var backLegalView: UIView = {
         let view = UIView()
@@ -249,7 +254,7 @@ class SettingsView: UIView {
     
     lazy var shieldLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "legalOrPolitical")
+        label.text = "Legal and Policies"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -305,7 +310,7 @@ class SettingsView: UIView {
     
     lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.text = String.localize(key: "aboutUs")
+        label.text = "About"
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
