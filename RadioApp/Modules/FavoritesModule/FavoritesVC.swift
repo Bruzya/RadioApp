@@ -40,6 +40,14 @@ final class FavoritesVC: UIViewController {
         addSubviews()
         setupConstraints()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - Private Methods
