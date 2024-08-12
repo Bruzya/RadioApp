@@ -10,6 +10,11 @@ import SnapKit
 
 final class PopularCell: UICollectionViewCell {
     
+    private let networkService = NetworkService.shared
+    private var stationId: String?
+    private var votes: Int?
+    var handlerShowAlert: (()->())?
+    
     // MARK: - UI
     private lazy var tagStationLabel = createLabel(fontSize: 25, fontwWeight: .bold)
     lazy var nameStationLabel = createLabel(fontSize: 15, fontwWeight: .regular)
@@ -66,6 +71,10 @@ final class PopularCell: UICollectionViewCell {
         tagStationLabel.text = station.tags.isEmpty ? "..." : station.tags.split(separator: ",").first?.capitalized
         nameStationLabel.text = clearWhitespaceAndTabs(station.name).isEmpty ? "..." : clearWhitespaceAndTabs(station.name)
         votesLabel.text = "votes\n\(station.votes.description)"
+        if let vote = Int(station.votes.description) {
+            votes = vote
+        }
+        stationId = station.stationuuid
     }
     
     // MARK: - Private methods
@@ -143,13 +152,34 @@ final class PopularCell: UICollectionViewCell {
         return String(trimmedString[firstLetterIndex...])
     }
     
+    private func fetchVotes(completion: @escaping (Bool)->()) {
+        guard let stationId else { return }
+        networkService.voteForStation(from: Link.vote.url, with: stationId) { result in
+            switch result {
+            case .success(let success):
+                success.ok ? completion(true) : completion(false)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc private func didTapLikeButton(_ sender: UIButton) {
-        if sender.currentImage == UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal) {
-            sender.setImage(UIImage(resource: .like).withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
-            #warning("Здесь обрабатываем лайк")
+        fetchVotes { [weak self] result in
+            guard let self else { return }
+            if result {
+                guard votes != nil else { return }
+                votes! += 1
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    votesLabel.text = "votes\n\(votes!.description)"
+                    sender.setImage(UIImage(resource: .likeFilled).withRenderingMode(.alwaysOriginal), for: .normal)
+                }
+            } else {
+                handlerShowAlert?()
+            }
         }
     }
 }
