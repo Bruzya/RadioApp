@@ -98,8 +98,11 @@ extension PopularVC: UICollectionViewDelegateFlowLayout {
             player?.play()
         }
         if selectedIndexPath == indexPath {
-            #warning("Переходим на StationDetailVC")
-            
+            let vc = StationDetailsVC()
+            vc.radioLabel.text = stations[indexPath.item].tags
+            vc.stationLabel.text = stations[indexPath.item].name
+            navigationController?.pushViewController(vc, animated: true)
+
             self.selectedIndexPath = nil
         }
         selectedIndexPath = indexPath

@@ -10,6 +10,10 @@ import SnapKit
 
 final class AllStationsVC: UIViewController {
     
+    private let realmService = AppDIContainer().realm
+    var player: PlayerView?
+    private var selectedIndexPath: IndexPath?
+    
     // MARK: - UI properties
     
     private let vStack: UIStackView = {
@@ -197,7 +201,14 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
         
         let stationViewModel = viewModel.radioStationViewModel(at: indexPath.row)
         let isSelected = tableView.indexPathsForSelectedRows?.contains(indexPath) ?? false
-        cell.configure(with: stationViewModel, isSelected: isSelected)
+        let isFavorite = realmService.isFavorite(withID: viewModel.radioStation[indexPath.row].stationuuid, stations: Array(realmService.fetchStations()))
+        cell.configure(with: stationViewModel, isSelected: isSelected, isFavorite)
+        cell.handlerSaveRealm = { [weak self] isSave in
+            guard let self else { return }
+            if isSave {
+                realmService.save(viewModel.radioStation[indexPath.row])
+            }
+        }
         
         cell.selectionStyle = .none
         cell.clipsToBounds = false
@@ -214,6 +225,21 @@ extension AllStationsVC: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) as? RadioStationCell {
             cell.configure(with: viewModel.radioStationViewModel(at: indexPath.row), isSelected: true)
         }
+        
+        if let url = URL(string: viewModel.radioStationViewModel(at: indexPath.row).url) {
+            player?.setStationURL(url)
+            player?.play()
+        }
+        
+        if selectedIndexPath == indexPath {
+            let vc = StationDetailsVC()
+            vc.radioLabel.text = viewModel.radioStationViewModel(at: indexPath.row).tag
+            vc.stationLabel.text = viewModel.radioStationViewModel(at: indexPath.row).name
+            navigationController?.pushViewController(vc, animated: true)
+
+            self.selectedIndexPath = nil
+        }
+        selectedIndexPath = indexPath
     }
     //    убрали выделение с ячейки в которой играло радио и поставили стоп
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

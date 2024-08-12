@@ -23,6 +23,14 @@ final class  RadioStationViewModel {
         return radioStation.votes
     }
     
+    var id: String {
+        return radioStation.stationuuid
+    }
+    
+    var url: String {
+        return radioStation.url
+    }
+    
     init(radioStation: Station) {
         self.radioStation = radioStation
     }
