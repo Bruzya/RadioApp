@@ -34,7 +34,7 @@ final class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "SettingsVC"
+        title = String.localize(key: "settings")
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBack))
@@ -43,6 +43,7 @@ final class SettingsVC: UIViewController {
         settingView.renameButton.addTarget(self, action: #selector(goToRenameVC), for: .touchUpInside)
         settingView.buttonAbout.addTarget(self, action: #selector(goToAboutVC), for: .touchUpInside)
         settingView.exitButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
+        settingView.buttonLanguage.addTarget(self, action: #selector(goToLanguageVC), for: .touchUpInside)
         setupBindings()
         getUserData()
     }
@@ -79,6 +80,10 @@ final class SettingsVC: UIViewController {
     
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func goToLanguageVC() {
+        print("12321")
     }
     
     @objc func logOut() {

@@ -104,8 +104,8 @@ class PrivacyView: UIView {
     }
     
     func createMainStack() {
-        let stack1 = createPrivacyPoliticalLabels(titleName: "Terms", privacyLabel: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.")
-        let stack2 = createPrivacyPoliticalLabels(titleName: "Privacy", privacyLabel: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.")
+        let stack1 = createPrivacyPoliticalLabels(titleName: String.localize(key: "terms"), privacyLabel: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.")
+        let stack2 = createPrivacyPoliticalLabels(titleName: String.localize(key: "privacy"), privacyLabel: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.")
         
         stackMain.addArrangedSubview(stack1)
         stackMain.addArrangedSubview(stack2)

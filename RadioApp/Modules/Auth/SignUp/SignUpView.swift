@@ -40,16 +40,16 @@ final class SignUpView: UIView {
     private let titleView = TitleView(typeTytle: .signUp)
     
     let nameView = TextFieldWithTitleView(
-        titleLabel: "Name",
+        titleLabel: String.localize(key: "name"),
         isPassword: false,
-        placeholder: "Your name"
+        placeholder: String.localize(key: "namePlaceholder")
     )
     let emailView = TextFieldWithTitleView(
-        titleLabel: "Email",
+        titleLabel: String.localize(key: "email"),
         isPassword: false
     )
     let passwordView = TextFieldWithTitleView(
-        titleLabel: "Password",
+        titleLabel: String.localize(key: "password"),
         isPassword: true
     )
     private let signButtonsView = SignButtonsView(title: .signIn)

@@ -18,7 +18,7 @@ final class PrivacyVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Privacy"
+        navigationItem.title = String.localize(key: "legalOrPolitical")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : Font.getFont(.displayBold, size: 18), NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left")?.withTintColor(.white, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(goBackToSettings))
     }

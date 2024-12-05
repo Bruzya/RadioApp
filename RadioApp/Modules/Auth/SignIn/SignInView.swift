@@ -39,16 +39,16 @@ final class SignInView: UIView {
 
     private let titleView = TitleView(typeTytle: .signIn)
     let emailView = TextFieldWithTitleView(
-        titleLabel: "Email",
+        titleLabel: String.localize(key: "email"),
         isPassword: false
     )
     let passwordView = TextFieldWithTitleView(
-        titleLabel: "Password",
+        titleLabel: String.localize(key: "password"),
         isPassword: true
     )
     private lazy var forgotPasswordButton: UIButton = {
         let element = UIButton(type: .system)
-        element.setTitle("Forgot Password ?", for: .normal)
+        element.setTitle(String.localize(key: "forgotPassword"), for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         element.tintColor = .white
         return element

@@ -1,0 +1,90 @@
+// Onboarding
+
+"startLabel" = "Let’s Get Started";
+"descriptionLabel" = "Enjoy the best radio stations from your home, don't miss out on anything";
+"startButton" = "Get Started";
+
+"continue" = "Continue";
+"continueDescription" = "Over 1000+ stations in your pocket. Add the best stations to favorites";
+
+"startListen" = "Start Listening";
+"enjoy" = "Enjoy now!";
+
+// Registration
+
+"sighIn" = "Sign In";
+"signUp" = "Sign Up";
+"toStartPlay" = "to start play";
+
+"email" = "Email";
+"emailPlaceholder" = "Your email";
+
+"password" = "Password";
+"passwordPlaceholder" = "Your password";
+
+"name" = "Name";
+"namePlaceholder" = "Your Name";
+
+"forgotPassword" = "Forgot password?";
+"forgot" = "Forgot";
+"forgotPassword2" = "Forgot password";
+
+"onConnect" = "Or connect with";
+"orSignUp" = "Or Sign Up";
+"orSignIn" = "Or Sign In";
+
+"confirmPassword" = "Confirm Password";
+
+"saveChanges" = "Save changes";
+
+"popular" = "Popular";
+"favorites" = "Favorites";
+"allStation" = "All Stations";
+
+"saveChagnes" = "Save chagnes";
+"zy" = "Schedule Notification";
+"timeManagment" = "Timing";
+
+"fullName" = "Full Name";
+
+"searchNewRadio" = "Search Radio Station";
+
+"playingNow" = "Playing Now";
+
+"alertHeader" = "Your email not verified ☹️";
+"alertDescription" = "To confirm, follow the link we sent to your email";
+
+"alertFine" = "Fine 😊";
+"alertDescription" = "Follow the link we sent to your email to complete your registration";
+"sent" = "Sent";
+"forgotDescriptions" = "Follow the link we've emailed you to reset your password";
+
+//Settings
+
+"settings" = "Settings";
+"general" = "General";
+"notification" = "Notification";
+"language" = "Language";
+"more" = "More";
+"legalOrPolitical" = "Legal and Political";
+"aboutUs" = "About Us";
+"logOut" = "Log Out";
+
+"rename" = "Rename";
+
+"addImage" = "Add Image?";
+"addImageDesk" = "How do you want to add a picture?";
+"gallery" = "Gallery";
+"photo" = "Photo";
+"cancel" = "Cancel";
+
+"writeNewName" = "Write new name";
+"writeNewEmail" = "Write new email";
+
+"terms" = "Terms";
+"profile" = "Profile";
+"privacy" = "Privacy";
+
+"reminder" = "Reminder";
+"reminderDescriptions" = "It's time to listen to your favorite station";
+"votes" = "Votes";

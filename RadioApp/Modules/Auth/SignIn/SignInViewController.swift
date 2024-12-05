@@ -140,8 +140,8 @@ private extension SignInViewController {
     /// Alert предупреждает что почта не подтверждена
     func showAlert() {
         let alert = UIAlertController(
-            title: "Your email not verified ☹️",
-            message: "To confirm, follow the link we sent to your email",
+            title: String.localize(key: "alertHeader"),
+            message: String.localize(key: "alertDescription"),
             preferredStyle: .alert
         )
         

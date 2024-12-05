@@ -40,7 +40,7 @@ final class OnboardingPage1VC: UIViewController {
 
     private lazy var firstHeaderLabel: UILabel = {
         let element = UILabel()
-        element.text = "Let's Get Started"
+        element.text = String.localize(key: "startLabel")
         element.font = .systemFont(ofSize: 60, weight: .bold)
         element.textColor = .white
         element.textAlignment = .left
@@ -50,7 +50,7 @@ final class OnboardingPage1VC: UIViewController {
 
     private lazy var secondHeaderLabel: UILabel = {
         let element = UILabel()
-        element.text = "Enjoy the best radio stations from your home, don't miss out on anything"
+        element.text = String.localize(key: "descriptionLabel")
         element.font = .systemFont(ofSize: 16, weight: .regular)
         element.textColor = .white
         element.textAlignment = .left
@@ -61,7 +61,7 @@ final class OnboardingPage1VC: UIViewController {
     
     private lazy var getStartedButton: UIButton = {
         let element = UIButton()
-        element.setTitle("Get started", for: .normal)
+        element.setTitle(String.localize(key: "startButton"), for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         element.backgroundColor = UIColor(named: "pinkBase")
         element.layer.cornerRadius = 10

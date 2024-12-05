@@ -95,7 +95,7 @@ class SettingsView: UIView {
     
     lazy var titleFirstSettingRectangle: UILabel = {
         let label = UILabel()
-        label.text = "General"
+        label.text = String.localize(key: "general")
         label.font = Font.getFont(.displayBold, size: 18)
         label.textColor = .white
         label.textAlignment = .left
@@ -120,7 +120,7 @@ class SettingsView: UIView {
     
     lazy var notificationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Notification"
+        label.text = String.localize(key: "notification")
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         label.textAlignment = .left
@@ -180,7 +180,7 @@ class SettingsView: UIView {
     
     lazy var languageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Language"
+        label.text = String.localize(key: "language")
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -219,7 +219,7 @@ class SettingsView: UIView {
     
     lazy var moreTitle: UILabel = {
         let label = UILabel()
-        label.text = "More"
+        label.text = String.localize(key: "more")
         label.font = Font.getFont(.displayBold, size: 18)
         label.textColor = .white
         label.textAlignment = .left
@@ -254,7 +254,7 @@ class SettingsView: UIView {
     
     lazy var shieldLabel: UILabel = {
         let label = UILabel()
-        label.text = "Legal and Policies"
+        label.text = String.localize(key: "legalOrPolitical")
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -310,7 +310,7 @@ class SettingsView: UIView {
     
     lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.text = "About"
+        label.text = String.localize(key: "aboutUs")
         label.font = Font.getFont(.displayMedium, size: 16)
         label.textColor = .white
         return label
@@ -339,7 +339,7 @@ class SettingsView: UIView {
     lazy var exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
-        button.setTitle("Log Out", for: .normal)
+        button.setTitle(String.localize(key: "logOut"), for: .normal)
         button.titleLabel?.textColor = .white
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = Font.getFont(.displayBold, size: 16)
