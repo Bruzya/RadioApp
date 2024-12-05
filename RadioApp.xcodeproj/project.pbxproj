@@ -68,6 +68,10 @@
 		DD6151BD2C60D08D0095E1B5 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151BC2C60D08D0095E1B5 /* PrivacyView.swift */; };
 		DD6151C12C60D1E70095E1B5 /* RenameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151C02C60D1E70095E1B5 /* RenameVC.swift */; };
 		DD6151C32C60D26F0095E1B5 /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6151C22C60D26F0095E1B5 /* RenameView.swift */; };
+		DDB214622C6978EF005AE756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDB214602C6978EF005AE756 /* Localizable.strings */; };
+		DDB214682C6A2017005AE756 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB214672C6A2017005AE756 /* String + Extension.swift */; };
+		DDB2146B2C6A3286005AE756 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2146A2C6A3286005AE756 /* LanguageVC.swift */; };
+		DDB2146D2C6A3292005AE756 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2146C2C6A3292005AE756 /* LanguageView.swift */; };
 		FA9688C22C59280800DE491C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688C12C59280800DE491C /* SignInView.swift */; };
 		FA9688CB2C59290100DE491C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */; };
 		FA9688CD2C59303E00DE491C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9688CC2C59303E00DE491C /* SignInViewController.swift */; };
@@ -163,6 +167,12 @@
 		DD6151BC2C60D08D0095E1B5 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		DD6151C02C60D1E70095E1B5 /* RenameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameVC.swift; sourceTree = "<group>"; };
 		DD6151C22C60D26F0095E1B5 /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
+		DDB2145F2C697873005AE756 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DDB214612C6978EF005AE756 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DDB214632C6978F8005AE756 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DDB214672C6A2017005AE756 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		DDB2146A2C6A3286005AE756 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
+		DDB2146C2C6A3292005AE756 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		FA9688C12C59280800DE491C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		FA9688CA2C59290100DE491C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		FA9688CC2C59303E00DE491C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +353,7 @@
 				5228996F2C57C87D0013FF87 /* LaunchScreen.storyboard */,
 				522899722C57C87D0013FF87 /* Info.plist */,
 				FA9688F92C5E32E300DE491C /* GoogleService-Info.plist */,
+				DDB214602C6978EF005AE756 /* Localizable.strings */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -350,6 +361,7 @@
 		5228997A2C57C8D00013FF87 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DDB214692C6A3276005AE756 /* LanguageModule */,
 				0B48D2ED2C68C897000EE879 /* OnboardingModule */,
 				DD6151BF2C60D1D90095E1B5 /* RenameModule */,
 				DD6151B92C60D05A0095E1B5 /* PrivacyModule */,
@@ -509,6 +521,15 @@
 			path = RenameModule;
 			sourceTree = "<group>";
 		};
+		DDB214692C6A3276005AE756 /* LanguageModule */ = {
+			isa = PBXGroup;
+			children = (
+				DDB2146A2C6A3286005AE756 /* LanguageVC.swift */,
+				DDB2146C2C6A3292005AE756 /* LanguageView.swift */,
+			);
+			path = LanguageModule;
+			sourceTree = "<group>";
+		};
 		FA9688BE2C5927C900DE491C /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +565,7 @@
 				3C2987D92C5E513E003A5872 /* RX + ext.swift */,
 				FA9688FD2C640F0A00DE491C /* UIImageView + Extension.swift */,
 				113C89752C64D83A0072FB2D /* UIKit-Extensions.swift */,
+				DDB214672C6A2017005AE756 /* String + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -618,6 +640,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 522899582C57C87B0013FF87;
 			packageReferences = (
@@ -646,6 +669,7 @@
 				5228996E2C57C87D0013FF87 /* Assets.xcassets in Resources */,
 				522899AE2C5968820013FF87 /* SF-Pro-Display-Medium.ttf in Resources */,
 				522899712C57C87D0013FF87 /* Base in Resources */,
+				DDB214622C6978EF005AE756 /* Localizable.strings in Resources */,
 				522899B02C59688B0013FF87 /* SF-Pro-Display-Regular.ttf in Resources */,
 				522899AC2C5968790013FF87 /* SF-Pro-Display-Bold.ttf in Resources */,
 				FA9688FA2C5E32E400DE491C /* GoogleService-Info.plist in Resources */,
@@ -667,6 +691,7 @@
 				522899A72C57E7450013FF87 /* StationDetailsVC.swift in Sources */,
 				FA9688DF2C5A7AC400DE491C /* UIViewControlle + Extension.swift in Sources */,
 				64CEDC8F2C5FD2F400CB46BB /* Station.swift in Sources */,
+				DDB2146B2C6A3286005AE756 /* LanguageVC.swift in Sources */,
 				FA9688E32C5A7F6A00DE491C /* SignUpViewController.swift in Sources */,
 				0B48D2F02C68C897000EE879 /* OnboardingPage2VC.swift in Sources */,
 				522899882C57DC290013FF87 /* Font.swift in Sources */,
@@ -689,6 +714,7 @@
 				11AFEF182C5B960500249DA7 /* Constants.swift in Sources */,
 				FA9688FE2C640F0A00DE491C /* UIImageView + Extension.swift in Sources */,
 				3CCE94FE2C583BB500EE5B8A /* SettingsVC.swift in Sources */,
+				DDB214682C6A2017005AE756 /* String + Extension.swift in Sources */,
 				113E027C2C5B935500D64D01 /* RadioStationListVM.swift in Sources */,
 				3CCE94FB2C58397A00EE5B8A /* SideBarVC.swift in Sources */,
 				113E027D2C5B935500D64D01 /* RadioStationViewModel.swift in Sources */,
@@ -711,6 +737,7 @@
 				11AFEF0F2C5B949500249DA7 /* RadioStationCell.swift in Sources */,
 				FA9689022C64133500DE491C /* User.swift in Sources */,
 				FA9689042C651A6000DE491C /* CustomTF.swift in Sources */,
+				DDB2146D2C6A3292005AE756 /* LanguageView.swift in Sources */,
 				3CD434CD2C5E6A77006A8136 /* FadeTransitionAnimator.swift in Sources */,
 				3CCE94E32C58359800EE5B8A /* AppDIContainer.swift in Sources */,
 				DD6151BB2C60D06E0095E1B5 /* PrivacyVC.swift in Sources */,
@@ -736,8 +763,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				522899702C57C87D0013FF87 /* Base */,
+				DDB2145F2C697873005AE756 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DDB214602C6978EF005AE756 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDB214612C6978EF005AE756 /* en */,
+				DDB214632C6978F8005AE756 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -748,6 +785,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -811,6 +849,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

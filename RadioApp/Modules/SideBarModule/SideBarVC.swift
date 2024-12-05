@@ -15,9 +15,21 @@ final class SideBarVC: UIViewController {
     var onCellTap: ((SideBarOption) -> Void)?
     
     enum SideBarOption: String, CaseIterable {
-        case allStation = "All Station"
-        case favorite = "Favorite"
-        case popular = "Popular"
+        case allStation
+        case favorite
+        case popular
+        
+        var localizeString: String {
+            switch self{
+                
+            case .allStation:
+                return String.localize(key: "allStation")
+            case .favorite:
+                return String.localize(key: "favorites")
+            case .popular:
+                return String.localize(key: "allStation")
+            }
+        }
     }
     
     private let tableView: UITableView = {
